@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="marry_text">
+        <item name="android:fontFamily">@font/nanum_square_neo</item>
+        <item name="android:letterSpacing">-0.4</item>
+    </style>
+
+    <style name="large_title" parent="marry_text">
+        <item name="android:textSize">34sp</item>
+        <item name="lineHeight">54.4sp</item>
+    </style>
+
+    <style name="title1" parent="marry_text">
+        <item name="android:textSize">28sp</item>
+        <item name="lineHeight">44.8sp</item>
+    </style>
+
+    <style name="title2" parent="marry_text">
+        <item name="android:textSize">22sp</item>
+        <item name="lineHeight">35.2sp</item>
+    </style>
+
+    <style name="title3" parent="marry_text">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">32sp</item>
+    </style>
+
+    <style name="headline" parent="marry_text">
+        <item name="android:textSize">17sp</item>
+        <item name="lineHeight">27.2sp</item>
+    </style>
+
+    <style name="body" parent="marry_text">
+        <item name="android:textSize">17sp</item>
+        <item name="lineHeight">27.2sp</item>
+    </style>
+
+    <style name="callout" parent="marry_text">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">25.6sp</item>
+    </style>
+
+    <style name="subheadline" parent="marry_text">
+        <item name="android:textSize">15sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="footnote" parent="marry_text">
+        <item name="android:textSize">13sp</item>
+        <item name="lineHeight">20.8sp</item>
+    </style>
+
+    <style name="caption1" parent="marry_text">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">19.2sp</item>
+    </style>
+
+    <style name="caption2" parent="marry_text">
+        <item name="android:textSize">11sp</item>
+        <item name="lineHeight">17.6sp</item>
+    </style>
+</resources>
