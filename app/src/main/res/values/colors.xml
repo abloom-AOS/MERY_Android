@@ -2,4 +2,28 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bi_purple_50">#fbf8fc</color>
+    <color name="bi_purple_100">#f4eff8</color>
+    <color name="bi_purple_200">#ece2f2</color>
+    <color name="bi_purple_300">#ddcbe7</color>
+    <color name="bi_purple_400">#cdb4db</color>
+    <color name="bi_purple_500">#af88c4</color>
+    <color name="bi_purple_600">#996db0</color>
+    <color name="bi_purple_700">#835898</color>
+    <color name="bi_purple_800">#6e4c7d</color>
+    <color name="bi_purple_900">#5a3e65</color>
+    <color name="bi_purple_950">#3d2447</color>
+
+    <color name="ui_gray_50">#fbf8fc</color>
+    <color name="ui_gray_100">#f4eff8</color>
+    <color name="ui_gray_200">#ece2f2</color>
+    <color name="ui_gray_300">#ddcbe7</color>
+    <color name="ui_gray_400">#cdb4db</color>
+    <color name="ui_gray_500">#af88c4</color>
+    <color name="ui_gray_600">#996db0</color>
+    <color name="ui_gray_700">#835898</color>
+    <color name="ui_gray_800">#6e4c7d</color>
+    <color name="ui_gray_900">#5a3e65</color>
+    <color name="ui_gray_950">#3d2447</color>
 </resources>
