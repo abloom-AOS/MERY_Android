@@ -1,6 +1,7 @@
 [versions]
 # Gradle Versions
 agp = "8.3.0"
+converterGson = "2.9.0"
 kotlin = "1.9.21"
 ktlintGradle = "12.1.0"
 
@@ -21,6 +22,7 @@ hilt = "2.50"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
+v2All = "2.20.0"
 
 [libraries]
 # 안드로이드
@@ -28,6 +30,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Hilt
@@ -38,6 +41,7 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+v2-all = { module = "com.kakao.sdk:v2-all", version.ref = "v2All" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
