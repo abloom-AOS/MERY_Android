@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
     <style name="marry_text">
         <item name="android:fontFamily">@font/nanum_square_neo</item>
         <item name="android:letterSpacing">-0.4</item>
