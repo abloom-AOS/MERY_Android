@@ -35,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    dataBinding{
+    dataBinding {
         enable = true
     }
 }
