@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.abloom.marry.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {

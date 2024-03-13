@@ -71,4 +71,5 @@ dependencies {
     //카카오 연동
     implementation ("com.kakao.sdk:v2-all:2.20.0")
 
+
 }
