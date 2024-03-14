@@ -22,6 +22,9 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 
+# Kakao SDK 의존성 버전
+kakaoSdk = "2.20.0"
+
 [libraries]
 # 안드로이드
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +41,9 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+# Kakao SDK 의존성
+kakao-sdk-all = { module = "com.kakao.sdk:v2-all", version.ref = "kakaoSdk" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
