@@ -68,8 +68,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //카카오 연동
-    implementation(libs.v2.all)
+    implementation(libs.kakao.sdk.all)
 
 
 
