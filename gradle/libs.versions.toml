@@ -1,7 +1,6 @@
 [versions]
 # Gradle Versions
 agp = "8.3.0"
-converterGson = "2.9.0"
 kotlin = "1.9.21"
 ktlintGradle = "12.1.0"
 
@@ -22,6 +21,8 @@ hilt = "2.50"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
+
+# Kakao SDK 의존성 버전
 kakaoSdk = "2.20.0"
 
 [libraries]
