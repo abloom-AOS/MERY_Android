@@ -20,6 +20,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         applyWindowInsetsPadding()
 
+        showLoginDialog()
+
+    }
+
+    private fun showLoginDialog() {
+        val dialogFragment = LoginDialogFragment()
+        dialogFragment.show(supportFragmentManager, "KakaoLoginDialog")
     }
 
     private fun applyWindowInsetsPadding() {
