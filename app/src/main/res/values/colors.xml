@@ -3,17 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="bi_purple_50">#fbf8fc</color>
-    <color name="bi_purple_100">#f4eff8</color>
-    <color name="bi_purple_200">#ece2f2</color>
-    <color name="bi_purple_300">#ddcbe7</color>
-    <color name="bi_purple_400">#cdb4db</color>
-    <color name="bi_purple_500">#af88c4</color>
-    <color name="bi_purple_600">#996db0</color>
-    <color name="bi_purple_700">#835898</color>
-    <color name="bi_purple_800">#6e4c7d</color>
-    <color name="bi_purple_900">#5a3e65</color>
-    <color name="bi_purple_950">#3d2447</color>
+    <color name="bi_purple_01">#F1E0F7</color>
+    <color name="bi_purple_02">#DDB9EA</color>
+    <color name="bi_purple_03">#C992DD</color>
+    <color name="bi_purple_04">#B66BD0</color>
+    <color name="bi_purple_05">#A244C3</color>
+    <color name="bi_purple_06">#8E1CB5</color>
+    <color name="bi_purple_07">#7C189F</color>
+    <color name="bi_purple_08">#6A1389</color>
+    <color name="bi_purple_09">#46095C</color>
+    <color name="bi_purple_10">#340445</color>
 
     <color name="ui_gray_50">#fbf8fc</color>
     <color name="ui_gray_100">#f4eff8</color>
