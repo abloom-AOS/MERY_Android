@@ -3,6 +3,7 @@
     <style name="Base.Theme.Marry" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.Marry" parent="Base.Theme.Marry" />
