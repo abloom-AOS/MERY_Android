@@ -25,8 +25,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showLoginDialog() {
-        val dialogFragment = LoginDialogFragment()
-        dialogFragment.show(supportFragmentManager, "KakaoLoginDialog")
+        val bottomSheetFragment = LoginDialogFragment()
+        bottomSheetFragment.show(supportFragmentManager, "LoginDialog")
     }
 
     private fun applyWindowInsetsPadding() {

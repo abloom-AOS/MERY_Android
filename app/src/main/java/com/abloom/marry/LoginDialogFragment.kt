@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import com.abloom.marry.databinding.FragmentLoginDialogBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 
-class LoginDialogFragment : DialogFragment() {
+class LoginDialogFragment : BottomSheetDialogFragment()  {
 
     private lateinit var binding: FragmentLoginDialogBinding
 
