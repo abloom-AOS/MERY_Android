@@ -70,6 +70,4 @@ dependencies {
 
     implementation(libs.kakao.sdk.all)
 
-
-
 }
