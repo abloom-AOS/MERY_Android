@@ -12,7 +12,7 @@ val properties = Properties().apply {
 }
 
 android {
-    namespace = "com.abloom.marry"
+    namespace = "com.abloom.mery"
     compileSdk = 34
 
     buildFeatures {
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.abloom.marry"
+        applicationId = "com.abloom.mery"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

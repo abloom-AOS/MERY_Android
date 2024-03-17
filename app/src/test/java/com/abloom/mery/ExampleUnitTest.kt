@@ -1,4 +1,4 @@
-package com.abloom.marry
+package com.abloom.mery
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
