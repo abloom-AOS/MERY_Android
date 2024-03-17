@@ -1,11 +1,11 @@
-package com.abloom.marry
+package com.abloom.mery
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.abloom.marry.databinding.ActivityMainBinding
+import com.abloom.mery.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
