@@ -30,11 +30,12 @@
                 android:layout_width="79dp"
                 android:layout_height="39dp"
                 android:text="@string/login_text"
-                android:textAppearance="@style/login_text_style"
                 android:lineSpacingExtra="8sp"
                 android:translationY="-4.13sp"
                 android:gravity="top"
-                />
+                android:textSize="28sp"
+                android:letterSpacing="-0.01"
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="217dp"
@@ -44,9 +45,9 @@
                 android:gravity="top"
                 android:lineSpacingExtra="4sp"
                 android:text="@string/login_guide_text"
-                android:textAppearance="@style/login_guide_text_style"
                 android:textColor="#606775"
-                android:translationY="-1.77sp" />
+                android:textSize="12sp"
+                android:translationY="-1.77sp"/>
 
         </RelativeLayout>
         <!-- 로그인 Text Layout -->
