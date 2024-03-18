@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showLoginDialog() {
         val bottomSheetFragment = LoginDialogFragment()
-        bottomSheetFragment.setStyle(DialogFragment.STYLE_NORMAL , R.style.AppBottomSheetDialogTheme)
         bottomSheetFragment.show(supportFragmentManager, LoginDialogFragment().tag)
     }
 
