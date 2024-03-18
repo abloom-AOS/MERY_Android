@@ -54,11 +54,8 @@ class LoginDialogFragment : BottomSheetDialogFragment()  {
     private fun kakaoLoginSuccess() {
         showToastMessage(KAKAO_LOGIN_SUCCESS)
 
-        /*
-        * 다음 화면으로 이동하는 로직 구현을 구현
-        * 파이어베이스를 조회하여 기존 회원이 아닌 경우 회원가입 화면으로 이동한다.
-        *
-        * */
+        // TODO("화면 이동 로직 구현")
+        // 파이어베이스를 조회하여 기존 회원이 아닌 경우 회원가입 화면으로 이동한다.
 
         dismiss()
     }
