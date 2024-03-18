@@ -1,4 +1,4 @@
-package com.abloom.marry
+package com.abloom.mery
 
 
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.abloom.marry.databinding.FragmentLoginDialogBinding
+import com.abloom.mery.databinding.FragmentLoginDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
@@ -60,6 +60,7 @@ class LoginDialogFragment : BottomSheetDialogFragment()  {
         *
         * */
 
+        //dismiss()
     }
 
     private fun checkUserApiClient() {

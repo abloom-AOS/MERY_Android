@@ -1,13 +1,12 @@
-package com.abloom.marry
+package com.abloom.mery
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.abloom.marry.databinding.ActivityHomeBinding
-import com.abloom.marry.databinding.ActivityMainBinding
+import androidx.fragment.app.DialogFragment
+import com.abloom.mery.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
@@ -26,7 +25,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showLoginDialog() {
         val bottomSheetFragment = LoginDialogFragment()
-        bottomSheetFragment.show(supportFragmentManager, "LoginDialog")
+        bottomSheetFragment.setStyle(DialogFragment.STYLE_NORMAL , R.style.AppBottomSheetDialogTheme)
+        bottomSheetFragment.show(supportFragmentManager, LoginDialogFragment().tag)
     }
 
     private fun applyWindowInsetsPadding() {

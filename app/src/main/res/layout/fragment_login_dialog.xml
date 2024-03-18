@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/bottom_login_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <!-- 로그인 Text Layout -->
+        <RelativeLayout
+            android:layout_width="217dp"
+            android:layout_height="64dp"
+            android:background="@drawable/rounded_top_corners"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/loginText"
+                android:layout_width="79dp"
+                android:layout_height="39dp"
+                android:text="@string/login_text"
+                android:textAppearance="@style/login_text_style"
+                android:lineSpacingExtra="8sp"
+                android:translationY="-4.13sp"
+                android:gravity="top"
+                />
+
+            <TextView
+                android:layout_width="217dp"
+                android:layout_height="17dp"
+                android:layout_below="@+id/loginText"
+                android:layout_marginTop="10dp"
+                android:gravity="top"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/login_guide_text"
+                android:textAppearance="@style/login_guide_text_style"
+                android:textColor="#606775"
+                android:translationY="-1.77sp" />
+
+        </RelativeLayout>
+        <!-- 로그인 Text Layout -->
+
+
+        <ImageButton
+            android:id="@+id/kakao_login_button"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/kakao_login_medium_wide" />
+
+
+    </RelativeLayout>
+
+
+
+
+</layout>
+
+
+
