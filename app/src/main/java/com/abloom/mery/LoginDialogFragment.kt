@@ -60,7 +60,7 @@ class LoginDialogFragment : BottomSheetDialogFragment()  {
         *
         * */
 
-        //dismiss()
+        dismiss()
     }
 
     private fun checkUserApiClient() {
