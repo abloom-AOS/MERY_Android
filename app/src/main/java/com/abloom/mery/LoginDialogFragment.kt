@@ -43,7 +43,6 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
             checkUserApiClient()
         }
 
-
     }
 
     private fun kakaoAutoLogin() {
@@ -63,7 +62,7 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
         // TODO("화면 이동 로직 구현")
         // 파이어베이스를 조회하여 기존 회원이 아닌 경우 회원가입 화면으로 이동한다.
 
-        // dismiss()
+        dismiss()
     }
 
     private fun checkUserApiClient() {

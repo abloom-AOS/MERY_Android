@@ -18,10 +18,7 @@ class HomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         applyWindowInsetsPadding()
-
         showLoginDialog()
-
-
     }
 
     private fun showLoginDialog() {
