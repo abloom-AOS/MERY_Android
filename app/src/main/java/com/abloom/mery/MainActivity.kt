@@ -1,10 +1,12 @@
 package com.abloom.mery
 
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
 import com.abloom.mery.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,5 +26,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupBackPressed()
+    }
+
+    private fun setupBackPressed() {
+        onBackPressedDispatcher.addCallback { findNavController(R.id.nav_host_fragment).popBackStack() }
     }
 }
