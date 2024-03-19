@@ -9,12 +9,45 @@
         android:id="@+id/splashFragment"
         android:name="com.abloom.mery.presentation.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.abloom.mery.presentation.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createQna"
+            app:destination="@id/createQna"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileMenuFragment"
+            app:destination="@id/profileMenuFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_homeFragment_to_qnaFragment"
+            app:destination="@id/qnaFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_homeFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
     <fragment
         android:id="@+id/connectFragment"
         android:name="com.abloom.mery.presentation.ui.connect.ConnectFragment"
@@ -24,17 +57,36 @@
         android:id="@+id/profileMenuFragment"
         android:name="com.abloom.mery.presentation.ui.profilemenu.ProfileMenuFragment"
         android:label="fragment_profile_menu"
-        tools:layout="@layout/fragment_profile_menu" />
+        tools:layout="@layout/fragment_profile_menu" >
+        <action
+            android:id="@+id/action_profileMenuFragment_to_connectFragment"
+            app:destination="@id/connectFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.abloom.mery.presentation.ui.signup.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.abloom.mery.presentation.ui.webview.WebViewFragment"
         android:label="fragment_web_view"
-        tools:layout="@layout/fragment_web_view" >
+        tools:layout="@layout/fragment_web_view">
         <argument
             android:name="url"
             app:argType="string" />
@@ -43,7 +95,7 @@
         android:id="@+id/writeAnswerFragment"
         android:name="com.abloom.mery.presentation.ui.writeanswer.WriteAnswerFragment"
         android:label="fragment_write_answer"
-        tools:layout="@layout/fragment_write_answer" >
+        tools:layout="@layout/fragment_write_answer">
         <argument
             android:name="question_id"
             app:argType="long" />
@@ -52,22 +104,45 @@
         android:id="@+id/qnaFragment"
         android:name="com.abloom.mery.presentation.ui.qna.QnaFragment"
         android:label="fragment_qna"
-        tools:layout="@layout/fragment_qna" >
+        tools:layout="@layout/fragment_qna">
         <argument
             android:name="question_id"
             app:argType="long" />
+        <action
+            android:id="@+id/action_qnaFragment_to_connectFragment"
+            app:destination="@id/connectFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-    <navigation android:id="@+id/createQna"
+    <navigation
+        android:id="@+id/createQna"
         app:startDestination="@id/createQnaFragment">
         <fragment
             android:id="@+id/createQnaFragment"
             android:name="com.abloom.mery.presentation.ui.createqna.CreateQnaFragment"
             android:label="fragment_create_qna"
-            tools:layout="@layout/fragment_create_qna" />
+            tools:layout="@layout/fragment_create_qna" >
+            <action
+                android:id="@+id/action_createQnaFragment_to_categoryFragment"
+                app:destination="@id/categoryFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
         <fragment
             android:id="@+id/categoryFragment"
             android:name="com.abloom.mery.presentation.ui.category.CategoryFragment"
             android:label="fragment_category"
             tools:layout="@layout/fragment_category" />
+        <action
+            android:id="@+id/action_global_writeAnswerFragment"
+            app:destination="@id/writeAnswerFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </navigation>
 </navigation>
