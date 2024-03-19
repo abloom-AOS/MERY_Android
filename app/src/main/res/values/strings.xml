@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Mery</string>
+
+    <string name="all_ok">확인</string>
+    <string name="all_cancel">취소</string>
+    <string name="all_complete">완료</string>
+
+    <string name="signup_title">가입하기</string>
+
+    <string name="qna_title">우리의 문답</string>
+
+    <string name="connect_title">상대방과 연결 관리</string>
+
+    <string name="webview_terms_of_use">서비스 이용약관</string>
+    <string name="writeanswer_title">답변 작성하기</string>
 </resources>

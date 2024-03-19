@@ -24,7 +24,7 @@ class MeryAppBar(
     attrs: AttributeSet,
 ) : ConstraintLayout(context, attrs) {
 
-    private lateinit var navigation: View
+    private var navigation: View? = null
     private var title: View? = null
     private var action: View? = null
 
@@ -33,7 +33,7 @@ class MeryAppBar(
     }
 
     var onNavigationClickListener: OnClickListener? by observable(null) { _, _, newValue ->
-        navigation.setOnClickListener(newValue)
+        navigation?.setOnClickListener(newValue)
     }
 
     var onActionClickListener: OnClickListener? by observable(null) { _, _, newValue ->
@@ -76,7 +76,6 @@ class MeryAppBar(
         require(!(navigationIcon != null && navigationText != null)) { "MeryAppBar의 navigationIcon과 navigationText 둘 중 하나만 사용할 수 있습니다." }
         navigation = navigationIcon?.let { createNavigationIconView(it) }
             ?: navigationText?.let { createNavigationTextView(it) }
-                    ?: throw IllegalArgumentException("MeryAppBar의 navigationIcon과 navigationText 둘 다 null이면 안됩니다.")
     }
 
     private fun createNavigationIconView(drawable: Drawable) = ImageView(context).apply {
@@ -135,6 +134,7 @@ class MeryAppBar(
     }
 
     private fun ConstraintSet.setupNavigationConstraint() {
+        val navigation = navigation ?: return
         constrainWidth(navigation.id, ConstraintSet.WRAP_CONTENT)
         constrainHeight(navigation.id, ConstraintSet.WRAP_CONTENT)
         connect(navigation.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
