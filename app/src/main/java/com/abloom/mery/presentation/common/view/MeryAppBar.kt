@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +30,14 @@ class MeryAppBar(
 
     var isActionEnabled: Boolean by observable(true) { _, _, newValue ->
         action?.isEnabled = newValue
+    }
+
+    var onNavigationClickListener: OnClickListener? by observable(null) { _, _, newValue ->
+        navigation.setOnClickListener(newValue)
+    }
+
+    var onActionClickListener: OnClickListener? by observable(null) { _, _, newValue ->
+        action?.setOnClickListener(newValue)
     }
 
     init {
@@ -173,4 +182,14 @@ class MeryAppBar(
 @BindingAdapter("app:isActionEnabled")
 fun MeryAppBar.setActionEnabled(enabled: Boolean) {
     isActionEnabled = enabled
+}
+
+@BindingAdapter("app:onNavigationClick")
+fun MeryAppBar.setOnNavigationClick(onClickListener: OnClickListener) {
+    onNavigationClickListener = onClickListener
+}
+
+@BindingAdapter("app:onActionClick")
+fun MeryAppBar.setOnActionClick(onClickListener: OnClickListener) {
+    onActionClickListener = onClickListener
 }
