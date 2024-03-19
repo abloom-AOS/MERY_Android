@@ -80,7 +80,7 @@
         tools:layout="@layout/fragment_web_view">
         <argument
             android:name="url"
-            app:argType="string" />
+            app:argType="com.abloom.mery.presentation.common.WebViewUrl" />
     </fragment>
     <fragment
         android:id="@+id/writeAnswerFragment"

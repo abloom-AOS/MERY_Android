@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
+import com.abloom.mery.presentation.common.WebViewUrl
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,12 +20,12 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         }
         binding.button9.setOnClickListener {
             findNavController().navigate(
-                SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment("")
+                SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment(WebViewUrl.TERMS_OF_USE)
             )
         }
         binding.button10.setOnClickListener {
             findNavController().navigate(
-                SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment("")
+                SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment(WebViewUrl.PRIVACY_POLICY)
             )
         }
     }
