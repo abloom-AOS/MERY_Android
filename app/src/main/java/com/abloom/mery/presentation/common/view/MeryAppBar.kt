@@ -13,8 +13,10 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.use
+import androidx.databinding.BindingAdapter
 import com.abloom.mery.R
 import com.abloom.mery.presentation.common.util.dp
+import kotlin.properties.Delegates.observable
 
 class MeryAppBar(
     context: Context,
@@ -24,6 +26,10 @@ class MeryAppBar(
     private lateinit var navigation: View
     private var title: View? = null
     private var action: View? = null
+
+    var isActionEnabled: Boolean by observable(true) { _, _, newValue ->
+        action?.isEnabled = newValue
+    }
 
     init {
         setupView()
@@ -162,4 +168,9 @@ class MeryAppBar(
         private val BUTTON_HORIZONTAL_PADDING = 4.dp
         private val BUTTON_VERTICAL_PADDING = 5.dp
     }
+}
+
+@BindingAdapter("app:isActionEnabled")
+fun MeryAppBar.setActionEnabled(enabled: Boolean) {
+    isActionEnabled = enabled
 }
