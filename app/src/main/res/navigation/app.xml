@@ -34,17 +34,29 @@
         android:id="@+id/webViewFragment"
         android:name="com.abloom.mery.presentation.ui.webview.WebViewFragment"
         android:label="fragment_web_view"
-        tools:layout="@layout/fragment_web_view" />
+        tools:layout="@layout/fragment_web_view" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/writeAnswerFragment"
         android:name="com.abloom.mery.presentation.ui.writeanswer.WriteAnswerFragment"
         android:label="fragment_write_answer"
-        tools:layout="@layout/fragment_write_answer" />
+        tools:layout="@layout/fragment_write_answer" >
+        <argument
+            android:name="question_id"
+            app:argType="long" />
+    </fragment>
     <fragment
         android:id="@+id/qnaFragment"
         android:name="com.abloom.mery.presentation.ui.qna.QnaFragment"
         android:label="fragment_qna"
-        tools:layout="@layout/fragment_qna" />
+        tools:layout="@layout/fragment_qna" >
+        <argument
+            android:name="question_id"
+            app:argType="long" />
+    </fragment>
     <navigation android:id="@+id/createQna"
         app:startDestination="@id/createQnaFragment">
         <fragment
