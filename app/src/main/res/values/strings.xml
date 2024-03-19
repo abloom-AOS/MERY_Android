@@ -2,6 +2,7 @@
     <string name="app_name">Mery</string>
 
     <string name="login_text">로그인</string>
+    <string name="kakao_login_text">카카오 로그인</string>
     <string name="login_guide_text">간편하게 로그인해서 메리를 시작해보세요</string>
 
 
