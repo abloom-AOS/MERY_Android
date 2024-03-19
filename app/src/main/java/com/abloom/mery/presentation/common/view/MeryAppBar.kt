@@ -24,9 +24,32 @@ class MeryAppBar(
     attrs: AttributeSet,
 ) : ConstraintLayout(context, attrs) {
 
-    private var navigation: View? = null
-    private var title: View? = null
-    private var action: View? = null
+    private var navigation: View? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+    private var title: View? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+    private var action: View? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+
+    var navigationIcon: Drawable? by observable(null) { _, _, newValue ->
+        if (navigation != null) removeView(navigation)
+        if (newValue == null) return@observable
+        navigation = createNavigationIconView(newValue)
+    }
+
+    var navigationText: CharSequence? by observable(null) { _, _, newValue ->
+        if (navigation != null) removeView(navigation)
+        if (newValue == null) return@observable
+        navigation = createNavigationTextView(newValue)
+    }
+
+    var actionText: CharSequence by observable("") { _, _, newValue ->
+        if (action != null) removeView(action)
+        action = createActionView(newValue)
+    }
 
     var isActionEnabled: Boolean by observable(true) { _, _, newValue ->
         action?.isEnabled = newValue
@@ -65,9 +88,6 @@ class MeryAppBar(
 
             action = typedArray.getText(R.styleable.MeryAppBar_action)?.let { createActionView(it) }
         }
-        addView(navigation)
-        addView(title)
-        addView(action)
     }
 
     private fun setupNavigation(typedArray: TypedArray) {
@@ -184,4 +204,19 @@ fun MeryAppBar.setOnNavigationClick(onClickListener: OnClickListener) {
 @BindingAdapter("app:onActionClick")
 fun MeryAppBar.setOnActionClick(onClickListener: OnClickListener) {
     onActionClickListener = onClickListener
+}
+
+@BindingAdapter("app:navigationIcon")
+fun MeryAppBar.setNavigationIcon(icon: Drawable?) {
+    navigationIcon = icon
+}
+
+@BindingAdapter("app:navigationText")
+fun MeryAppBar.setNavigationText(text: CharSequence?) {
+    navigationText = text
+}
+
+@BindingAdapter("app:action")
+fun MeryAppBar.setActionText(text: CharSequence) {
+    actionText = text
 }
