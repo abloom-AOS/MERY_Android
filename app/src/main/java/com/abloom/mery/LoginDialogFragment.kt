@@ -30,22 +30,19 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         kakaoAutoLogin()
-        bindingSet()
+        setupKakaoLoginButton()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme)
     }
 
-    private fun bindingSet() {
+    private fun setupKakaoLoginButton() {
 
-        binding.apply {
-
-            kakaoLoginButton.setOnClickListener {
-                checkUserApiClient()
-            }
-
+        binding.kakaoLoginButton.setOnClickListener {
+            checkUserApiClient()
         }
+
 
     }
 
@@ -66,7 +63,7 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
         // TODO("화면 이동 로직 구현")
         // 파이어베이스를 조회하여 기존 회원이 아닌 경우 회원가입 화면으로 이동한다.
 
-        dismiss()
+        // dismiss()
     }
 
     private fun checkUserApiClient() {
