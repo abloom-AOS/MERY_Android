@@ -9,15 +9,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/login_text_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,9 +54,7 @@
             android:id="@+id/kakao_login_button"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
             android:background="@drawable/kakao_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
