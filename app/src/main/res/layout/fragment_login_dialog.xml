@@ -61,7 +61,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.widget.Button
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/kakao_login_button"
             android:layout_width="350dp"
             android:layout_height="48dp"
@@ -69,17 +69,42 @@
             android:layout_marginTop="120dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/kakao_btn"
-            android:lineSpacingExtra="2sp"
-            android:text="@string/kakao_login_text"
-            android:textColor="#000000"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.355"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="카카오 로그인"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.518" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kakao_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
