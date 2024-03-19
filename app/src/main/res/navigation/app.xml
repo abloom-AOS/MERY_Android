@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.abloom.mery.presentation.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_createQna"
             app:destination="@id/createQna"
@@ -48,7 +48,7 @@
         android:id="@+id/profileMenuFragment"
         android:name="com.abloom.mery.presentation.ui.profilemenu.ProfileMenuFragment"
         android:label="fragment_profile_menu"
-        tools:layout="@layout/fragment_profile_menu" >
+        tools:layout="@layout/fragment_profile_menu">
         <action
             android:id="@+id/action_profileMenuFragment_to_connectFragment"
             app:destination="@id/connectFragment"
@@ -64,7 +64,7 @@
         android:id="@+id/signUpFragment"
         android:name="com.abloom.mery.presentation.ui.signup.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_webViewFragment"
             app:destination="@id/webViewFragment"
@@ -114,7 +114,7 @@
             android:id="@+id/createQnaFragment"
             android:name="com.abloom.mery.presentation.ui.createqna.CreateQnaFragment"
             android:label="fragment_create_qna"
-            tools:layout="@layout/fragment_create_qna" >
+            tools:layout="@layout/fragment_create_qna">
             <action
                 android:id="@+id/action_createQnaFragment_to_categoryFragment"
                 app:destination="@id/categoryFragment"

@@ -7,7 +7,6 @@ import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentCategoryBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
-import com.abloom.mery.presentation.ui.createqna.CreateQnaFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
