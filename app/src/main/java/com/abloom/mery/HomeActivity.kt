@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.DialogFragment
 import com.abloom.mery.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -13,6 +12,7 @@ class HomeActivity : AppCompatActivity() {
     private val binding: ActivityHomeBinding by lazy {
         ActivityHomeBinding.inflate(layoutInflater)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
         applyWindowInsetsPadding()
 
         showLoginDialog()
+
 
     }
 

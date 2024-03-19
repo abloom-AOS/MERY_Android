@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,30 +11,29 @@
         android:id="@+id/bottom_login_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_top_corners"
         tools:ignore="UselessParent">
 
         <!-- 로그인 Text Layout -->
         <RelativeLayout
             android:layout_width="217dp"
             android:layout_height="64dp"
-            android:background="@drawable/rounded_top_corners"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_top_corners">
 
             <TextView
                 android:id="@+id/loginText"
                 android:layout_width="79dp"
                 android:layout_height="39dp"
-                android:text="@string/login_text"
-                android:lineSpacingExtra="8sp"
-                android:translationY="-4.13sp"
                 android:gravity="top"
-                android:textSize="28sp"
                 android:letterSpacing="-0.01"
-                android:textColor="#000000"/>
+                android:lineSpacingExtra="8sp"
+                android:text="@string/login_text"
+                android:textColor="#000000"
+                android:textSize="28sp"
+                android:translationY="-4.13sp" />
 
             <TextView
                 android:layout_width="217dp"
@@ -47,7 +45,7 @@
                 android:text="@string/login_guide_text"
                 android:textColor="#606775"
                 android:textSize="12sp"
-                android:translationY="-1.77sp"/>
+                android:translationY="-1.77sp" />
 
         </RelativeLayout>
         <!-- 로그인 Text Layout -->
@@ -57,15 +55,13 @@
             android:id="@+id/kakao_login_button"
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:background="@drawable/kakao_login_medium_wide" />
 
 
     </RelativeLayout>
-
-
 
 
 </layout>

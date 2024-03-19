@@ -1,23 +1,29 @@
 package com.abloom.mery
 
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.abloom.mery.databinding.FragmentLoginDialogBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 
-class LoginDialogFragment : BottomSheetDialogFragment()  {
+class LoginDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentLoginDialogBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentLoginDialogBinding.inflate(inflater,container,false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentLoginDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -25,7 +31,10 @@ class LoginDialogFragment : BottomSheetDialogFragment()  {
         super.onViewCreated(view, savedInstanceState)
         kakaoAutoLogin()
         bindingSet()
+    }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme)
     }
 
     private fun bindingSet() {
@@ -110,19 +119,19 @@ class LoginDialogFragment : BottomSheetDialogFragment()  {
 
         }
 
-        if(UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext()))
-            UserApiClient.instance.loginWithKakaoTalk(requireContext(),callback = callback)
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext()))
+            UserApiClient.instance.loginWithKakaoTalk(requireContext(), callback = callback)
         else
-            UserApiClient.instance.loginWithKakaoAccount(requireContext(),callback = callback)
+            UserApiClient.instance.loginWithKakaoAccount(requireContext(), callback = callback)
 
     }
 
-    private fun showToastMessage(message : String) {
-        Toast.makeText(requireContext(), message , Toast.LENGTH_SHORT).show()
+    private fun showToastMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 
-    companion object{
+    companion object {
         private const val KAKAO_LOGIN_FAILED = "카카오 로그인 실패"
         private const val KAKAO_LOGIN_SUCCESS = "카카오 로그인"
         private const val OTHER_ERROR = "기타 에러"
