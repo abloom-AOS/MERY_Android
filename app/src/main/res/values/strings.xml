@@ -5,5 +5,16 @@
     <string name="kakao_login_text">카카오 로그인</string>
     <string name="login_guide_text">간편하게 로그인해서 메리를 시작해보세요</string>
 
+    <string name="kakao_login_failed">카카오 로그인 실패</string>
+    <string name="other_error">기타 에러</string>
+    <string name="invalid_error">유효하지 않은 앱</string>
+    <string name="access_denied">접근이 거부 됨(동의 취소)</string>
+    <string name="request_parameter_error">요청 파라미터 오류</string>
+    <string name="can_not_authentication">인증 수단이 유효하지 않아 인증할 수 없는 상태</string>
+    <string name="invalid_scope_id">유효하지 않은 scope ID</string>
+    <string name="setting_not_right">설정이 올바르지 않음(android key hash)</string>
+    <string name="server_internal_error">서버 내부 에러</string>
+    <string name="not_have_request_permission">앱이 요청 권한이 없음</string>
+
 
 </resources>

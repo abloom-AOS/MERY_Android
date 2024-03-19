@@ -1,7 +1,9 @@
 package com.abloom.mery
 
 
+import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -128,17 +130,25 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
 
 
     companion object {
-        private const val KAKAO_LOGIN_FAILED = "카카오 로그인 실패"
-        private const val KAKAO_LOGIN_SUCCESS = "카카오 로그인"
-        private const val OTHER_ERROR = "기타 에러"
-        private const val INVALID_ERROR = "유효하지 않은 앱"
-        private const val ACCESS_DENIED = "접근이 거부 됨(동의 취소)"
-        private const val REQUEST_PARAMETER_ERROR = "요청 파라미터 오류"
-        private const val CAN_NOT_AUTHENTICATION = "인증 수단이 유효하지 않아 인증할 수 없는 상태"
-        private const val INVALID_SCOPE_ID = "유효 하지 않은 scope ID"
-        private const val SETTING_NOT_RIGHT = "설정이 올바르지 않음(android key hash)"
-        private const val SERVER_INTERNAL_ERROR = "서버 내부 에러"
-        private const val NOT_HAVE_REQUEST_PERMISSION = "앱이 요청 권한이 없음"
+        @SuppressLint("StaticFieldLeak")
+        private lateinit var context: Context
+
+        fun init(context: Context) {
+            this.context = context
+        }
+
+        private val KAKAO_LOGIN_FAILED by lazy { context.getString(R.string.kakao_login_failed) }
+        private val KAKAO_LOGIN_SUCCESS by lazy { context.getString(R.string.kakao_login_text) }
+        private val OTHER_ERROR by lazy { context.getString(R.string.other_error) }
+        private val INVALID_ERROR by lazy { context.getString(R.string.invalid_error) }
+        private val ACCESS_DENIED by lazy { context.getString(R.string.access_denied) }
+        private val REQUEST_PARAMETER_ERROR by lazy { context.getString(R.string.request_parameter_error) }
+        private val CAN_NOT_AUTHENTICATION by lazy { context.getString(R.string.can_not_authentication) }
+        private val INVALID_SCOPE_ID by lazy { context.getString(R.string.invalid_scope_id) }
+        private val SETTING_NOT_RIGHT by lazy { context.getString(R.string.setting_not_right) }
+        private val SERVER_INTERNAL_ERROR by lazy { context.getString(R.string.server_internal_error) }
+        private val NOT_HAVE_REQUEST_PERMISSION by lazy { context.getString(R.string.not_have_request_permission) }
     }
+
 
 }
