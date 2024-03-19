@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 val properties = Properties().apply {
