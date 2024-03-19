@@ -79,56 +79,48 @@ class MeryAppBar(
                     ?: throw IllegalArgumentException("MeryAppBar의 navigationIcon과 navigationText 둘 다 null이면 안됩니다.")
     }
 
-    private fun createNavigationIconView(drawable: Drawable): ImageView {
-        val view = ImageView(context)
-        view.id = generateViewId()
-        view.layoutParams = LayoutParams(NAVIGATION_ICON_BUTTON_SIZE, NAVIGATION_ICON_BUTTON_SIZE)
-        view.setImageDrawable(drawable)
-        return view
+    private fun createNavigationIconView(drawable: Drawable) = ImageView(context).apply {
+        id = generateViewId()
+        layoutParams = LayoutParams(NAVIGATION_ICON_BUTTON_SIZE, NAVIGATION_ICON_BUTTON_SIZE)
+        setImageDrawable(drawable)
     }
 
-    private fun createNavigationTextView(text: CharSequence): TextView {
-        val view = TextView(context)
-        view.id = generateViewId()
-        view.text = text
-        view.setTextAppearance(R.style.callout)
-        view.typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
+    private fun createNavigationTextView(text: CharSequence) = TextView(context).apply {
+        id = generateViewId()
+        this.text = text
+        setTextAppearance(R.style.callout)
+        typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
         val color = ContextCompat.getColor(context, R.color.primary_08)
-        view.setTextColor(color)
-        view.setPadding(
+        setTextColor(color)
+        setPadding(
             BUTTON_HORIZONTAL_PADDING,
             BUTTON_VERTICAL_PADDING,
             BUTTON_HORIZONTAL_PADDING,
             BUTTON_VERTICAL_PADDING
         )
-        return view
     }
 
-    private fun createTitleView(text: CharSequence): TextView {
-        val view = TextView(context)
-        view.id = generateViewId()
-        view.text = text
-        view.setTextAppearance(R.style.body)
-        view.typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
-        view.setTextColor(Color.BLACK)
-        return view
+    private fun createTitleView(text: CharSequence) = TextView(context).apply {
+        id = generateViewId()
+        this.text = text
+        setTextAppearance(R.style.body)
+        typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
+        setTextColor(Color.BLACK)
     }
 
-    private fun createActionView(text: CharSequence): TextView {
-        val view = TextView(context)
-        view.id = generateViewId()
-        view.text = text
-        view.setTextAppearance(R.style.callout)
-        view.typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
+    private fun createActionView(text: CharSequence) = TextView(context).apply {
+        id = generateViewId()
+        this.text = text
+        setTextAppearance(R.style.callout)
+        typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
         val colors = ContextCompat.getColorStateList(context, R.color.text_button)
-        view.setTextColor(colors)
-        view.setPadding(
+        setTextColor(colors)
+        setPadding(
             BUTTON_HORIZONTAL_PADDING,
             BUTTON_VERTICAL_PADDING,
             BUTTON_HORIZONTAL_PADDING,
             BUTTON_VERTICAL_PADDING
         )
-        return view
     }
 
     private fun setupConstraint() {
