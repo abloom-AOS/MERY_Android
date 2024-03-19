@@ -5,9 +5,9 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
-import com.abloom.mery.presentation.common.WebViewUrl
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
+import com.abloom.mery.presentation.ui.webview.WebViewUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

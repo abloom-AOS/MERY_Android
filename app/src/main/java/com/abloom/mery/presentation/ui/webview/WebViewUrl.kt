@@ -1,4 +1,4 @@
-package com.abloom.mery.presentation.common
+package com.abloom.mery.presentation.ui.webview
 
 import androidx.annotation.StringRes
 import com.abloom.mery.R
