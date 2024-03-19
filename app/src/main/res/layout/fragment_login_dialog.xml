@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <RelativeLayout
-        android:id="@+id/bottom_login_frame"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="352dp"
         tools:ignore="UselessParent">
 
-        <!-- 로그인 Text Layout -->
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="217dp"
             android:layout_height="64dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_top_corners">
+            android:layout_marginTop="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.154"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.138"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/loginText"
@@ -33,35 +35,50 @@
                 android:text="@string/login_text"
                 android:textColor="#000000"
                 android:textSize="28sp"
-                android:translationY="-4.13sp" />
+                android:translationY="-4.13sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="217dp"
                 android:layout_height="17dp"
                 android:layout_below="@+id/loginText"
-                android:layout_marginTop="10dp"
                 android:gravity="top"
                 android:lineSpacingExtra="4sp"
                 android:text="@string/login_guide_text"
                 android:textColor="#606775"
                 android:textSize="12sp"
-                android:translationY="-1.77sp" />
+                android:translationY="-1.77sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-        </RelativeLayout>
-        <!-- 로그인 Text Layout -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <ImageButton
+        <android.widget.Button
             android:id="@+id/kakao_login_button"
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/kakao_login_medium_wide" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="20dp"
+            android:background="#CDDC39"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.355"
+            tools:ignore="MissingConstraints" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>
