@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 val properties = Properties().apply {
@@ -61,6 +62,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
