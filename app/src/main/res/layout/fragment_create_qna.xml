@@ -22,23 +22,240 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navigationText="@string/all_cancel" />
 
-        <Button
-            android:id="@+id/button2"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_shape_purple"
+            android:clipToOutline="true"
+            android:paddingStart="14dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_create_qna">
+
+            <TextView
+                android:id="@+id/tv_today_question_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘의 추천 질문"
+                android:textColor="@color/neutral_03"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_today_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:gravity="start"
+                android:text="동해물과 백두산이 마르고 닳도록\n하느님이 보우하사 "
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_question_tag" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="질문 선택하러"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:text="카테고리 선택하기"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_question" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_title">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="추천 질문 답변 작성"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/iv_economy"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_50"
+                app:layout_constraintBottom_toBottomOf="@id/iv_communication"
+                app:layout_constraintEnd_toStartOf="@+id/iv_communication"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_communication" />
+
+            <ImageView
+                android:id="@+id/iv_communication"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/group_51"
+                app:layout_constraintBottom_toTopOf="@+id/iv_children"
+                app:layout_constraintEnd_toStartOf="@+id/iv_values"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_economy"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <ImageView
+                android:id="@+id/iv_values"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_52"
+                app:layout_constraintBottom_toBottomOf="@id/iv_communication"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_communication"
+                app:layout_constraintTop_toTopOf="@id/iv_communication" />
+
+            <ImageView
+                android:id="@+id/iv_life"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_55"
+                app:layout_constraintBottom_toBottomOf="@id/iv_children"
+                app:layout_constraintEnd_toStartOf="@+id/iv_children"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_children" />
+
+            <ImageView
+                android:id="@+id/iv_children"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/group_54"
+                app:layout_constraintBottom_toTopOf="@+id/iv_health"
+                app:layout_constraintEnd_toStartOf="@+id/iv_family"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_life"
+                app:layout_constraintTop_toBottomOf="@+id/iv_communication" />
+
+            <ImageView
+                android:id="@+id/iv_family"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_53"
+                app:layout_constraintBottom_toBottomOf="@id/iv_children"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_children"
+                app:layout_constraintTop_toTopOf="@id/iv_children" />
+
+            <ImageView
+                android:id="@+id/iv_married"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_56"
+                app:layout_constraintBottom_toBottomOf="@id/iv_health"
+                app:layout_constraintEnd_toStartOf="@+id/iv_health"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_health" />
+
+            <ImageView
+                android:id="@+id/iv_health"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/group_57"
+                app:layout_constraintBottom_toTopOf="@+id/iv_present"
+                app:layout_constraintEnd_toStartOf="@+id/iv_wedding"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_married"
+                app:layout_constraintTop_toBottomOf="@+id/iv_children" />
+
+            <ImageView
+                android:id="@+id/iv_wedding"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_58"
+                app:layout_constraintBottom_toBottomOf="@id/iv_health"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_health"
+                app:layout_constraintTop_toTopOf="@id/iv_health" />
+
+            <ImageView
+                android:id="@+id/iv_future"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_61"
+                app:layout_constraintBottom_toBottomOf="@id/iv_present"
+                app:layout_constraintEnd_toStartOf="@+id/iv_present"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_present" />
+
+            <ImageView
+                android:id="@+id/iv_present"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/group_60"
+                app:layout_constraintEnd_toStartOf="@+id/iv_past"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_future"
+                app:layout_constraintTop_toBottomOf="@+id/iv_health"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_past"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/group_59"
+                app:layout_constraintBottom_toBottomOf="@id/iv_present"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_present"
+                app:layout_constraintTop_toTopOf="@id/iv_present" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="질문 선택하러"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button3"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="추천 질문 답변 작성"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/button2"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
