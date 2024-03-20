@@ -3,6 +3,7 @@ package com.abloom.mery.presentation.ui.createqna
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
@@ -14,9 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragment_create_qna) {
 
+    //더미 데이터
     private val recommendQuestion by lazy {"동해물과 백둥산이...(추천 데이터)"}
-    private val data by lazy { "해당 질문 id값" }
-    private val key by lazy { "질문 카테고리 종류 key값" }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,23 +33,27 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
     }
 
     private fun initListener(){
-        binding.ivEconomy.setOnClickListener { goCategoryFragment(key, data) }
-        binding.ivCommunication.setOnClickListener {goCategoryFragment(key,data)}
-        binding.ivValues.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivLife.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivChildren.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivFamily.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivMarried.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivHealth.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivWedding.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivFuture.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivPresent.setOnClickListener { goCategoryFragment(key,data) }
-        binding.ivPast.setOnClickListener { goCategoryFragment(key,data) }
+        binding.ivEconomy.setOnClickListener { goCategoryFragment("경제", "경제 데이터") }
+        binding.ivCommunication.setOnClickListener {goCategoryFragment("소통","소통 데이터")}
+        binding.ivValues.setOnClickListener { goCategoryFragment("가치관","가치관 데이터") }
+        binding.ivLife.setOnClickListener { goCategoryFragment("생활","생활 데이터") }
+        binding.ivChildren.setOnClickListener { goCategoryFragment("자녀","자녀 데이터") }
+        binding.ivFamily.setOnClickListener { goCategoryFragment("가족","가족 데이터") }
+        binding.ivMarried.setOnClickListener { goCategoryFragment("부부관계","부부관계 데이터") }
+        binding.ivHealth.setOnClickListener { goCategoryFragment("건강","건강 데이터") }
+        binding.ivWedding.setOnClickListener { goCategoryFragment("결혼","결혼 데이터") }
+        binding.ivFuture.setOnClickListener { goCategoryFragment("미래","미래 데이터") }
+        binding.ivPresent.setOnClickListener { goCategoryFragment("현재","현재 데이터") }
+        binding.ivPast.setOnClickListener { goCategoryFragment("과거","과거 데이터") }
     }
 
 
     private fun goCategoryFragment(key: String, data: String){
         val bundle = bundleOf(key to data)
+
+        //확인용 Toast 메세지
+        Toast.makeText(requireActivity(), "key: " + "${key}  " + "data: " + "${data}", Toast.LENGTH_SHORT).show()
+
         findNavController().navigate(R.id.action_createQnaFragment_to_categoryFragment,bundle)
     }
 
