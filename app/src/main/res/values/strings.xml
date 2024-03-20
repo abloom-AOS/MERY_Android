@@ -33,4 +33,7 @@
     <string name="webview_sensitive_privacy">민감정보 수집 동의</string>
     <string name="webview_question_factory">질문 제작소</string>
     <string name="webview_cs_center">고객센터</string>
+
+    <string name="createqna_category_title">카테고리 선택하기</string>
+    <string name="createqna_recommend_question_title">오늘의 추천 질문</string>
 </resources>
