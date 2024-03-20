@@ -39,6 +39,11 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
         return BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        init(context)
+    }
+
     private fun setupKakaoLoginButton() {
 
         binding.kakaoLoginButton.setOnClickListener {
