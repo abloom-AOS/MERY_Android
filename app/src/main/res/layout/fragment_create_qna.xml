@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top"
                     android:lineSpacingExtra="5sp"
-                    android:text="@string/creatqna_recommend_question_title"
+                    android:text="@string/createqna_recommend_question_title"
                     android:textColor="@color/neutral_03"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
