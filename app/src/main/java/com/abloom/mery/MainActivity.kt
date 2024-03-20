@@ -9,13 +9,19 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.abloom.mery.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val navHostFragment: NavHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    }
+
+    private val navController: NavController by lazy { navHostFragment.navController }
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -35,14 +41,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBackPressed() {
-        onBackPressedDispatcher.addCallback { findNavController(R.id.nav_host_fragment).popBackStack() }
+        onBackPressedDispatcher.addCallback {
+            navController.navigateUp() || onSupportNavigateUp()
+        }
     }
 
     // TODO("추후 애니메이션으로 배경이 서서히 변하도록 수정할 예정")
     private fun setupDestinationChangedListener() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navHostFragment.navController.addOnDestinationChangedListener { _, dest, _ ->
+        navController.addOnDestinationChangedListener { _, dest, _ ->
             if (dest.id == R.id.homeFragment) {
                 binding.root.background = getColor(R.color.home_background).toDrawable()
                 WindowCompat.getInsetsController(
@@ -59,3 +65,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
