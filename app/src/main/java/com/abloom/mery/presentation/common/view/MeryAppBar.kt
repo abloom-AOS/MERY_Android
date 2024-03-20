@@ -122,7 +122,7 @@ class MeryAppBar(
         this.text = text
         setTextAppearance(R.style.callout)
         typeface = ResourcesCompat.getFont(context, R.font.nanum_square_neo_bold)
-        val color = ContextCompat.getColor(context, R.color.primary_08)
+        val color = ContextCompat.getColor(context, R.color.primary_80)
         setTextColor(color)
         setPadding(
             BUTTON_HORIZONTAL_PADDING,

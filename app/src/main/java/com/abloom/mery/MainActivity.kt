@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupDestinationChangedListener() {
         navController.addOnDestinationChangedListener { _, dest, _ ->
             if (dest.id == R.id.homeFragment) {
-                binding.root.background = getColor(R.color.home_background).toDrawable()
+                binding.root.background = getColor(R.color.primary_5).toDrawable()
                 WindowCompat.getInsetsController(
                     window,
                     window.decorView
