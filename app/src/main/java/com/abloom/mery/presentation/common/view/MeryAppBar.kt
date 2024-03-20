@@ -24,20 +24,54 @@ class MeryAppBar(
     attrs: AttributeSet,
 ) : ConstraintLayout(context, attrs) {
 
-    private lateinit var navigation: View
-    private var title: View? = null
-    private var action: View? = null
+    private var navigationView: View? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+    private var titleView: TextView? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+    private var actionView: TextView? by observable(null) { _, _, newValue ->
+        if (newValue != null) addView(newValue)
+    }
+
+    var navigationIcon: Drawable? by observable(null) { _, _, newValue ->
+        if (navigationView != null) removeView(navigationView)
+        if (newValue == null) return@observable
+        navigationView = createNavigationIconView(newValue)
+    }
+
+    var navigationText: CharSequence? by observable(null) { _, _, newValue ->
+        if (navigationView != null) removeView(navigationView)
+        if (newValue == null) return@observable
+        navigationView = createNavigationTextView(newValue)
+    }
+
+    var title: CharSequence by observable("") { _, _, newValue ->
+        if (titleView == null) {
+            titleView = createTitleView(newValue)
+            return@observable
+        }
+        titleView!!.text = newValue
+    }
+
+    var actionText: CharSequence by observable("") { _, _, newValue ->
+        if (actionView == null) {
+            actionView = createActionView(newValue)
+            return@observable
+        }
+        actionView!!.text = newValue
+    }
 
     var isActionEnabled: Boolean by observable(true) { _, _, newValue ->
-        action?.isEnabled = newValue
+        actionView?.isEnabled = newValue
     }
 
     var onNavigationClickListener: OnClickListener? by observable(null) { _, _, newValue ->
-        navigation.setOnClickListener(newValue)
+        navigationView?.setOnClickListener(newValue)
     }
 
     var onActionClickListener: OnClickListener? by observable(null) { _, _, newValue ->
-        action?.setOnClickListener(newValue)
+        actionView?.setOnClickListener(newValue)
     }
 
     init {
@@ -61,22 +95,20 @@ class MeryAppBar(
         ).use { typedArray ->
             setupNavigation(typedArray)
 
-            title = typedArray.getText(R.styleable.MeryAppBar_title)?.let { createTitleView(it) }
+            titleView =
+                typedArray.getText(R.styleable.MeryAppBar_title)?.let { createTitleView(it) }
 
-            action = typedArray.getText(R.styleable.MeryAppBar_action)?.let { createActionView(it) }
+            actionView =
+                typedArray.getText(R.styleable.MeryAppBar_action)?.let { createActionView(it) }
         }
-        addView(navigation)
-        addView(title)
-        addView(action)
     }
 
     private fun setupNavigation(typedArray: TypedArray) {
         val navigationIcon = typedArray.getDrawable(R.styleable.MeryAppBar_navigationIcon)
         val navigationText = typedArray.getText(R.styleable.MeryAppBar_navigationText)
         require(!(navigationIcon != null && navigationText != null)) { "MeryAppBar의 navigationIcon과 navigationText 둘 중 하나만 사용할 수 있습니다." }
-        navigation = navigationIcon?.let { createNavigationIconView(it) }
+        navigationView = navigationIcon?.let { createNavigationIconView(it) }
             ?: navigationText?.let { createNavigationTextView(it) }
-                    ?: throw IllegalArgumentException("MeryAppBar의 navigationIcon과 navigationText 둘 다 null이면 안됩니다.")
     }
 
     private fun createNavigationIconView(drawable: Drawable) = ImageView(context).apply {
@@ -135,6 +167,7 @@ class MeryAppBar(
     }
 
     private fun ConstraintSet.setupNavigationConstraint() {
+        val navigation = navigationView ?: return
         constrainWidth(navigation.id, ConstraintSet.WRAP_CONTENT)
         constrainHeight(navigation.id, ConstraintSet.WRAP_CONTENT)
         connect(navigation.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
@@ -143,7 +176,7 @@ class MeryAppBar(
     }
 
     private fun ConstraintSet.setupTitleConstraint() {
-        val title = title ?: return
+        val title = titleView ?: return
         constrainWidth(title.id, ConstraintSet.WRAP_CONTENT)
         constrainHeight(title.id, ConstraintSet.WRAP_CONTENT)
         connect(title.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
@@ -153,7 +186,7 @@ class MeryAppBar(
     }
 
     private fun ConstraintSet.setupActionConstraint() {
-        val action = action ?: return
+        val action = actionView ?: return
         constrainWidth(action.id, ConstraintSet.WRAP_CONTENT)
         constrainHeight(action.id, ConstraintSet.WRAP_CONTENT)
         connect(action.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
@@ -184,4 +217,24 @@ fun MeryAppBar.setOnNavigationClick(onClickListener: OnClickListener) {
 @BindingAdapter("app:onActionClick")
 fun MeryAppBar.setOnActionClick(onClickListener: OnClickListener) {
     onActionClickListener = onClickListener
+}
+
+@BindingAdapter("app:navigationIcon")
+fun MeryAppBar.setNavigationIcon(icon: Drawable?) {
+    navigationIcon = icon
+}
+
+@BindingAdapter("app:navigationText")
+fun MeryAppBar.setNavigationText(text: CharSequence?) {
+    navigationText = text
+}
+
+@BindingAdapter("app:title")
+fun MeryAppBar.setTitle(text: CharSequence) {
+    title = text
+}
+
+@BindingAdapter("app:action")
+fun MeryAppBar.setActionText(text: CharSequence) {
+    actionText = text
 }
