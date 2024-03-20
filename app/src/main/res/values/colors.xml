@@ -3,35 +3,35 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="home_background">#F5F1F6</color>
+    <color name="neutral_5">#F8F9FA</color>
+    <color name="neutral_10">#F1F2F5</color>
+    <color name="neutral_20">#E1E3E8</color>
+    <color name="neutral_30">#CBCFD6</color>
+    <color name="neutral_40">#9199A6</color>
+    <color name="neutral_50">#606775</color>
+    <color name="neutral_60">#424B58</color>
+    <color name="neutral_70">#303947</color>
+    <color name="neutral_80">#1D2530</color>
+    <color name="neutral_90">#121723</color>
+    <color name="neutral_100">#070B13</color>
 
-    <color name="neutral_01">#F1F2F5</color>
-    <color name="neutral_02">#E1E3E8</color>
-    <color name="neutral_03">#CBCFD6</color>
-    <color name="neutral_04">#9199A6</color>
-    <color name="neutral_05">#606775</color>
-    <color name="neutral_06">#424B58</color>
-    <color name="neutral_07">#303947</color>
-    <color name="neutral_08">#1D2530</color>
-    <color name="neutral_09">#121723</color>
-    <color name="neutral_10">#070B13</color>
+    <color name="primary_5">#F5F1F6</color>
+    <color name="primary_10">#F1E0F7</color>
+    <color name="primary_20">#DDB9EA</color>
+    <color name="primary_30">#C992DD</color>
+    <color name="primary_40">#B66BD0</color>
+    <color name="primary_50">#A244C3</color>
+    <color name="primary_60">#8E1CB5</color>
+    <color name="primary_70">#7C189F</color>
+    <color name="primary_80">#6A1389</color>
+    <color name="primary_90">#46095C</color>
+    <color name="primary_100">#340445</color>
 
-    <color name="primary_01">#F1E0F7</color>
-    <color name="primary_02">#DDB9EA</color>
-    <color name="primary_03">#C992DD</color>
-    <color name="primary_04">#B66BD0</color>
-    <color name="primary_05">#A244C3</color>
-    <color name="primary_06">#8E1CB5</color>
-    <color name="primary_07">#7C189F</color>
-    <color name="primary_08">#6A1389</color>
-    <color name="primary_09">#46095C</color>
-    <color name="primary_10">#340445</color>
-
-    <color name="secondary_01">#F0F1FA</color>
-    <color name="secondary_02">#CDD2F8</color>
-    <color name="secondary_03">#ABB2F5</color>
-    <color name="secondary_04">#8893F3</color>
-    <color name="secondary_05">#7782E8</color>
-    <color name="secondary_06">#6572DD</color>
-    <color name="secondary_07">#5460D2</color>
+    <color name="secondary_10">#F0F1FA</color>
+    <color name="secondary_20">#CDD2F8</color>
+    <color name="secondary_30">#ABB2F5</color>
+    <color name="secondary_40">#8893F3</color>
+    <color name="secondary_50">#7782E8</color>
+    <color name="secondary_60">#6572DD</color>
+    <color name="secondary_70">#5460D2</color>
 </resources>
