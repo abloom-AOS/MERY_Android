@@ -31,37 +31,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bg_shape_purple"
                 android:clipToOutline="true"
-                android:paddingStart="14dp"
-                android:paddingTop="15dp"
-                android:paddingEnd="14dp"
-                android:paddingBottom="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/appbar_create_qna">
 
                 <TextView
                     android:id="@+id/tv_today_question_tag"
-                    android:layout_width="wrap_content"
+                    style="@style/caption2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="오늘의 추천 질문"
+                    android:gravity="top"
+                    android:lineSpacingExtra="5sp"
+                    android:text="@string/creatqna_recommend_question_title"
                     android:textColor="@color/neutral_03"
-                    android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_today_question"
+                    style="@style/body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
-                    android:gravity="start"
-                    android:text="동해물과 백두산이 마르고 닳도록\n하느님이 보우하사 "
+                    android:gravity="top"
+                    android:lineSpacingExtra="8sp"
+                    android:text="동해물과 백두산이 마르고 닳도록\n하느님이 보우하사 우리나라 만세 \n무궁화 삼철미화려강산"
                     android:textColor="@color/white"
-                    android:textSize="17dp"
+                    android:translationY="-4.21sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,13 +73,16 @@
 
             <TextView
                 android:id="@+id/tv_category_title"
+                style="@style/headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="35dp"
-                android:text="카테고리 선택하기"
+                android:fontFamily="@font/nanum_square_neo"
+                android:gravity="top"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/createqna_category_title"
                 android:textColor="@color/black"
-                android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_question" />
 
@@ -245,3 +251,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
+
+
+
+
+
+
+
+
