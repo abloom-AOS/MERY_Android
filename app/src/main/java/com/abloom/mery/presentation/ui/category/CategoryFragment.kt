@@ -32,6 +32,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 
     // Navigation safe args 수신확인 코드
     private fun checkData() {
-        Toast.makeText(requireActivity(), args.testData, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), args.questionId.toString(), Toast.LENGTH_SHORT).show()
     }
 }
