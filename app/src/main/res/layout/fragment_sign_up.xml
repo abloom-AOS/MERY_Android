@@ -107,7 +107,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bride"
+            android:id="@+id/bride_but"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_marginStart="20dp"
