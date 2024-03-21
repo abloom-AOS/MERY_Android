@@ -41,6 +41,11 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         binding.ivFuture.setOnClickListener { goCategoryFragment("미래", "미래 데이터") }
         binding.ivPresent.setOnClickListener { goCategoryFragment("현재", "현재 데이터") }
         binding.ivPast.setOnClickListener { goCategoryFragment("과거", "과거 데이터") }
+        binding.clQuestion.setOnClickListener {
+            //해당 로직 ViewModel, repository 작성 후 추가로 올리겠습니다
+            //val action = CreateQnaFragmentDirections.actionGlobalWriteAnswerFragment()
+            //findNavController().navigate(action)
+        }
     }
 
     private fun goCategoryFragment(key: String, data: String) {
