@@ -20,11 +20,11 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         binding.appbarCreateQna.setOnNavigationClick {
             findNavController().popBackStack()
         }
-        initData()
+        initTodayQuestion()
         initListener()
     }
 
-    private fun initData() {
+    private fun initTodayQuestion() {
         binding.tvTodayQuestion.text = recommendQuestion
     }
 
