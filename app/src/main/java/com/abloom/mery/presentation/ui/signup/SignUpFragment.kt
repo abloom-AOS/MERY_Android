@@ -31,6 +31,22 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
             TODO("데이터 업데이트 후 Signup/Step02로 이동 하는 로직 구현")
         }
 
+        /*
+            SignUp Step 04 구현 로직
+
+              binding.button9.setOnClickListener {
+                  findNavController().navigate(
+                      SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment(WebViewUrl.TERMS_OF_USE)
+                  )
+              }
+
+              binding.button10.setOnClickListener {
+                  findNavController().navigate(
+                      SignUpFragmentDirections.actionSignUpFragmentToWebViewFragment(WebViewUrl.PRIVACY_POLICY)
+                  )
+              }
+        */
+
     }
 
 }
