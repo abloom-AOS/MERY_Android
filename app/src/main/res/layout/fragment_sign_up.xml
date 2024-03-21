@@ -81,12 +81,12 @@
                 style="@style/callout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/groom"
                 android:textColor="@color/neutral_80"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/groom_detail_text"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,10 +96,10 @@
                 style="@style/caption2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="@string/groom_explain"
                 android:textColor="@color/neutral_60"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/groom_text"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,12 +123,12 @@
                 style="@style/callout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/bride"
                 android:textColor="@color/neutral_80"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/bride_detail_text"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -138,10 +138,10 @@
                 style="@style/caption2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="@string/bride_explain"
                 android:textColor="@color/neutral_60"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bride_text"
                 app:layout_constraintTop_toTopOf="parent" />
 
