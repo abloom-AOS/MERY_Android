@@ -2,8 +2,11 @@ package com.abloom.mery.presentation.ui.createqna
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
+import com.abloom.mery.createqnaretest.CreateQnaViewModel
 import com.abloom.mery.databinding.FragmentCreateQnaBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
@@ -13,43 +16,51 @@ import dagger.hilt.android.AndroidEntryPoint
 class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragment_create_qna) {
 
     //더미 데이터
-    private val recommendQuestion by lazy { "동해물과 백둥산이...(추천 데이터)" }
+    private var id = 0L
+    private val viewModel: CreateQnaViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.appbarCreateQna.setOnNavigationClick {
             findNavController().popBackStack()
         }
-        initTodayQuestion()
+        viewModel.requestRandomQuestion()
+        viewModel.requestRandomId()
+        initQaIdAndQuestion()
         initListener()
     }
 
-    private fun initTodayQuestion() {
-        binding.tvTodayQuestion.text = recommendQuestion
-    }
-
-    private fun initListener() {
-        binding.ivEconomy.setOnClickListener { goCategoryFragment("경제", "경제 데이터") }
-        binding.ivCommunication.setOnClickListener { goCategoryFragment("소통", "소통 데이터") }
-        binding.ivValues.setOnClickListener { goCategoryFragment("가치관", "가치관 데이터") }
-        binding.ivLife.setOnClickListener { goCategoryFragment("생활", "생활 데이터") }
-        binding.ivChildren.setOnClickListener { goCategoryFragment("자녀", "자녀 데이터") }
-        binding.ivFamily.setOnClickListener { goCategoryFragment("가족", "가족 데이터") }
-        binding.ivMarried.setOnClickListener { goCategoryFragment("부부관계", "부부관계 데이터") }
-        binding.ivHealth.setOnClickListener { goCategoryFragment("건강", "건강 데이터") }
-        binding.ivWedding.setOnClickListener { goCategoryFragment("결혼", "결혼 데이터") }
-        binding.ivFuture.setOnClickListener { goCategoryFragment("미래", "미래 데이터") }
-        binding.ivPresent.setOnClickListener { goCategoryFragment("현재", "현재 데이터") }
-        binding.ivPast.setOnClickListener { goCategoryFragment("과거", "과거 데이터") }
-        binding.clQuestion.setOnClickListener {
-            //해당 로직 ViewModel, repository 작성 후 추가로 올리겠습니다
-            //val action = CreateQnaFragmentDirections.actionGlobalWriteAnswerFragment()
-            //findNavController().navigate(action)
+    private fun initQaIdAndQuestion() {
+        viewModel.randomQuestion.observe(viewLifecycleOwner) {
+            binding.tvTodayQuestion.text = it
+        }
+        viewModel.id.observe(viewLifecycleOwner) {
+            id = it
         }
     }
 
-    private fun goCategoryFragment(key: String, data: String) {
-        val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(data)
+    private fun initListener() {
+        binding.ivEconomy.setOnClickListener { goCategoryFragment(1) }
+        binding.ivCommunication.setOnClickListener { goCategoryFragment(2) }
+        binding.ivValues.setOnClickListener { goCategoryFragment(3) }
+        binding.ivLife.setOnClickListener { goCategoryFragment(4) }
+        binding.ivChildren.setOnClickListener { goCategoryFragment(5) }
+        binding.ivFamily.setOnClickListener { goCategoryFragment(6) }
+        binding.ivMarried.setOnClickListener { goCategoryFragment(7) }
+        binding.ivHealth.setOnClickListener { goCategoryFragment(8) }
+        binding.ivWedding.setOnClickListener { goCategoryFragment(9) }
+        binding.ivFuture.setOnClickListener { goCategoryFragment(10) }
+        binding.ivPresent.setOnClickListener { goCategoryFragment(11) }
+        binding.ivPast.setOnClickListener { goCategoryFragment(12) }
+
+        binding.clQuestion.setOnClickListener {
+            val action = CreateQnaFragmentDirections.actionGlobalWriteAnswerFragment(id)
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun goCategoryFragment(id: Long) {
+        val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(id)
         findNavController().navigate(action)
     }
 }
