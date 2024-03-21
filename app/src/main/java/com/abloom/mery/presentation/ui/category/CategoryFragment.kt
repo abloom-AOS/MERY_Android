@@ -27,11 +27,11 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
                 CategoryFragmentDirections.actionGlobalWriteAnswerFragment(1)
             )
         }
-        initData()
+        checkData()
     }
 
     // Navigation safe args 수신확인 코드
-    private fun initData() {
+    private fun checkData() {
         Toast.makeText(requireActivity(), args.testData, Toast.LENGTH_SHORT).show()
     }
 }
