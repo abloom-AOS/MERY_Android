@@ -127,7 +127,12 @@
             android:id="@+id/categoryFragment"
             android:name="com.abloom.mery.presentation.ui.category.CategoryFragment"
             android:label="fragment_category"
-            tools:layout="@layout/fragment_category" />
+            tools:layout="@layout/fragment_category" >
+            <argument
+                android:name="testData"
+                app:argType="string"
+                android:defaultValue="" />
+        </fragment>
         <action
             android:id="@+id/action_global_writeAnswerFragment"
             app:destination="@id/writeAnswerFragment"

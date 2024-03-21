@@ -49,12 +49,8 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
 
 
     private fun goCategoryFragment(key: String, data: String){
-        val bundle = bundleOf(key to data)
-
-        //확인용 Toast 메세지
-        Toast.makeText(requireActivity(), "key: " + "${key}  " + "data: " + "${data}", Toast.LENGTH_SHORT).show()
-
-        findNavController().navigate(R.id.action_createQnaFragment_to_categoryFragment,bundle)
+        val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(data)
+        findNavController().navigate(action)
     }
 
 }
