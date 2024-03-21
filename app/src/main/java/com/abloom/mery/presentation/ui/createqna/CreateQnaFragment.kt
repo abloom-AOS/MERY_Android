@@ -1,10 +1,7 @@
 package com.abloom.mery.presentation.ui.createqna
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentCreateQnaBinding
