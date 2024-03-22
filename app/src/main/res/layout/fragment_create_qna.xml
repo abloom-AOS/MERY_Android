@@ -39,7 +39,6 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/bg_shape_purple"
-                    android:clipToOutline="true"
                     android:paddingStart="15dp"
                     android:paddingTop="14dp"
                     android:paddingEnd="15dp"
