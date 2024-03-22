@@ -3,6 +3,7 @@ package com.abloom.mery.presentation.ui.createqna
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
@@ -44,18 +45,18 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
     }
 
     private fun initListener() {
-        binding.ivEconomy.setOnClickListener { goCategoryFragment(1) }
-        binding.ivCommunication.setOnClickListener { goCategoryFragment(2) }
-        binding.ivValues.setOnClickListener { goCategoryFragment(3) }
-        binding.ivLife.setOnClickListener { goCategoryFragment(4) }
-        binding.ivChildren.setOnClickListener { goCategoryFragment(5) }
-        binding.ivFamily.setOnClickListener { goCategoryFragment(6) }
-        binding.ivMarried.setOnClickListener { goCategoryFragment(7) }
-        binding.ivHealth.setOnClickListener { goCategoryFragment(8) }
-        binding.ivWedding.setOnClickListener { goCategoryFragment(9) }
-        binding.ivFuture.setOnClickListener { goCategoryFragment(10) }
-        binding.ivPresent.setOnClickListener { goCategoryFragment(11) }
-        binding.ivPast.setOnClickListener { goCategoryFragment(12) }
+        binding.ivEconomy.setOnClickListener { goCategoryFragment(CreateQnaCategory.ECONOMY) }
+        binding.ivCommunication.setOnClickListener { goCategoryFragment(CreateQnaCategory.COMMUNICATION) }
+        binding.ivValues.setOnClickListener { goCategoryFragment(CreateQnaCategory.VALUES) }
+        binding.ivLife.setOnClickListener { goCategoryFragment(CreateQnaCategory.LIFE) }
+        binding.ivChildren.setOnClickListener { goCategoryFragment(CreateQnaCategory.CHILDREN) }
+        binding.ivFamily.setOnClickListener { goCategoryFragment(CreateQnaCategory.FAMILY) }
+        binding.ivMarried.setOnClickListener { goCategoryFragment(CreateQnaCategory.MARYCOUPLE) }
+        binding.ivHealth.setOnClickListener { goCategoryFragment(CreateQnaCategory.HEALTH) }
+        binding.ivWedding.setOnClickListener { goCategoryFragment(CreateQnaCategory.WEDDING) }
+        binding.ivFuture.setOnClickListener { goCategoryFragment(CreateQnaCategory.FUTURE) }
+        binding.ivPresent.setOnClickListener { goCategoryFragment(CreateQnaCategory.PRESENT) }
+        binding.ivPast.setOnClickListener { goCategoryFragment(CreateQnaCategory.PAST) }
 
         binding.clQuestion.setOnClickListener {
             val action = CreateQnaFragmentDirections.actionGlobalWriteAnswerFragment(id)
@@ -63,8 +64,11 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         }
     }
 
-    private fun goCategoryFragment(id: Long) {
-        val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(id)
+    private fun goCategoryFragment(category: CreateQnaCategory) {
+        val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(category)
         findNavController().navigate(action)
     }
+
+
+
 }

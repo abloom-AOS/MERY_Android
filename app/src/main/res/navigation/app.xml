@@ -129,8 +129,8 @@
             android:label="fragment_category"
             tools:layout="@layout/fragment_category" >
             <argument
-                android:name="question_id"
-                app:argType="long" />
+                android:name="category"
+                app:argType="com.abloom.mery.presentation.ui.createqna.CreateQnaCategory" />
         </fragment>
         <action
             android:id="@+id/action_global_writeAnswerFragment"
