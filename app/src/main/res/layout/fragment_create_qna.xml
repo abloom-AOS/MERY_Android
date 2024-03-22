@@ -112,7 +112,6 @@
                         android:src="@drawable/createqna_economyimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_communication"
                         app:layout_constraintEnd_toStartOf="@+id/iv_communication"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/iv_communication" />
@@ -126,7 +125,6 @@
                         android:src="@drawable/createqna_communicationimg"
                         app:layout_constraintBottom_toTopOf="@+id/iv_children"
                         app:layout_constraintEnd_toStartOf="@+id/iv_values"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_economy"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="spread_inside" />
@@ -138,7 +136,6 @@
                         android:src="@drawable/createqna_valuesimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_communication"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_communication"
                         app:layout_constraintTop_toTopOf="@id/iv_communication" />
 
@@ -149,7 +146,6 @@
                         android:src="@drawable/createqna_lifeimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_children"
                         app:layout_constraintEnd_toStartOf="@+id/iv_children"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/iv_children" />
@@ -164,7 +160,6 @@
                         android:src="@drawable/createqna_childrenimg"
                         app:layout_constraintBottom_toTopOf="@+id/iv_health"
                         app:layout_constraintEnd_toStartOf="@+id/iv_family"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_life"
                         app:layout_constraintTop_toBottomOf="@+id/iv_communication" />
 
@@ -175,7 +170,6 @@
                         android:src="@drawable/createqna_familyimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_children"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_children"
                         app:layout_constraintTop_toTopOf="@id/iv_children" />
 
@@ -186,7 +180,6 @@
                         android:src="@drawable/createqna_marycoupleimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_health"
                         app:layout_constraintEnd_toStartOf="@+id/iv_health"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/iv_health" />
@@ -201,7 +194,6 @@
                         android:src="@drawable/createqna_healthimg"
                         app:layout_constraintBottom_toTopOf="@+id/iv_present"
                         app:layout_constraintEnd_toStartOf="@+id/iv_wedding"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_married"
                         app:layout_constraintTop_toBottomOf="@+id/iv_children" />
 
@@ -212,7 +204,6 @@
                         android:src="@drawable/createqna_weddingimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_health"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_health"
                         app:layout_constraintTop_toTopOf="@id/iv_health" />
 
@@ -223,7 +214,6 @@
                         android:src="@drawable/createqna_futureimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_present"
                         app:layout_constraintEnd_toStartOf="@+id/iv_present"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/iv_present" />
@@ -238,7 +228,6 @@
                         android:src="@drawable/createqna_presentimg"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_past"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_future"
                         app:layout_constraintTop_toBottomOf="@+id/iv_health" />
 
@@ -249,7 +238,6 @@
                         android:src="@drawable/createqna_pastimg"
                         app:layout_constraintBottom_toBottomOf="@id/iv_present"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/iv_present"
                         app:layout_constraintTop_toTopOf="@id/iv_present" />
 
