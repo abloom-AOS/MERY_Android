@@ -14,10 +14,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindingInit()
+        initListener()
     }
 
-    private fun bindingInit() {
+    private fun initListener() {
 
         binding.appbarSignUp.setOnNavigationClick {
             findNavController().popBackStack()
