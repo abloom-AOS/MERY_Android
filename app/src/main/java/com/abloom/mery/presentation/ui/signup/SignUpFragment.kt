@@ -24,11 +24,11 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         }
 
         binding.groomBut.setOnClickListener {
-            TODO("데이터 업데이트 후 Signup/Step02로 이동 하는 로직 구현")
+//            TODO("데이터 업데이트 후 Signup/Step02로 이동 하는 로직 구현")
         }
 
         binding.brideBut.setOnClickListener {
-            TODO("데이터 업데이트 후 Signup/Step02로 이동 하는 로직 구현")
+//            TODO("데이터 업데이트 후 Signup/Step02로 이동 하는 로직 구현")
         }
 
         /*
