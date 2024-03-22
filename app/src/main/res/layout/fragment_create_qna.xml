@@ -43,6 +43,7 @@
                     android:paddingTop="14dp"
                     android:paddingEnd="15dp"
                     android:paddingBottom="14dp"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
