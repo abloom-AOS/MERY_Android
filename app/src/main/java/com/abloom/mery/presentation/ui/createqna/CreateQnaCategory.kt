@@ -3,6 +3,7 @@ package com.abloom.mery.presentation.ui.createqna
 enum class CreateQnaCategory(
     val categoryName: String
 ) {
+
     ECONOMY("경제"),
     COMMUNICATION("소통"),
     VALUES("가치관"),

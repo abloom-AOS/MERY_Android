@@ -12,10 +12,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateQnaViewModel @Inject constructor(
-):ViewModel() {
+) : ViewModel() {
 
     private val repository = IdRepository()
-
 
     private val _randomQuestion = MutableLiveData<String>()
     val randomQuestion: LiveData<String>
@@ -25,24 +24,23 @@ class CreateQnaViewModel @Inject constructor(
     val id: LiveData<Long>
         get() = _id
 
-    fun requestRandomQuestion(){
+    fun requestRandomQuestion() {
         viewModelScope.launch(Dispatchers.IO) {
             val rQuesttion = repository.requestRandomQuestion()
 
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 _randomQuestion.value = rQuesttion
             }
         }
     }
 
-    fun requestRandomId(){
+    fun requestRandomId() {
         viewModelScope.launch(Dispatchers.IO) {
             val id = repository.requestRandomId()
 
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 _id.value = id
             }
         }
     }
-
 }

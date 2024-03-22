@@ -36,9 +36,9 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         viewModel.randomQuestion.observe(viewLifecycleOwner) {
             binding.tvTodayQuestion.text = it
         }
-
     }
-    private fun observeId(){
+
+    private fun observeId() {
         viewModel.id.observe(viewLifecycleOwner) {
             id = it
         }
@@ -68,7 +68,4 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         val action = CreateQnaFragmentDirections.actionCreateQnaFragmentToCategoryFragment(category)
         findNavController().navigate(action)
     }
-
-
-
 }
