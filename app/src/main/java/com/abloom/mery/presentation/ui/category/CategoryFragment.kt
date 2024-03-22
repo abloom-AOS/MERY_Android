@@ -2,7 +2,9 @@ package com.abloom.mery.presentation.ui.category
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentCategoryBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
@@ -11,6 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
+
+    // Navigation safe args 수신 args
+    private val args: CategoryFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,5 +27,12 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
                 CategoryFragmentDirections.actionGlobalWriteAnswerFragment(1)
             )
         }
+        checkData()
+    }
+
+    // Navigation safe args 수신확인 코드
+    //TODO("데이터 업데이트 후 CreateQnafragment에서 받을 데이터 및 로직 구현")
+    private fun checkData() {
+        Toast.makeText(requireActivity(), args.category.categoryName.toString(), Toast.LENGTH_SHORT).show()
     }
 }

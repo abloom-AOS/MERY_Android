@@ -7,39 +7,245 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_page"
+        android:orientation="vertical"
         tools:context=".presentation.ui.createqna.CreateQnaFragment">
 
         <com.abloom.mery.presentation.common.view.MeryAppBar
             android:id="@+id/appbar_create_qna"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationText="@string/all_cancel" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="질문 선택하러"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="추천 질문 답변 작성"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_shape_purple"
+                    android:paddingStart="15dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_today_question_tag"
+                        style="@style/caption2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:lineSpacingExtra="5sp"
+                        android:text="@string/createqna_recommend_question_title"
+                        android:textColor="@color/neutral_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_today_question"
+                        style="@style/body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
+                        android:gravity="top"
+                        android:lineSpacingExtra="8sp"
+                        android:text="동해물과 백두산이 마르고 닳도록\n하느님이 보우하사 우리나라 만세 \n무궁화 삼철미화려강산"
+                        android:textColor="@color/white"
+                        android:translationY="-4.21sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_today_question_tag" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_category_title"
+                    style="@style/headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="35dp"
+                    android:fontFamily="@font/nanum_square_neo"
+                    android:gravity="top"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/createqna_category_title"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_question" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="17dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_category_title">
+
+                    <ImageView
+                        android:id="@+id/iv_economy"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_economy"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_communication"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_communication"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/iv_communication" />
+
+                    <ImageView
+                        android:id="@+id/iv_communication"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_communication"
+                        app:layout_constraintBottom_toTopOf="@+id/iv_children"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_values"
+                        app:layout_constraintStart_toEndOf="@+id/iv_economy"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                    <ImageView
+                        android:id="@+id/iv_values"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_values"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_communication"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_communication"
+                        app:layout_constraintTop_toTopOf="@id/iv_communication" />
+
+                    <ImageView
+                        android:id="@+id/iv_life"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_life"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_children"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_children"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/iv_children" />
+
+                    <ImageView
+                        android:id="@+id/iv_children"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/createqna_children"
+                        app:layout_constraintBottom_toTopOf="@+id/iv_health"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_family"
+                        app:layout_constraintStart_toEndOf="@+id/iv_life"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_communication" />
+
+                    <ImageView
+                        android:id="@+id/iv_family"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_family"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_children"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_children"
+                        app:layout_constraintTop_toTopOf="@id/iv_children" />
+
+                    <ImageView
+                        android:id="@+id/iv_married"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_marycouple"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_health"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_health"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/iv_health" />
+
+                    <ImageView
+                        android:id="@+id/iv_health"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/createqna_health"
+                        app:layout_constraintBottom_toTopOf="@+id/iv_present"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_wedding"
+                        app:layout_constraintStart_toEndOf="@+id/iv_married"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_children" />
+
+                    <ImageView
+                        android:id="@+id/iv_wedding"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_wedding"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_health"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_health"
+                        app:layout_constraintTop_toTopOf="@id/iv_health" />
+
+                    <ImageView
+                        android:id="@+id/iv_future"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_future"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_present"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_present"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/iv_present" />
+
+                    <ImageView
+                        android:id="@+id/iv_present"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/createqna_present"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_past"
+                        app:layout_constraintStart_toEndOf="@+id/iv_future"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_health" />
+
+                    <ImageView
+                        android:id="@+id/iv_past"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/createqna_past"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_present"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_present"
+                        app:layout_constraintTop_toTopOf="@id/iv_present" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </LinearLayout>
 </layout>
+
+
+
+
+
+
+
+
