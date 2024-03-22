@@ -26,14 +26,18 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
         }
         viewModel.requestRandomQuestion()
         viewModel.requestRandomId()
-        initQaIdAndQuestion()
+        setupTodayQuestionText()
+        observeId()
         initListener()
     }
 
-    private fun initQaIdAndQuestion() {
+    private fun setupTodayQuestionText() {
         viewModel.randomQuestion.observe(viewLifecycleOwner) {
             binding.tvTodayQuestion.text = it
         }
+
+    }
+    private fun observeId(){
         viewModel.id.observe(viewLifecycleOwner) {
             id = it
         }
