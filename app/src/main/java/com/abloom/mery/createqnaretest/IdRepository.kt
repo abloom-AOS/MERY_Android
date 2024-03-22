@@ -11,19 +11,16 @@ class IdRepository() {
     }
 
     suspend fun requestRandomQuestion(): String {
-        val userInfo = CoroutineScope(Dispatchers.IO).async {
-            requestUserInfo()
-        }
-        val questions = userInfo.await().questions
+        val userInfo = requestUserInfo()
+
+        val questions = userInfo.questions
         return questions.random()
     }
 
-    suspend fun requestRandomId(): Long{
-        val userInfo = CoroutineScope(Dispatchers.IO).async {
-            requestUserInfo()
-        }
-        val id = userInfo.await().questionId
+    suspend fun requestRandomId(): Long {
+        val userInfo = requestUserInfo()
+
+        val id = userInfo.questionId
         return id
     }
-
 }
