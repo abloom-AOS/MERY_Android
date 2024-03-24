@@ -8,5 +8,7 @@ data class User(
     val marriageDate: LocalDateTime,
     val sex: Sex,
     val invitationCode: String,
-    val fianceId: String,
-)
+    val fianceId: String?,
+) {
+    val isLinkedWithFiance: Boolean = fianceId != null
+}
