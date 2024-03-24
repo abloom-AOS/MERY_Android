@@ -14,14 +14,14 @@
         tools:context=".presentation.ui.signup.SignUpFragment">
 
         <com.abloom.mery.presentation.common.view.MeryAppBar
-            android:id="@+id/appbar_sign_up"
+            android:id="@+id/appbar_web_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:action="다음"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationText="@string/all_cancel"
-            app:title="@string/signup_title" />
+            app:navigationIcon="@drawable/ic_up_button" />
 
 
         <ProgressBar
