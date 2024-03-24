@@ -28,7 +28,7 @@ class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragme
         }
 
         binding.appbarMarryDate.setOnActionClick {
-            //  TODO("데이터 업데이트 후 Signup/Step03(이름정보입력)로 이동 하는 로직 구현")
+            //  TODO("날짜 업데이트 후 Signup/Step03(이름정보입력)로 이동 하는 로직 구현")
         }
 
     }
