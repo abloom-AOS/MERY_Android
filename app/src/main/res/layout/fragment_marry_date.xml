@@ -14,7 +14,7 @@
         tools:context=".presentation.ui.signup.SignUpFragment">
 
         <com.abloom.mery.presentation.common.view.MeryAppBar
-            android:id="@+id/appbar_web_view"
+            android:id="@+id/appbarMarryDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:action="다음"
