@@ -18,7 +18,7 @@ class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
 
         initListener()
-
+        //커밋 테스트
     }
 
     private fun initListener() {
