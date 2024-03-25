@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentBrideGroomSelectionBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +16,6 @@ class BrideGroomSelectionFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-
 
     }
 
