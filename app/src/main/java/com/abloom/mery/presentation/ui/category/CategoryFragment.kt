@@ -61,6 +61,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             true -> {
                 binding.clNologin.visibility = View.INVISIBLE
             }
+
             false -> {
                 binding.clNologin.visibility = View.VISIBLE
                 binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
@@ -71,29 +72,53 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private fun setupSelectedTabItem(category: String) {
 
         when (category) {
-            "finance" -> { selectTabItem(category, FINANCE_TABITEM_POSION) }
+            "finance" -> {
+                selectTabItem(category, FINANCE_TABITEM_POSION)
+            }
 
-            "communication" -> { selectTabItem(category, COMMUNICATION_TABITEM_POSION) }
+            "communication" -> {
+                selectTabItem(category, COMMUNICATION_TABITEM_POSION)
+            }
 
-            "values" -> { selectTabItem(category, VALUES_TABITEM_POSION) }
+            "values" -> {
+                selectTabItem(category, VALUES_TABITEM_POSION)
+            }
 
-            "lifestyle" -> { selectTabItem(category, LIFESTYLE_TABITEM_POSION) }
+            "lifestyle" -> {
+                selectTabItem(category, LIFESTYLE_TABITEM_POSION)
+            }
 
-            "child" -> { selectTabItem(category, CHILD_TABITEM_POSION) }
+            "child" -> {
+                selectTabItem(category, CHILD_TABITEM_POSION)
+            }
 
-            "family" -> { selectTabItem(category, FAMILY_TABITEM_POSION) }
+            "family" -> {
+                selectTabItem(category, FAMILY_TABITEM_POSION)
+            }
 
-            "sex" -> { selectTabItem(category,SEX_TABITEM_POSION) }
+            "sex" -> {
+                selectTabItem(category, SEX_TABITEM_POSION)
+            }
 
-            "health" -> { selectTabItem(category, HEALTH_TABITEM_POSION) }
+            "health" -> {
+                selectTabItem(category, HEALTH_TABITEM_POSION)
+            }
 
-            "wedding" -> { selectTabItem(category, WEDDING_TABITEM_POSION) }
+            "wedding" -> {
+                selectTabItem(category, WEDDING_TABITEM_POSION)
+            }
 
-            "future" -> { selectTabItem(category, FUTURE_TABITEM_POSION) }
+            "future" -> {
+                selectTabItem(category, FUTURE_TABITEM_POSION)
+            }
 
-            "present" -> { selectTabItem(category, PRESENT_TABITEM_POSION) }
+            "present" -> {
+                selectTabItem(category, PRESENT_TABITEM_POSION)
+            }
 
-            "past" -> { selectTabItem(category, PAST_TABITEM_POSION) }
+            "past" -> {
+                selectTabItem(category, PAST_TABITEM_POSION)
+            }
         }
     }
 
@@ -101,29 +126,53 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 
         binding.tb.onTabSelected {
             when (it.position) {
-                FINANCE_TABITEM_POSION -> { viewModel.requestQuestion("finance") }
+                FINANCE_TABITEM_POSION -> {
+                    viewModel.requestQuestion("finance")
+                }
 
-                COMMUNICATION_TABITEM_POSION -> { viewModel.requestQuestion("communication") }
+                COMMUNICATION_TABITEM_POSION -> {
+                    viewModel.requestQuestion("communication")
+                }
 
-                VALUES_TABITEM_POSION -> { viewModel.requestQuestion("values") }
+                VALUES_TABITEM_POSION -> {
+                    viewModel.requestQuestion("values")
+                }
 
-                LIFESTYLE_TABITEM_POSION -> { viewModel.requestQuestion("lifestyle") }
+                LIFESTYLE_TABITEM_POSION -> {
+                    viewModel.requestQuestion("lifestyle")
+                }
 
-                CHILD_TABITEM_POSION -> { viewModel.requestQuestion("child") }
+                CHILD_TABITEM_POSION -> {
+                    viewModel.requestQuestion("child")
+                }
 
-                FAMILY_TABITEM_POSION -> { viewModel.requestQuestion("family") }
+                FAMILY_TABITEM_POSION -> {
+                    viewModel.requestQuestion("family")
+                }
 
-                SEX_TABITEM_POSION -> { viewModel.requestQuestion("sex") }
+                SEX_TABITEM_POSION -> {
+                    viewModel.requestQuestion("sex")
+                }
 
-                HEALTH_TABITEM_POSION -> { viewModel.requestQuestion("health") }
+                HEALTH_TABITEM_POSION -> {
+                    viewModel.requestQuestion("health")
+                }
 
-                WEDDING_TABITEM_POSION -> { viewModel.requestQuestion("wedding") }
+                WEDDING_TABITEM_POSION -> {
+                    viewModel.requestQuestion("wedding")
+                }
 
-                FUTURE_TABITEM_POSION -> { viewModel.requestQuestion("future") }
+                FUTURE_TABITEM_POSION -> {
+                    viewModel.requestQuestion("future")
+                }
 
-                PRESENT_TABITEM_POSION -> { viewModel.requestQuestion("present") }
+                PRESENT_TABITEM_POSION -> {
+                    viewModel.requestQuestion("present")
+                }
 
-                PAST_TABITEM_POSION -> { viewModel.requestQuestion("past") }
+                PAST_TABITEM_POSION -> {
+                    viewModel.requestQuestion("past")
+                }
             }
         }
     }
@@ -153,19 +202,21 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         binding.tb.selectTab(binding.tb.getTabAt(index))
         lifecycleScope.launch {
             viewModel.requestQuestion(category)
-            lifecycleScope.launch(Dispatchers.Main){
+            lifecycleScope.launch(Dispatchers.Main) {
                 binding.tb.setScrollPosition(index, 0f, false)
             }
         }
-//        lifecycleScope.launch {
-//            delay(500)
-//            binding.tb.setScrollPosition(index, 0f, false)
-//        }
-//        viewModel.requestQuestion(category)
+        //        lifecycleScope.launch {
+        //            delay(500)
+        //            binding.tb.setScrollPosition(index, 0f, false)
+        //        }
+        //        viewModel.requestQuestion(category)
     }
+
     override fun onCategoryItemClick(question: Question) {
         if (logCheckFlag) {
-            val action = CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
+            val action =
+                CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
             findNavController().navigate(action)
         }
     }

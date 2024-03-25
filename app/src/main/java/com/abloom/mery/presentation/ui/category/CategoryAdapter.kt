@@ -8,7 +8,7 @@ import com.abloom.mery.databinding.ItemCategoryBinding
 
 class CategoryAdapter(
     private val categoryRecyclerListener: CategoryRecyclerListener
-): RecyclerView.Adapter<CategoryViewHolder>(){
+) : RecyclerView.Adapter<CategoryViewHolder>() {
 
     private var questionList = arrayListOf<Question>()
 
@@ -26,12 +26,10 @@ class CategoryAdapter(
         holder.bind(categoryRecyclerListener, questionList[position])
     }
 
-
     fun setData(movies: ArrayList<Question>) {
         movies?.let {
             this.questionList = it
         }
         notifyDataSetChanged()
     }
-
 }
