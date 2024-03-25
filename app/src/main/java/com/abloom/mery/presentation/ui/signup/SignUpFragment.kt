@@ -1,7 +1,6 @@
 package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -25,17 +24,13 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private val signUpStepNavController: NavController by lazy { signUpStepNavHostFragment.navController }
 
-    private var currentStep = STEP_BRIDE_GROOM_SELECTION
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         observeSignUpStepChanges()
-        Log.e("TAG", signUpStepNavController.currentDestination.toString())
     }
 
     private fun initListener() {
-
         binding.appbarSignUp.setOnNavigationClick {
             handleNavigationBack()
         }
@@ -46,9 +41,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     private fun handleNavigationBack() {
-
-        when (currentStep) {
-            STEP_BRIDE_GROOM_SELECTION -> findNavController().popBackStack()
+        when (signUpStepNavController.currentDestination?.id) {
+            R.id.brideGroomSelectionFragment -> findNavController().popBackStack()
             else -> signUpStepNavController.popBackStack()
         }
     }
