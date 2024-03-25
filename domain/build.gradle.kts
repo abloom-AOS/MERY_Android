@@ -13,6 +13,8 @@ tasks.test {
 }
 
 dependencies {
+    implementation(libs.kotlinx.coroutines.core)
+
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.assertj.core)
     testImplementation(libs.junit.jupiter.params)
