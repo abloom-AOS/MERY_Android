@@ -16,13 +16,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sign_up) {
 
-    private val childNavController: NavHostFragment by lazy {
+    private val signUpStepNavHostFragment: NavHostFragment by lazy {
         childFragmentManager.findFragmentById(
             R.id.fragmentContainerView
         ) as NavHostFragment
     }
 
-    private val signUpStepNavController: NavController by lazy { childNavController.navController }
+    private val signUpStepNavController: NavController by lazy { signUpStepNavHostFragment.navController }
 
     private var currentStep = STEP_BRIDE_GROOM_SELECTION
 
