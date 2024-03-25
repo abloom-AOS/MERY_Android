@@ -11,33 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_page"
-        tools:context=".presentation.ui.signup.SignUpFragment">
-
-        <com.abloom.mery.presentation.common.view.MeryAppBar
-            android:id="@+id/appbarMarryDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:action="다음"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_up_button" />
-
-
-        <ProgressBar
-            android:id="@+id/signup_progressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="62dp"
-            android:layout_marginEnd="20dp"
-            android:max="4"
-            android:progress="2"
-            android:progressDrawable="@drawable/progress_horizontal_custom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".presentation.ui.signup.MarryDateFragment">
 
         <TextView
             android:id="@+id/marryDateText"
@@ -50,7 +24,7 @@
             android:textColor="@color/neutral_90"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_progressBar" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/marryDateDetailText"

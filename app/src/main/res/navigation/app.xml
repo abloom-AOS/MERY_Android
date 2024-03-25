@@ -73,6 +73,7 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/slide_down" />
     </fragment>
+
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.abloom.mery.presentation.ui.webview.WebViewFragment"
@@ -127,7 +128,7 @@
             android:id="@+id/categoryFragment"
             android:name="com.abloom.mery.presentation.ui.category.CategoryFragment"
             android:label="fragment_category"
-            tools:layout="@layout/fragment_category" >
+            tools:layout="@layout/fragment_category">
             <argument
                 android:name="category"
                 app:argType="com.abloom.mery.presentation.ui.createqna.CreateQnaCategory" />

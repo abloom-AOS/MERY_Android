@@ -238,3 +238,5 @@ fun MeryAppBar.setTitle(text: CharSequence) {
 fun MeryAppBar.setActionText(text: CharSequence) {
     actionText = text
 }
+
+//바인딩 어뎁터 구현
