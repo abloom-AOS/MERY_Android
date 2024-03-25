@@ -14,6 +14,7 @@ tasks.test {
 
 dependencies {
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.javax.inject)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.assertj.core)
