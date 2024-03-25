@@ -16,26 +16,24 @@ class BrideGroomSelectionFragment :
         super.onViewCreated(view, savedInstanceState)
         initListener()
 
+
     }
 
     private fun initListener() {
 
         binding.groomBut.setOnClickListener {
-
-            findNavController().navigate(
-                R.id.action_brideGroomSelectionFragment_to_marryDateFragment
-            )
-
+            moveToMarryDateFragment()
         }
 
         binding.brideBut.setOnClickListener {
-            /*
-            findNavController().navigate(
-                SignUpFragmentDirections.actionSignUpFragmentToMarryDateFragment()
-            )
-            */
+            moveToMarryDateFragment()
         }
+    }
 
+    private fun moveToMarryDateFragment() {
+        findNavController().navigate(
+            R.id.action_brideGroomSelectionFragment_to_marryDateFragment
+        )
     }
 
 }
