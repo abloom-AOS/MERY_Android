@@ -4,16 +4,16 @@ enum class CreateQnaCategory(
     val categoryName: String
 ) {
 
-    ECONOMY("경제"),
-    COMMUNICATION("소통"),
-    VALUES("가치관"),
-    LIFE("생활"),
-    CHILDREN("자녀"),
-    FAMILY("가족"),
-    MARYCOUPLE("부분관계"),
-    HEALTH("건강"),
-    WEDDING("결혼식"),
-    FUTURE("미래"),
-    PRESENT("현재"),
-    PAST("과거")
+    ECONOMY("finance"),
+    COMMUNICATION("communication"),
+    VALUES("values"),
+    LIFE("lifestyle"),
+    CHILDREN("child"),
+    FAMILY("family"),
+    MARYCOUPLE("sex"),
+    HEALTH("health"),
+    WEDDING("wedding"),
+    FUTURE("future"),
+    PRESENT("present"),
+    PAST("past")
 }
