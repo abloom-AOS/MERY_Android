@@ -9,13 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
-import com.abloom.mery.presentation.common.view.setActionEnabled
-import com.abloom.mery.presentation.common.view.setActionText
-import com.abloom.mery.presentation.common.view.setNavigationIcon
-import com.abloom.mery.presentation.common.view.setNavigationText
 import com.abloom.mery.presentation.common.view.setOnActionClick
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
-import com.abloom.mery.presentation.common.view.setTitle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,6 +44,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     private fun handleNavigationBack() {
+
         when (currentStep) {
             STEP_BRIDE_GROOM_SELECTION -> findNavController().popBackStack()
             else -> signUpStepNavController.popBackStack()
@@ -78,22 +74,19 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private fun setupForBrideGroomSelection() {
         binding.appbarSignUp.apply {
-            setTitle(getString(R.string.signup_title))
-            setNavigationText("")
-            setActionText(getString(R.string.all_cancel))
-            setNavigationIcon(null)
-            setActionEnabled(false)
+            title = getString(R.string.signup_title)
+            navigationText = getString(R.string.all_cancel)
+            actionText = ""
+            isActionEnabled = false
         }
     }
 
     private fun setupForMarryDate() {
         binding.appbarSignUp.apply {
-            setTitle("")
-            setActionText(getString(R.string.all_next))
-            setNavigationIcon(
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_up_button)
-            )
-            setActionEnabled(true)
+            title = ""
+            navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_up_button)
+            actionText = getString(R.string.all_next)
+            isActionEnabled = true
         }
     }
 
