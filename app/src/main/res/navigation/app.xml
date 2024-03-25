@@ -74,25 +74,6 @@
             app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
-        android:id="@+id/brideGroomSelectionFragment"
-        android:name="com.abloom.mery.presentation.ui.signup.BrideGroomSelectionFragment"
-        android:label="fragment_bride_groom_selection"
-        tools:layout="@layout/fragment_bride_groom_selection">
-        <action
-            android:id="@+id/action_brideGroomSelectionFragment_to_marryDateFragment"
-            app:destination="@id/marryDateFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/marryDateFragment"
-        android:name="com.abloom.mery.presentation.ui.signup.MarryDateFragment"
-        android:label="fragment_marry_date"
-        tools:layout="@layout/fragment_marry_date">
-
-
-    </fragment>
-
-    <fragment
         android:id="@+id/webViewFragment"
         android:name="com.abloom.mery.presentation.ui.webview.WebViewFragment"
         android:label="fragment_web_view"
