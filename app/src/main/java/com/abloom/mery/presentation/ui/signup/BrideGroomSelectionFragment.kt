@@ -16,7 +16,6 @@ class BrideGroomSelectionFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-
     }
 
     private fun initListener() {
