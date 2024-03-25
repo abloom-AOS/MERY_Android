@@ -20,9 +20,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationText="@string/all_cancel"
-            app:title="@string/signup_title" />
-
+            app:navigationText="취소"
+            app:title="가입하기" />
 
         <ProgressBar
             android:id="@+id/signup_progressBar"

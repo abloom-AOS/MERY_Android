@@ -2,15 +2,29 @@ package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
+import com.abloom.mery.presentation.common.view.setActionEnabled
+import com.abloom.mery.presentation.common.view.setActionText
+import com.abloom.mery.presentation.common.view.setNavigationIcon
+import com.abloom.mery.presentation.common.view.setNavigationText
+import com.abloom.mery.presentation.common.view.setOnActionClick
+import com.abloom.mery.presentation.common.view.setOnNavigationClick
+import com.abloom.mery.presentation.common.view.setTitle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sign_up) {
+
+    companion object {
+        private const val STEP_BRIDE_GROOM_SELECTION = 1
+        private const val STEP_MARRY_DATE_SELECTION = 2
+    }
 
     private val childNavController: NavHostFragment by lazy {
         childFragmentManager.findFragmentById(
@@ -19,24 +33,76 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
     private val signUpStepNavController: NavController by lazy { childNavController.navController }
 
+    private var currentStep = STEP_BRIDE_GROOM_SELECTION
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeProgressBar()
+        setupListeners()
+        observeSignUpStepChanges()
     }
 
-    private fun observeProgressBar() {
+    private fun setupListeners() {
+
+        binding.appbarSignUp.setOnNavigationClick {
+            handleNavigationBack()
+        }
+
+        binding.appbarSignUp.setOnActionClick {
+            //TODO("다음 프래그먼트로 이동 하는 로직 구현")
+        }
+    }
+
+    private fun handleNavigationBack() {
+        when (currentStep) {
+            STEP_BRIDE_GROOM_SELECTION -> findNavController().popBackStack()
+            else -> signUpStepNavController.popBackStack()
+        }
+    }
+
+    private fun observeSignUpStepChanges() {
         signUpStepNavController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.brideGroomSelectionFragment -> {
-                    binding.signupProgressBar.progress = 1
-                }
-
-                R.id.marryDateFragment -> {
-                    binding.signupProgressBar.progress = 2
-                }
+                R.id.brideGroomSelectionFragment -> updateUIForStep(STEP_BRIDE_GROOM_SELECTION)
+                R.id.marryDateFragment -> updateUIForStep(STEP_MARRY_DATE_SELECTION)
             }
         }
     }
 
+    private fun updateUIForStep(step: Int) {
 
+        currentStep = step
+
+        when (step) {
+            STEP_BRIDE_GROOM_SELECTION -> setupForBrideGroomSelection()
+            STEP_MARRY_DATE_SELECTION -> setupForMarryDate()
+        }
+
+        updateProgressBarState(step)
+    }
+
+    private fun setupForBrideGroomSelection() {
+        binding.appbarSignUp.apply {
+            setTitle(getString(R.string.signup_title))
+            setNavigationText("")
+            setActionText(getString(R.string.all_cancel))
+            setNavigationIcon(null)
+            setActionEnabled(false)
+        }
+    }
+
+    private fun setupForMarryDate() {
+        binding.appbarSignUp.apply {
+            setTitle("")
+            setActionText(getString(R.string.all_next))
+            setNavigationIcon(
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_up_button)
+            )
+            setActionEnabled(true)
+        }
+    }
+
+    private fun updateProgressBarState(state: Int) {
+        binding.signupProgressBar.progress = state
+    }
 }
+
