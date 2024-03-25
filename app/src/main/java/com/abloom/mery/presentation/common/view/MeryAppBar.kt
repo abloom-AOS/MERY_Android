@@ -25,13 +25,22 @@ class MeryAppBar(
 ) : ConstraintLayout(context, attrs) {
 
     private var navigationView: View? by observable(null) { _, _, newValue ->
-        if (newValue != null) addView(newValue)
+        if (newValue != null) {
+            addView(newValue)
+            newValue.applyNavigationConstraint()
+        }
     }
     private var titleView: TextView? by observable(null) { _, _, newValue ->
-        if (newValue != null) addView(newValue)
+        if (newValue != null) {
+            addView(newValue)
+            newValue.applyTitleConstraint()
+        }
     }
     private var actionView: TextView? by observable(null) { _, _, newValue ->
-        if (newValue != null) addView(newValue)
+        if (newValue != null) {
+            addView(newValue)
+            newValue.applyActionConstraint()
+        }
     }
 
     var navigationIcon: Drawable? by observable(null) { _, _, newValue ->
@@ -77,7 +86,6 @@ class MeryAppBar(
     init {
         setupView()
         setupChildViews(attrs)
-        setupConstraint()
     }
 
     private fun setupView() {
@@ -155,43 +163,94 @@ class MeryAppBar(
         )
     }
 
-    private fun setupConstraint() {
+    private fun View.applyNavigationConstraint() {
         val constraintSet = ConstraintSet()
-        constraintSet.clone(this)
+        constraintSet.clone(this@MeryAppBar)
 
-        constraintSet.setupNavigationConstraint()
-        constraintSet.setupTitleConstraint()
-        constraintSet.setupActionConstraint()
+        constraintSet.constrainWidth(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.constrainHeight(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.START,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.START
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.TOP,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.TOP
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.BOTTOM,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.BOTTOM
+        )
 
-        constraintSet.applyTo(this)
+        constraintSet.applyTo(this@MeryAppBar)
     }
 
-    private fun ConstraintSet.setupNavigationConstraint() {
-        val navigation = navigationView ?: return
-        constrainWidth(navigation.id, ConstraintSet.WRAP_CONTENT)
-        constrainHeight(navigation.id, ConstraintSet.WRAP_CONTENT)
-        connect(navigation.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
-        connect(navigation.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
-        connect(navigation.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM)
+    private fun View.applyTitleConstraint() {
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(this@MeryAppBar)
+
+        constraintSet.constrainWidth(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.constrainHeight(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.START,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.START
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.END,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.END
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.TOP,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.TOP
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.BOTTOM,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.BOTTOM
+        )
+
+        constraintSet.applyTo(this@MeryAppBar)
     }
 
-    private fun ConstraintSet.setupTitleConstraint() {
-        val title = titleView ?: return
-        constrainWidth(title.id, ConstraintSet.WRAP_CONTENT)
-        constrainHeight(title.id, ConstraintSet.WRAP_CONTENT)
-        connect(title.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
-        connect(title.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
-        connect(title.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
-        connect(title.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM)
-    }
+    private fun View.applyActionConstraint() {
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(this@MeryAppBar)
 
-    private fun ConstraintSet.setupActionConstraint() {
-        val action = actionView ?: return
-        constrainWidth(action.id, ConstraintSet.WRAP_CONTENT)
-        constrainHeight(action.id, ConstraintSet.WRAP_CONTENT)
-        connect(action.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
-        connect(action.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
-        connect(action.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM)
+        constraintSet.constrainWidth(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.constrainHeight(this.id, ConstraintSet.WRAP_CONTENT)
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.END,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.END
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.TOP,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.TOP
+        )
+        constraintSet.connect(
+            this.id,
+            ConstraintSet.BOTTOM,
+            ConstraintSet.PARENT_ID,
+            ConstraintSet.BOTTOM
+        )
+
+        constraintSet.applyTo(this@MeryAppBar)
     }
 
     companion object {
