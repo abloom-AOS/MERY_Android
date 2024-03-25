@@ -37,11 +37,11 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupListeners()
+        initListener()
         observeSignUpStepChanges()
     }
 
-    private fun setupListeners() {
+    private fun initListener() {
 
         binding.appbarSignUp.setOnNavigationClick {
             handleNavigationBack()
