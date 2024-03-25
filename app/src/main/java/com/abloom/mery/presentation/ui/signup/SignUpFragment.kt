@@ -1,6 +1,7 @@
 package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -30,6 +31,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         super.onViewCreated(view, savedInstanceState)
         initListener()
         observeSignUpStepChanges()
+        Log.e("TAG", signUpStepNavController.currentDestination.toString())
     }
 
     private fun initListener() {
@@ -54,22 +56,17 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     private fun observeSignUpStepChanges() {
         signUpStepNavController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.brideGroomSelectionFragment -> updateUIForStep(STEP_BRIDE_GROOM_SELECTION)
-                R.id.marryDateFragment -> updateUIForStep(STEP_MARRY_DATE_SELECTION)
+                R.id.brideGroomSelectionFragment -> {
+                    setupForBrideGroomSelection()
+                    updateProgressBarState(STEP_BRIDE_GROOM_SELECTION)
+                }
+
+                R.id.marryDateFragment -> {
+                    setupForMarryDate()
+                    updateProgressBarState(STEP_MARRY_DATE_SELECTION)
+                }
             }
         }
-    }
-
-    private fun updateUIForStep(step: Int) {
-
-        currentStep = step
-
-        when (step) {
-            STEP_BRIDE_GROOM_SELECTION -> setupForBrideGroomSelection()
-            STEP_MARRY_DATE_SELECTION -> setupForMarryDate()
-        }
-
-        updateProgressBarState(step)
     }
 
     private fun setupForBrideGroomSelection() {
