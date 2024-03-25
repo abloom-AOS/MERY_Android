@@ -22,10 +22,12 @@ class BrideGroomSelectionFragment :
 
         binding.groomBut.setOnClickListener {
             moveToMarryDateFragment()
+            binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
         }
 
         binding.brideBut.setOnClickListener {
             moveToMarryDateFragment()
+            binding.brideBut.setBackgroundResource(R.drawable.signup_gender_selected)
         }
     }
 
