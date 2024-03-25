@@ -21,16 +21,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sign_up) {
 
-    companion object {
-        private const val STEP_BRIDE_GROOM_SELECTION = 1
-        private const val STEP_MARRY_DATE_SELECTION = 2
-    }
-
     private val childNavController: NavHostFragment by lazy {
         childFragmentManager.findFragmentById(
             R.id.fragmentContainerView
         ) as NavHostFragment
     }
+
     private val signUpStepNavController: NavController by lazy { childNavController.navController }
 
     private var currentStep = STEP_BRIDE_GROOM_SELECTION
@@ -104,5 +100,11 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     private fun updateProgressBarState(state: Int) {
         binding.signupProgressBar.progress = state
     }
+
+    companion object {
+        private const val STEP_BRIDE_GROOM_SELECTION = 1
+        private const val STEP_MARRY_DATE_SELECTION = 2
+    }
+
 }
 
