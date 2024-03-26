@@ -3,6 +3,7 @@ package com.abloom.mery.presentation.ui.signup
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -24,10 +25,22 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private val signUpStepNavController: NavController by lazy { signUpStepNavHostFragment.navController }
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         observeSignUpStepChanges()
+        observeEditTextInputName()
+    }
+
+    private fun observeEditTextInputName() {
+        sharedViewModel.getText().observe(requireActivity()) { inputName ->
+            if (inputName.isNotEmpty())
+                binding.appbarSignUp.isActionEnabled = true
+            else
+                binding.appbarSignUp.isActionEnabled = true
+        }
     }
 
     private fun initListener() {
