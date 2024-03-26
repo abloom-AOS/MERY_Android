@@ -24,22 +24,6 @@ import kotlinx.coroutines.launch
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category),
     CategoryRecyclerListener {
 
-    companion object {
-
-        private val FINANCE_TABITEM_POSION by lazy { 0 }
-        private val COMMUNICATION_TABITEM_POSION by lazy { 1 }
-        private val VALUES_TABITEM_POSION by lazy { 2 }
-        private val LIFESTYLE_TABITEM_POSION by lazy { 3 }
-        private val CHILD_TABITEM_POSION by lazy { 4 }
-        private val FAMILY_TABITEM_POSION by lazy { 5 }
-        private val SEX_TABITEM_POSION by lazy { 6 }
-        private val HEALTH_TABITEM_POSION by lazy { 7 }
-        private val WEDDING_TABITEM_POSION by lazy { 8 }
-        private val FUTURE_TABITEM_POSION by lazy { 9 }
-        private val PRESENT_TABITEM_POSION by lazy { 10 }
-        private val PAST_TABITEM_POSION by lazy { 11 }
-    }
-
     private lateinit var categoryAdapter: CategoryAdapter
     private val viewModel: CategoryViewModel by viewModels()
     private val args: CategoryFragmentArgs by navArgs()
@@ -233,5 +217,21 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             requireActivity().supportFragmentManager,
             LoginDialogFragment().tag
         )
+    }
+
+    companion object {
+
+        private const val FINANCE_TABITEM_POSION = 0
+        private const val COMMUNICATION_TABITEM_POSION = 1
+        private const val VALUES_TABITEM_POSION = 2
+        private const val LIFESTYLE_TABITEM_POSION = 3
+        private const val CHILD_TABITEM_POSION = 4
+        private const val FAMILY_TABITEM_POSION = 5
+        private const val SEX_TABITEM_POSION = 6
+        private const val HEALTH_TABITEM_POSION = 7
+        private const val WEDDING_TABITEM_POSION = 8
+        private const val FUTURE_TABITEM_POSION = 9
+        private const val PRESENT_TABITEM_POSION = 10
+        private const val PAST_TABITEM_POSION = 11
     }
 }
