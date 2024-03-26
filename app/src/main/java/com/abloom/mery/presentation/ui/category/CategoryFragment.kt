@@ -17,7 +17,7 @@ import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.util.onTabSelected
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -118,7 +118,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             showLoginDialog()
         }
 
-
         binding.tb.onTabSelected {
             when (it.position) {
                 FINANCE_TABITEM_POSION -> {
@@ -175,7 +174,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private fun observeCategory() {
         viewModel.questions.observe(viewLifecycleOwner) {
             categoryAdapter.setData(it)
-
         }
     }
 
@@ -196,9 +194,8 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private fun selectTabItem(category: String, index: Int) {
         lifecycleScope.launch {
             binding.tb.selectTab(binding.tb.getTabAt(index))
-            lifecycleScope.launch(Dispatchers.Main) {
-                binding.tb.setScrollPosition(index, 0f, false)
-            }
+            delay(100)
+            binding.tb.setScrollPosition(index, 0f, false)
         }
         viewModel.requestQuestion(category)
     }
