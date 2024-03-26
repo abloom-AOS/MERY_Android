@@ -34,7 +34,17 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         binding.appbarSignUp.setOnNavigationClick { handleNavigationBack() }
 
         binding.appbarSignUp.setOnActionClick {
-            signUpStepNavController.navigate(R.id.action_marryDateFragment_to_inputNameFragment)
+            when (signUpStepNavController.currentDestination?.id) {
+                R.id.marryDateFragment -> {
+                    signUpStepNavController.navigate(
+                        R.id.action_marryDateFragment_to_inputNameFragment
+                    )
+                }
+
+                R.id.inputNameFragment -> {
+                    //TODO("Step 04 약관 동의 프래그먼트로 이동하는 로직 구현")
+                }
+            }
         }
     }
 
