@@ -33,5 +33,4 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
     }
-
 }
