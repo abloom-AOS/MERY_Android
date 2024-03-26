@@ -1,0 +1,16 @@
+package com.abloom.domain.qna.usecase
+
+import com.abloom.domain.qna.model.Qna
+import com.abloom.domain.qna.model.Response
+import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
+import javax.inject.Inject
+
+class RespondToQnaUseCase @Inject constructor(
+    private val qnaRepository: ProspectiveCoupleQnaRepository
+) {
+
+    suspend operator fun invoke(qna: Qna, response: Response) {
+        require(!qna.isLoginUserResponseAdditionLocked) { "로그인 유저가 반응을 추가할 수 없습니다." }
+        qnaRepository.respondToQna(qna.questionId, response)
+    }
+}
