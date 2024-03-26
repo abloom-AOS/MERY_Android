@@ -34,7 +34,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         binding.appbarSignUp.setOnNavigationClick { handleNavigationBack() }
 
         binding.appbarSignUp.setOnActionClick {
-            //TODO("다음 프래그먼트로 이동 하는 로직 구현")
+            signUpStepNavController.navigate(R.id.action_marryDateFragment_to_inputNameFragment)
         }
     }
 
@@ -56,6 +56,11 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
                 R.id.marryDateFragment -> {
                     setupForMarryDate()
                     updateProgressBarState(STEP_MARRY_DATE_SELECTION)
+                }
+
+                R.id.inputNameFragment -> {
+                    setupForInputName()
+                    updateProgressBarState(STEP_INPUT_NAME_SELECTION)
                 }
             }
         }
@@ -79,14 +84,23 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         }
     }
 
+    private fun setupForInputName() {
+        binding.appbarSignUp.apply {
+            title = ""
+            navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_up_button)
+            actionText = getString(R.string.all_next)
+            isActionEnabled = false
+        }
+    }
+
     private fun updateProgressBarState(state: Int) {
         binding.signupProgressBar.progress = state
     }
 
     companion object {
-
         private const val STEP_BRIDE_GROOM_SELECTION = 1
         private const val STEP_MARRY_DATE_SELECTION = 2
+        private const val STEP_INPUT_NAME_SELECTION = 3
     }
 }
 
