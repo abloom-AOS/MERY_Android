@@ -25,22 +25,21 @@ class MeryAppBar(
 ) : ConstraintLayout(context, attrs) {
 
     private var navigationView: View? by observable(null) { _, _, newValue ->
-        if (newValue != null) {
-            addView(newValue)
-            newValue.applyNavigationConstraint()
-        }
+        if (newValue == null) return@observable
+        newValue.setOnClickListener(onNavigationClickListener)
+        addView(newValue)
+        newValue.applyNavigationConstraint()
     }
     private var titleView: TextView? by observable(null) { _, _, newValue ->
-        if (newValue != null) {
-            addView(newValue)
-            newValue.applyTitleConstraint()
-        }
+        if (newValue == null) return@observable
+        addView(newValue)
+        newValue.applyTitleConstraint()
     }
     private var actionView: TextView? by observable(null) { _, _, newValue ->
-        if (newValue != null) {
-            addView(newValue)
-            newValue.applyActionConstraint()
-        }
+        if (newValue == null) return@observable
+        newValue.setOnClickListener(onActionClickListener)
+        addView(newValue)
+        newValue.applyActionConstraint()
     }
 
     var navigationIcon: Drawable? by observable(null) { _, _, newValue ->
