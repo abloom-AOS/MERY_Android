@@ -13,9 +13,7 @@ class CategoryAdapter(
     private var questionList = arrayListOf<Question>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val itemBinding =
-            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategoryViewHolder(itemBinding)
+        return CategoryViewHolder.from(parent)
     }
 
     override fun getItemCount(): Int {
