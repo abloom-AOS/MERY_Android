@@ -20,8 +20,16 @@
         android:name="com.abloom.mery.presentation.ui.signup.MarryDateFragment"
         android:label="fragment_marry_date"
         tools:layout="@layout/fragment_marry_date">
+        <action
+            android:id="@+id/action_marryDateFragment_to_inputNameFragment"
+            app:destination="@id/inputNameFragment" />
+    </fragment>
 
-
+    <fragment
+        android:id="@+id/inputNameFragment"
+        android:name="com.abloom.mery.presentation.ui.signup.InputNameFragment"
+        android:label="fragment_input_name"
+        tools:layout="@layout/fragment_input_name">
     </fragment>
 
 </navigation>
