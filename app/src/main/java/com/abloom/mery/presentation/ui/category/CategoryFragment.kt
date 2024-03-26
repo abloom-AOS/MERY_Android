@@ -199,18 +199,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     }
 
     private fun selectTabItem(category: String, index: Int) {
-        binding.tb.selectTab(binding.tb.getTabAt(index))
         lifecycleScope.launch {
-            viewModel.requestQuestion(category)
+            binding.tb.selectTab(binding.tb.getTabAt(index))
             lifecycleScope.launch(Dispatchers.Main) {
                 binding.tb.setScrollPosition(index, 0f, false)
             }
         }
-        //        lifecycleScope.launch {
-        //            delay(500)
-        //            binding.tb.setScrollPosition(index, 0f, false)
-        //        }
-        //        viewModel.requestQuestion(category)
+        viewModel.requestQuestion(category)
     }
 
     override fun onCategoryItemClick(question: Question) {
