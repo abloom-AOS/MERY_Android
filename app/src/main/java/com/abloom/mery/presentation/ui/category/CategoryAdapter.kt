@@ -27,9 +27,7 @@ class CategoryAdapter(
     }
 
     fun setData(movies: ArrayList<Question>) {
-        movies?.let {
-            this.questionList = it
-        }
+        this.questionList = movies
         notifyDataSetChanged()
     }
 }
