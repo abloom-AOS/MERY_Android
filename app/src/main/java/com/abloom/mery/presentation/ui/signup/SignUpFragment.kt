@@ -36,10 +36,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private fun observeEditTextInputName() {
         sharedViewModel.getText().observe(requireActivity()) { inputName ->
-            if (inputName.isNotEmpty())
-                binding.appbarSignUp.isActionEnabled = true
-            else
-                binding.appbarSignUp.isActionEnabled = true
+            binding.appbarSignUp.isActionEnabled = inputName.isNotEmpty()
         }
     }
 
