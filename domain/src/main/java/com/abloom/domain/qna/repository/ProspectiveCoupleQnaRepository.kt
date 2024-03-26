@@ -5,7 +5,7 @@ import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.model.Response
 import kotlinx.coroutines.flow.Flow
 
-interface QnaRepository {
+interface ProspectiveCoupleQnaRepository {
 
     fun getProspectiveCoupleQnas(): Flow<List<Qna>>
 
@@ -13,7 +13,7 @@ interface QnaRepository {
 
     suspend fun createProspectiveCoupleQna(questionId: Long, answer: Answer)
 
-    suspend fun answerQna(answer: Answer)
+    suspend fun answerProspectiveCoupleQna(questionId: Long, answer: Answer)
 
-    suspend fun reactQna(response: Response)
+    suspend fun respondToProspectiveCoupleQna(questionId: Long, response: Response)
 }
