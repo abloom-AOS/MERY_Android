@@ -36,5 +36,4 @@ class BrideGroomSelectionFragment :
             R.id.action_brideGroomSelectionFragment_to_marryDateFragment
         )
     }
-
 }

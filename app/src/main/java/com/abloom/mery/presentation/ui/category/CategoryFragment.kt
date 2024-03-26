@@ -33,6 +33,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     // Navigation safe args 수신확인 코드
     //TODO("데이터 업데이트 후 CreateQnafragment에서 받을 데이터 및 로직 구현")
     private fun checkData() {
-        Toast.makeText(requireActivity(), args.category.categoryName.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), args.category.categoryName.toString(), Toast.LENGTH_SHORT)
+            .show()
     }
 }

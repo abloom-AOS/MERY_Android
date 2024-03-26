@@ -1,6 +1,5 @@
 package com.abloom.mery
 
-
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
@@ -49,7 +48,6 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
         binding.kakaoLoginButton.setOnClickListener {
             checkUserApiClient()
         }
-
     }
 
     private fun kakaoAutoLogin() {
@@ -60,7 +58,6 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
             else if (tokenInfo != null)
                 kakaoLoginSuccess()
         }
-
     }
 
     private fun kakaoLoginSuccess() {
@@ -113,7 +110,7 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
 
                     else -> {
                         showToastMessage(OTHER_ERROR)
-                    }// Unknown
+                    } // Unknown
 
                 }
             } else if (token != null) {
@@ -126,15 +123,14 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
             UserApiClient.instance.loginWithKakaoTalk(requireContext(), callback = callback)
         else
             UserApiClient.instance.loginWithKakaoAccount(requireContext(), callback = callback)
-
     }
 
     private fun showToastMessage(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-
     companion object {
+
         @SuppressLint("StaticFieldLeak")
         private lateinit var context: Context
 
@@ -154,6 +150,4 @@ class LoginDialogFragment : BottomSheetDialogFragment() {
         private val SERVER_INTERNAL_ERROR by lazy { context.getString(R.string.server_internal_error) }
         private val NOT_HAVE_REQUEST_PERMISSION by lazy { context.getString(R.string.not_have_request_permission) }
     }
-
-
 }

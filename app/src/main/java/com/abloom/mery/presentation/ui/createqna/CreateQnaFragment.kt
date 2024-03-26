@@ -2,8 +2,6 @@ package com.abloom.mery.presentation.ui.createqna
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
-import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
