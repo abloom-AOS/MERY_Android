@@ -35,6 +35,7 @@ class CategoryViewModel @Inject constructor(
             }
         }
     }
+
     fun isLoginCheck(){
         val check = repository.isLoginCheck()
         _isLogin.value = check
