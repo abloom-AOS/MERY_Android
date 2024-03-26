@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abloom.mery.LoginDialogFragment
 import com.abloom.mery.R
 import com.abloom.mery.categorytest.CategoryViewModel
 import com.abloom.mery.categorytest.Question
@@ -42,29 +43,35 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private lateinit var categoryAdapter: CategoryAdapter
     private val viewModel: CategoryViewModel by viewModels()
     private val args: CategoryFragmentArgs by navArgs()
-    private val logCheckFlag: Boolean = false
+    private var isLogin = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.appbarCategory.setOnNavigationClick {
             findNavController().popBackStack()
         }
-        setupCheckLoginView(logCheckFlag)
-        setCategoryAdapter()
+        viewModel.isLoginCheck()
+        setupIsLogin()
+        setCategoryAdapter(isLogin)
         observeCategory()
         setupSelectedTabItem(args.category.categoryName)
-        initTabLayoutListener()
+        initListener()
     }
 
-    private fun setupCheckLoginView(flag: Boolean) {
-        when (flag) {
-            true -> {
-                binding.clNologin.visibility = View.INVISIBLE
-            }
 
-            false -> {
-                binding.clNologin.visibility = View.VISIBLE
-                binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
+    private fun setupIsLogin() {
+        viewModel.isLogin.observe(viewLifecycleOwner){
+            when (it) {
+                true -> {
+                    binding.clNologin.visibility = View.INVISIBLE
+                    isLogin=it
+                }
+                false -> {
+                    binding.clNologin.visibility = View.VISIBLE
+                    binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    isLogin=it
+                }
             }
         }
     }
@@ -122,7 +129,12 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         }
     }
 
-    private fun initTabLayoutListener() {
+    private fun initListener() {
+
+        binding.tvLoginTag.setOnClickListener {
+            showLoginDialog()
+        }
+
 
         binding.tb.onTabSelected {
             when (it.position) {
@@ -184,11 +196,11 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         }
     }
 
-    private fun setCategoryAdapter() {
+    private fun setCategoryAdapter(isLogin: Boolean) {
         categoryAdapter = CategoryAdapter(this)
         val categoryManager = object : LinearLayoutManager(requireActivity(), VERTICAL, false) {
             override fun canScrollVertically(): Boolean {
-                return logCheckFlag
+                return isLogin
             }
         }
         binding.rv.apply {
@@ -209,10 +221,15 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     }
 
     override fun onCategoryItemClick(question: Question) {
-        if (logCheckFlag) {
+        if (isLogin) {
             val action =
                 CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
             findNavController().navigate(action)
         }
+    }
+
+    private fun showLoginDialog() {
+        val bottomSheetFragment = LoginDialogFragment()
+        bottomSheetFragment.show(requireActivity().supportFragmentManager, LoginDialogFragment().tag)
     }
 }

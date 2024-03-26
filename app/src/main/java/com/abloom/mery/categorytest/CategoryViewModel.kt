@@ -20,6 +20,11 @@ class CategoryViewModel @Inject constructor(
     val questions: LiveData<ArrayList<Question>>
         get() = _questions
 
+    private val _isLogin = MutableLiveData<Boolean>()
+    val isLogin: LiveData<Boolean>
+        get() = _isLogin
+
+
     fun requestQuestion(category: String) {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -29,5 +34,9 @@ class CategoryViewModel @Inject constructor(
                 _questions.value = categoryQuestions as ArrayList<Question>
             }
         }
+    }
+    fun isLoginCheck(){
+        val check = repository.isLoginCheck()
+        _isLogin.value = check
     }
 }
