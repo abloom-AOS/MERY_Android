@@ -31,9 +31,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     private fun initListener() {
-        binding.appbarSignUp.setOnNavigationClick {
-            handleNavigationBack()
-        }
+        binding.appbarSignUp.setOnNavigationClick { handleNavigationBack() }
 
         binding.appbarSignUp.setOnActionClick {
             //TODO("다음 프래그먼트로 이동 하는 로직 구현")
@@ -86,9 +84,9 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     companion object {
+
         private const val STEP_BRIDE_GROOM_SELECTION = 1
         private const val STEP_MARRY_DATE_SELECTION = 2
     }
-
 }
 
