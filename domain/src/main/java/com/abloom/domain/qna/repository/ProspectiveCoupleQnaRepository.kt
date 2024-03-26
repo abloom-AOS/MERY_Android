@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProspectiveCoupleQnaRepository {
 
-    fun getProspectiveCoupleQnas(): Flow<List<Qna>>
+    fun getQnas(): Flow<List<Qna>>
 
-    fun getProspectiveCoupleQna(questionId: Long): Flow<Qna>
+    fun getQna(questionId: Long): Flow<Qna>
 
-    suspend fun createProspectiveCoupleQna(questionId: Long, answer: Answer)
+    suspend fun createQna(questionId: Long, answer: Answer)
 
-    suspend fun answerProspectiveCoupleQna(questionId: Long, answer: Answer)
+    suspend fun answerQna(questionId: Long, answer: Answer)
 
-    suspend fun respondToProspectiveCoupleQna(questionId: Long, response: Response)
+    suspend fun respondToQna(questionId: Long, response: Response)
 }
