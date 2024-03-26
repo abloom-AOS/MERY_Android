@@ -12,7 +12,8 @@ class CategoryRepository {
         }
         return filteredQuestions
     }
-    fun isLoginCheck(): Boolean{
+
+    fun isLoginCheck(): Boolean {
         val isLogin = true
         return isLogin
     }

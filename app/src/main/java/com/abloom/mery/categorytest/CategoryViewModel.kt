@@ -24,7 +24,6 @@ class CategoryViewModel @Inject constructor(
     val isLogin: LiveData<Boolean>
         get() = _isLogin
 
-
     fun requestQuestion(category: String) {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,7 +35,7 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    fun isLoginCheck(){
+    fun isLoginCheck() {
         val check = repository.isLoginCheck()
         _isLogin.value = check
     }

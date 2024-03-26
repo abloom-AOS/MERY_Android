@@ -58,19 +58,18 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         initListener()
     }
 
-
-
     private fun setupIsLogin() {
-        viewModel.isLogin.observe(viewLifecycleOwner){
+        viewModel.isLogin.observe(viewLifecycleOwner) {
             when (it) {
                 true -> {
                     binding.clNologin.visibility = View.INVISIBLE
-                    isLogin=it
+                    isLogin = it
                 }
+
                 false -> {
                     binding.clNologin.visibility = View.VISIBLE
                     binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    isLogin=it
+                    isLogin = it
                 }
             }
         }
@@ -230,6 +229,9 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 
     private fun showLoginDialog() {
         val bottomSheetFragment = LoginDialogFragment()
-        bottomSheetFragment.show(requireActivity().supportFragmentManager, LoginDialogFragment().tag)
+        bottomSheetFragment.show(
+            requireActivity().supportFragmentManager,
+            LoginDialogFragment().tag
+        )
     }
 }
