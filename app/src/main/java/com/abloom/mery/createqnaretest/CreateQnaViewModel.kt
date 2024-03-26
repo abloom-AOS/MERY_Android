@@ -26,10 +26,10 @@ class CreateQnaViewModel @Inject constructor(
 
     fun requestRandomQuestion() {
         viewModelScope.launch(Dispatchers.IO) {
-            val rQuesttion = repository.requestRandomQuestion()
+            val requestion = repository.requestRandomQuestion()
 
             withContext(Dispatchers.Main) {
-                _randomQuestion.value = rQuesttion
+                _randomQuestion.value = requestion
             }
         }
     }

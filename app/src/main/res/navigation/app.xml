@@ -127,7 +127,7 @@
             android:id="@+id/categoryFragment"
             android:name="com.abloom.mery.presentation.ui.category.CategoryFragment"
             android:label="fragment_category"
-            tools:layout="@layout/fragment_category" >
+            tools:layout="@layout/fragment_category">
             <argument
                 android:name="category"
                 app:argType="com.abloom.mery.presentation.ui.createqna.CreateQnaCategory" />
