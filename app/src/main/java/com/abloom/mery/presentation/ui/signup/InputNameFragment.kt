@@ -12,6 +12,17 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListener()
+    }
+
+    private fun initListener() {
+        binding.editTextClearBut.setOnClickListener {
+            clearInputName()
+        }
+    }
+
+    private fun clearInputName() {
+        binding.editText.editableText.clear()
     }
 
 
