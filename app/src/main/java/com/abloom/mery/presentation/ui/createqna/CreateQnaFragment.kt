@@ -9,6 +9,7 @@ import com.abloom.mery.createqnaretest.CreateQnaViewModel
 import com.abloom.mery.databinding.FragmentCreateQnaBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
+import com.abloom.mery.presentation.ui.category.CreateQnaCategory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,13 +44,13 @@ class CreateQnaFragment : BaseFragment<FragmentCreateQnaBinding>(R.layout.fragme
     }
 
     private fun initListener() {
-        binding.ivEconomy.setOnClickListener { goCategoryFragment(CreateQnaCategory.ECONOMY) }
+        binding.ivEconomy.setOnClickListener { goCategoryFragment(CreateQnaCategory.FINANCE) }
         binding.ivCommunication.setOnClickListener { goCategoryFragment(CreateQnaCategory.COMMUNICATION) }
         binding.ivValues.setOnClickListener { goCategoryFragment(CreateQnaCategory.VALUES) }
-        binding.ivLife.setOnClickListener { goCategoryFragment(CreateQnaCategory.LIFE) }
+        binding.ivLife.setOnClickListener { goCategoryFragment(CreateQnaCategory.LIFESTYLE) }
         binding.ivChildren.setOnClickListener { goCategoryFragment(CreateQnaCategory.CHILDREN) }
         binding.ivFamily.setOnClickListener { goCategoryFragment(CreateQnaCategory.FAMILY) }
-        binding.ivMarried.setOnClickListener { goCategoryFragment(CreateQnaCategory.MARYCOUPLE) }
+        binding.ivMarried.setOnClickListener { goCategoryFragment(CreateQnaCategory.SEX) }
         binding.ivHealth.setOnClickListener { goCategoryFragment(CreateQnaCategory.HEALTH) }
         binding.ivWedding.setOnClickListener { goCategoryFragment(CreateQnaCategory.WEDDING) }
         binding.ivFuture.setOnClickListener { goCategoryFragment(CreateQnaCategory.FUTURE) }

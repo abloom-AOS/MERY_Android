@@ -1,16 +1,16 @@
-package com.abloom.mery.presentation.ui.createqna
+package com.abloom.mery.presentation.ui.category
 
 enum class CreateQnaCategory(
     val categoryName: String
 ) {
 
-    ECONOMY("finance"),
+    FINANCE("finance"),
     COMMUNICATION("communication"),
     VALUES("values"),
-    LIFE("lifestyle"),
+    LIFESTYLE("lifestyle"),
     CHILDREN("child"),
     FAMILY("family"),
-    MARYCOUPLE("sex"),
+    SEX("sex"),
     HEALTH("health"),
     WEDDING("wedding"),
     FUTURE("future"),
