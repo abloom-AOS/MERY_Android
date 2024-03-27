@@ -14,8 +14,6 @@ interface ProspectiveCoupleQnaRepository {
 
     fun getQna(questionId: Long): Flow<Qna>
 
-    suspend fun createQna(questionId: Long, answer: Answer)
-
     /**
      * 만약 해당 질문에 대한 문답이 없으면 문답을 생성합니다.
      * 만약 이미 질문에 대한 대답이 있으면 대답을 갱신하지 않고 새 대답을 무시합니다.
