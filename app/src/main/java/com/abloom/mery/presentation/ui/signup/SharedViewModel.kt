@@ -1,6 +1,5 @@
 package com.abloom.mery.presentation.ui.signup
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,16 +10,16 @@ class SharedViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _dynamicName = MutableLiveData<String>()
-    val staticName: String
+    val staticName
         get() = _dynamicName.value.toString()
 
     private val sex = MutableLiveData<Boolean>()
-    fun getName(): LiveData<String> = _dynamicName
+    fun getName() = _dynamicName
     fun setName(userName: String) {
         this._dynamicName.value = userName
     }
 
-    fun getSex(): LiveData<Boolean> = sex
+    fun getSex() = sex
     fun setSex(sex: Boolean) {
         this.sex.value = sex
     }
