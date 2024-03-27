@@ -130,7 +130,7 @@
             tools:layout="@layout/fragment_category">
             <argument
                 android:name="category"
-                app:argType="com.abloom.mery.presentation.ui.category.CreateQnaCategory" />
+                app:argType="com.abloom.mery.presentation.ui.category.CategoryArgs" />
         </fragment>
         <action
             android:id="@+id/action_global_writeAnswerFragment"

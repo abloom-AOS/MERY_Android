@@ -1,6 +1,6 @@
 package com.abloom.mery.presentation.ui.category
 
-enum class CreateQnaCategory(
+enum class CategoryArgs(
     val categoryName: String
 ) {
 
