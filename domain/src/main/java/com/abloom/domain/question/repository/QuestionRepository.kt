@@ -5,7 +5,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface QuestionRepository {
 
-    fun getTodayRecommendationQuestions(): Flow<List<Question>>
+    fun getTodayRecommendationQuestion(): Flow<Question>
+
+    suspend fun setTodayRecommendationQuestion(question: Question)
+
+    fun getEssentialQuestions(): Flow<List<Question>>
 
     fun getQuestions(): Flow<List<Question>>
 
