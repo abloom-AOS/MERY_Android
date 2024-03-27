@@ -36,7 +36,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private fun observeEditTextInputName() {
         sharedViewModel.getName().observe(viewLifecycleOwner) { inputName ->
-            binding.appbarSignUp.isActionEnabled = inputName.isNotEmpty()
+            binding.appbarSignUp.isActionEnabled =
+                inputName.isNotEmpty() && inputName.length <= NAME_MAX_LENGTH
         }
     }
 
@@ -121,6 +122,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
         private const val STEP_BRIDE_GROOM_SELECTION = 1
         private const val STEP_MARRY_DATE_SELECTION = 2
         private const val STEP_INPUT_NAME_SELECTION = 3
+
+        private const val NAME_MAX_LENGTH = 10
     }
 }
 
