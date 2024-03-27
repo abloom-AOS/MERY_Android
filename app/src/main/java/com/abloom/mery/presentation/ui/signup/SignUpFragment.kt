@@ -3,7 +3,6 @@ package com.abloom.mery.presentation.ui.signup
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -16,8 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sign_up) {
-
-    private val viewModel: SignUpViewModel by viewModels()
 
     private val signUpStepNavHostFragment: NavHostFragment by lazy {
         childFragmentManager.findFragmentById(
