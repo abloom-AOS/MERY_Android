@@ -3,10 +3,11 @@ package com.abloom.mery.presentation.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abloom.domain.qna.model.Qna
-import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
+import com.abloom.domain.qna.usecase.GetQnasUseCase
 import com.abloom.domain.user.model.Authentication
 import com.abloom.domain.user.model.User
-import com.abloom.domain.user.repository.UserRepository
+import com.abloom.domain.user.usecase.GetLoginUserUseCase
+import com.abloom.domain.user.usecase.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -19,11 +20,12 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class HomeViewModel(
-    private val userRepository: UserRepository,
-    qnaRepository: ProspectiveCoupleQnaRepository
+    getLoginUserUseCase: GetLoginUserUseCase,
+    getQnasUseCase: GetQnasUseCase,
+    private val loginUseCase: LoginUseCase,
 ) : ViewModel() {
 
-    val loginUser: StateFlow<User?> = userRepository.getLoginUser()
+    val loginUser: StateFlow<User?> = getLoginUserUseCase()
         .stateIn(
             initialValue = null,
             started = SharingStarted.WhileSubscribed(5_000),
@@ -36,7 +38,7 @@ class HomeViewModel(
         scope = viewModelScope
     )
 
-    val qnas: StateFlow<List<Qna>> = qnaRepository.getQnas()
+    val qnas: StateFlow<List<Qna>> = getQnasUseCase()
         .stateIn(
             initialValue = listOf(),
             started = SharingStarted.WhileSubscribed(5_000),
@@ -47,7 +49,7 @@ class HomeViewModel(
     val event: SharedFlow<HomeEvent> = _event.asSharedFlow()
 
     fun login(authentication: Authentication) = viewModelScope.launch {
-        val isLoginSuccess = userRepository.login(authentication)
+        val isLoginSuccess = loginUseCase(authentication)
         if (!isLoginSuccess) _event.emit(HomeEvent.LoginFail)
     }
 }
