@@ -34,7 +34,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         setupIsLogin()
         setCategoryAdapter()
         observeCategory()
-        setupSelectedTabItem(args.category.categoryName)
+        setupSelectedTabItem(args.category)
         initListener()
     }
 
@@ -55,56 +55,21 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         }
     }
 
-    private fun setupSelectedTabItem(category: String) {
+    private fun setupSelectedTabItem(categoryArgs: CategoryArgs) {
 
-        when (category) {
-            "finance" -> {
-                selectTabItem(category, FINANCE_TABITEM_POSION)
-            }
-
-            "communication" -> {
-                selectTabItem(category, COMMUNICATION_TABITEM_POSION)
-            }
-
-            "values" -> {
-                selectTabItem(category, VALUES_TABITEM_POSION)
-            }
-
-            "lifestyle" -> {
-                selectTabItem(category, LIFESTYLE_TABITEM_POSION)
-            }
-
-            "child" -> {
-                selectTabItem(category, CHILD_TABITEM_POSION)
-            }
-
-            "family" -> {
-                selectTabItem(category, FAMILY_TABITEM_POSION)
-            }
-
-            "sex" -> {
-                selectTabItem(category, SEX_TABITEM_POSION)
-            }
-
-            "health" -> {
-                selectTabItem(category, HEALTH_TABITEM_POSION)
-            }
-
-            "wedding" -> {
-                selectTabItem(category, WEDDING_TABITEM_POSION)
-            }
-
-            "future" -> {
-                selectTabItem(category, FUTURE_TABITEM_POSION)
-            }
-
-            "present" -> {
-                selectTabItem(category, PRESENT_TABITEM_POSION)
-            }
-
-            "past" -> {
-                selectTabItem(category, PAST_TABITEM_POSION)
-            }
+        when (categoryArgs) {
+            CategoryArgs.FINANCE ->  selectTabItem(CategoryArgs.FINANCE.categoryName, FINANCE_TABITEM_POSION)
+            CategoryArgs.COMMUNICATION -> selectTabItem(CategoryArgs.COMMUNICATION.categoryName, COMMUNICATION_TABITEM_POSION)
+            CategoryArgs.VALUES -> selectTabItem(CategoryArgs.VALUES.categoryName, VALUES_TABITEM_POSION)
+            CategoryArgs.LIFESTYLE -> selectTabItem(CategoryArgs.LIFESTYLE.categoryName, LIFESTYLE_TABITEM_POSION)
+            CategoryArgs.CHILDREN -> selectTabItem(CategoryArgs.CHILDREN.categoryName, CHILD_TABITEM_POSION)
+            CategoryArgs.FAMILY -> selectTabItem(CategoryArgs.FAMILY.categoryName, FAMILY_TABITEM_POSION)
+            CategoryArgs.SEX -> selectTabItem(CategoryArgs.SEX.categoryName, SEX_TABITEM_POSION)
+            CategoryArgs.HEALTH -> selectTabItem(CategoryArgs.HEALTH.categoryName, HEALTH_TABITEM_POSION)
+            CategoryArgs.WEDDING -> selectTabItem(CategoryArgs.WEDDING.categoryName, WEDDING_TABITEM_POSION)
+            CategoryArgs.FUTURE -> selectTabItem(CategoryArgs.FUTURE.categoryName, FUTURE_TABITEM_POSION)
+            CategoryArgs.PRESENT -> selectTabItem(CategoryArgs.PRESENT.categoryName, PRESENT_TABITEM_POSION)
+            CategoryArgs.PAST -> selectTabItem(CategoryArgs.PAST.categoryName, PAST_TABITEM_POSION)
         }
     }
 
