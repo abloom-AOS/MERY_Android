@@ -10,11 +10,14 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
 ) : ViewModel() {
 
-    private val name = MutableLiveData<String>()
+    private val _dynamicName = MutableLiveData<String>()
+    val staticName: String
+        get() = _dynamicName.value.toString()
+
     private val sex = MutableLiveData<Boolean>()
-    fun getName(): LiveData<String> = name
+    fun getName(): LiveData<String> = _dynamicName
     fun setName(userName: String) {
-        this.name.value = userName
+        this._dynamicName.value = userName
     }
 
     fun getSex(): LiveData<Boolean> = sex

@@ -23,7 +23,7 @@ class BrideGroomSelectionFragment :
     }
 
     private fun observeBrideAndGroomSelection() {
-        sharedViewModel.getSex().observe(requireActivity()) { sex ->
+        sharedViewModel.getSex().observe(viewLifecycleOwner) { sex ->
             if (sex)
                 binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
             else

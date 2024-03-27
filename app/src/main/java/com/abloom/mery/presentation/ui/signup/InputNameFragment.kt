@@ -18,6 +18,12 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
+        setSaveEditTextName()
+    }
+
+    private fun setSaveEditTextName() {
+        if (sharedViewModel.staticName != NULL_STRING)
+            binding.editText.setText(sharedViewModel.staticName)
     }
 
     private fun initListener() {
@@ -38,5 +44,9 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
 
     private fun clearInputName() {
         binding.editText.editableText.clear()
+    }
+
+    companion object {
+        private const val NULL_STRING = "null"
     }
 }
