@@ -35,8 +35,9 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         setCategoryAdapter()
         observeCategory()
         setupSelectedTabItem(args.category)
-        initListener()
+        setupListener()
     }
+
 
     private fun setupIsLogin() {
         categoryViewModel.isLogin.observe(viewLifecycleOwner) {
@@ -73,7 +74,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         }
     }
 
-    private fun initListener() {
+    private fun setupListener() {
 
         binding.appbarCategory.setOnNavigationClick {
             findNavController().popBackStack()
