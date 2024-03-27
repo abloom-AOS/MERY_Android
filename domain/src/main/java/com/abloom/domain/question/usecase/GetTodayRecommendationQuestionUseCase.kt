@@ -1,6 +1,5 @@
 package com.abloom.domain.question.usecase
 
-import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
 import com.abloom.domain.question.model.Question
 import com.abloom.domain.question.repository.QuestionRepository
@@ -22,7 +21,7 @@ class GetTodayRecommendationQuestionUseCase @Inject constructor(
     private suspend fun QuestionRepository.addTodayRecommendationQuestionByRandom() {
         val unavailableQuestionIds = qnaRepository.getQnas()
             .last()
-            .map(Qna::questionId)
+            .map { it.question.id }
             .toSet()
         val todayRecommendationQuestion = getTodayRecommendationQuestion(unavailableQuestionIds)
         this.setTodayRecommendationQuestion(todayRecommendationQuestion)

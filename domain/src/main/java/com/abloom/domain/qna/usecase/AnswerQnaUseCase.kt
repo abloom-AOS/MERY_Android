@@ -1,7 +1,6 @@
 package com.abloom.domain.qna.usecase
 
 import com.abloom.domain.qna.model.Answer
-import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
 package com.abloom.domain.qna.repository
 
 import com.abloom.domain.qna.model.Answer
-import com.abloom.domain.qna.model.Qna
+import com.abloom.domain.qna.model.Qna1
 import com.abloom.domain.qna.model.Response
 import kotlinx.coroutines.flow.Flow
 
@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.Flow
  */
 interface ProspectiveCoupleQnaRepository {
 
-    fun getQnas(): Flow<List<Qna>>
+    fun getQnas(): Flow<List<Qna1>>
 
-    fun getQna(questionId: Long): Flow<Qna>
+    fun getQna(questionId: Long): Flow<Qna1>
 
     /**
      * 만약 해당 질문에 대한 문답이 없으면 문답을 생성합니다.

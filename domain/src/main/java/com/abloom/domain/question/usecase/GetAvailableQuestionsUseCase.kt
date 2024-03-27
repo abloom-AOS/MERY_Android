@@ -1,6 +1,5 @@
 package com.abloom.domain.question.usecase
 
-import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
 import com.abloom.domain.question.model.Category
 import com.abloom.domain.question.model.Question
@@ -22,7 +21,7 @@ class GetAvailableQuestionsUseCase @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     operator fun invoke(): Flow<Map<Category, Question>> =
         qnaRepository.getQnas().flatMapLatest { qnas ->
-            val unavailableQuestionIds = qnas.map(Qna::questionId).toSet()
+            val unavailableQuestionIds = qnas.map { it.question.id }.toSet()
 
             questionRepository.getQuestions().map { questions ->
                 questions.filter { question -> question.id !in unavailableQuestionIds }

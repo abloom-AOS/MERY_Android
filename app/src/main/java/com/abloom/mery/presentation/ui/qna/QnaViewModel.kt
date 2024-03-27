@@ -3,7 +3,7 @@ package com.abloom.mery.presentation.ui.qna
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abloom.domain.qna.model.Qna
+import com.abloom.domain.qna.model.Qna1
 import com.abloom.domain.qna.model.Response
 import com.abloom.domain.qna.usecase.GetQnaUseCase
 import com.abloom.domain.qna.usecase.RespondToQnaUseCase
@@ -25,7 +25,7 @@ class QnaViewModel @Inject constructor(
 ) : ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val qna: StateFlow<Qna?> = savedStateHandle
+    val qna: StateFlow<Qna1?> = savedStateHandle
         .getStateFlow("question_id", INVALID_QUESTION_ID)
         .filter { it != INVALID_QUESTION_ID }
         .flatMapLatest { getQnaUseCase(it) }

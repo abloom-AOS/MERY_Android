@@ -2,23 +2,23 @@ package com.abloom.domain.qna.model
 
 import com.abloom.domain.question.model.Question
 import com.abloom.domain.user.model.User
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 sealed interface Qna1 {
 
     val question: Question
-    val createdAt: LocalDate
+    val createdAt: LocalDateTime
     val loginUser: User
 
     companion object {
 
         fun create(
             question: Question,
-            createdAt: LocalDate,
+            createdAt: LocalDateTime,
             loginUser: User,
             fiance: User? = null,
             loginUserAnswer: Answer? = null,
-            fianceUserAnswer: Answer? = null,
+            fianceAnswer: Answer? = null,
             loginUserResponse: Response? = null,
             fianceResponse: Response? = null,
         ): Qna1 = when {
@@ -29,13 +29,13 @@ sealed interface Qna1 {
                 loginUserAnswer = loginUserAnswer
             )
 
-            loginUserAnswer == null || fianceUserAnswer == null -> UnfinishedAnswerQna(
+            loginUserAnswer == null || fianceAnswer == null -> UnfinishedAnswerQna(
                 question = question,
                 createdAt = createdAt,
                 loginUser = loginUser,
                 fiance = fiance,
                 loginUserAnswer = loginUserAnswer,
-                fianceUserAnswer = fianceUserAnswer
+                fianceAnswer = fianceAnswer
             )
 
             loginUserResponse == null || fianceResponse == null -> UnfinishedResponseQna(
@@ -44,7 +44,7 @@ sealed interface Qna1 {
                 loginUser = loginUser,
                 fiance = fiance,
                 loginUserAnswer = loginUserAnswer,
-                fianceUserAnswer = fianceUserAnswer,
+                fianceAnswer = fianceAnswer,
                 loginUserResponse = loginUserResponse,
                 fianceResponse = fianceResponse
             )
@@ -55,7 +55,7 @@ sealed interface Qna1 {
                 loginUser = loginUser,
                 fiance = fiance,
                 loginUserAnswer = loginUserAnswer,
-                fianceUserAnswer = fianceUserAnswer,
+                fianceAnswer = fianceAnswer,
                 loginUserResponse = loginUserResponse,
                 fianceResponse = fianceResponse
             )
