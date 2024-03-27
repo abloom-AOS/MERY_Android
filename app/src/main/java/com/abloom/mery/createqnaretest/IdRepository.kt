@@ -1,9 +1,5 @@
 package com.abloom.mery.createqnaretest
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-
 class IdRepository() {
 
     private suspend fun requestUserInfo(): UserInfo =
