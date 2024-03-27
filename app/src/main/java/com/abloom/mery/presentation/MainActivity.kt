@@ -1,4 +1,4 @@
-package com.abloom.mery
+package com.abloom.mery.presentation
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.abloom.mery.R
 import com.abloom.mery.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
