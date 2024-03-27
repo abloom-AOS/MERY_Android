@@ -29,9 +29,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appbarCategory.setOnNavigationClick {
-            findNavController().popBackStack()
-        }
+
         viewModel.isCheckLogin()
         setupIsLogin()
         setCategoryAdapter(isLogin)
@@ -111,6 +109,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     }
 
     private fun initListener() {
+
+        binding.appbarCategory.setOnNavigationClick {
+            findNavController().popBackStack()
+        }
 
         binding.tvLoginTag.setOnClickListener {
             //TODO("Home화면으로 이동 로직 구현")
