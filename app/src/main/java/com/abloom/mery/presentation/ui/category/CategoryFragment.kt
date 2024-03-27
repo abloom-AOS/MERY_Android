@@ -16,6 +16,7 @@ import com.abloom.mery.databinding.FragmentCategoryBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -157,9 +158,8 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     }
 
     private fun selectTabItem(category: String, index: Int) {
-        lifecycleScope.launch {
-            binding.tb.selectTab(binding.tb.getTabAt(index))
-            delay(100)
+        binding.tb.selectTab(binding.tb.getTabAt(index))
+        lifecycleScope.launch(Dispatchers.Main) {
             binding.tb.setScrollPosition(index, 0f, false)
         }
         categoryViewModel.requestQuestion(category)
