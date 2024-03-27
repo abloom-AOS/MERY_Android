@@ -11,4 +11,4 @@ data class UnfinishedAnswerQna(
     val fiance: User,
     val loginUserAnswer: Answer? = null,
     val fianceAnswer: Answer? = null
-) : Qna1
+) : Qna

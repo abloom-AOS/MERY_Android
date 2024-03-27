@@ -2,7 +2,7 @@ package com.abloom.mery.presentation.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abloom.domain.qna.model.Qna1
+import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.usecase.GetQnasUseCase
 import com.abloom.domain.user.model.Authentication
 import com.abloom.domain.user.model.User
@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
         scope = viewModelScope
     )
 
-    val qnas: StateFlow<List<Qna1>> = getQnasUseCase()
+    val qnas: StateFlow<List<Qna>> = getQnasUseCase()
         .stateIn(
             initialValue = listOf(),
             started = SharingStarted.WhileSubscribed(5_000),

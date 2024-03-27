@@ -1,7 +1,7 @@
 package com.abloom.mery.data.repository
 
 import com.abloom.domain.qna.model.Answer
-import com.abloom.domain.qna.model.Qna1
+import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.model.Response
 import com.abloom.domain.qna.model.UnfinishedResponseQna
 import com.abloom.domain.qna.repository.ProspectiveCoupleQnaRepository
@@ -16,23 +16,23 @@ import javax.inject.Singleton
 @Singleton
 class FakeQnaRepository @Inject constructor() : ProspectiveCoupleQnaRepository {
 
-    private val qnas = MutableStateFlow<List<Qna1>>(listOf())
+    private val qnas = MutableStateFlow<List<Qna>>(listOf())
 
-    override fun getQnas(): Flow<List<Qna1>> = qnas.asStateFlow()
+    override fun getQnas(): Flow<List<Qna>> = qnas.asStateFlow()
 
-    override fun getQna(questionId: Long): Flow<Qna1> =
+    override fun getQna(questionId: Long): Flow<Qna> =
         qnas.map { it.first { it.question.id == questionId } }
 
     override suspend fun answerQna(questionId: Long, answer: Answer) {
         val qnas = qnas.value
         val qna = qnas.find { it.question.id == questionId }?.let {
-            Qna1.create(
+            Qna.create(
                 question = it.question,
                 createdAt = it.createdAt,
                 loginUser = it.loginUser,
                 fiance = FakeUserRepository.FIANCE.value,
             )
-        } ?: Qna1.create(
+        } ?: Qna.create(
             question = FakeQuestionRepository.QUESTIONS.value.first { it.id == questionId },
             createdAt = LocalDateTime.now(),
             loginUser = FakeUserRepository.LOGIN_USER.value!!,
@@ -46,7 +46,7 @@ class FakeQnaRepository @Inject constructor() : ProspectiveCoupleQnaRepository {
         val qnas = qnas.value
         val qna = qnas.first { it.question.id == questionId }.let { qna ->
             val qna = qna as UnfinishedResponseQna
-            Qna1.create(
+            Qna.create(
                 question = qna.question,
                 createdAt = qna.createdAt,
                 loginUser = qna.loginUser,

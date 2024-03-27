@@ -13,7 +13,7 @@ data class FinishedQna(
     val fianceAnswer: Answer,
     val loginUserResponse: Response,
     val fianceResponse: Response,
-) : Qna1 {
+) : Qna {
 
     val responseResult: ResponseResult = ResponseResult.of(loginUserResponse, fianceResponse)
 }

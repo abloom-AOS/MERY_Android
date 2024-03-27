@@ -4,7 +4,7 @@ import com.abloom.domain.question.model.Question
 import com.abloom.domain.user.model.User
 import java.time.LocalDateTime
 
-sealed interface Qna1 {
+sealed interface Qna {
 
     val question: Question
     val createdAt: LocalDateTime
@@ -21,7 +21,7 @@ sealed interface Qna1 {
             fianceAnswer: Answer? = null,
             loginUserResponse: Response? = null,
             fianceResponse: Response? = null,
-        ): Qna1 = when {
+        ): Qna = when {
             fiance == null -> UnconnectedQna(
                 question = question,
                 createdAt = createdAt,
