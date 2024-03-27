@@ -25,7 +25,7 @@ class CategoryViewHolder(
 
         fun from(
             parent: ViewGroup,
-            onCategoryItemClick:(question: Question) -> Unit
+            onCategoryItemClick: (question: Question) -> Unit
         ): CategoryViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemCategoryBinding.inflate(layoutInflater, parent, false)

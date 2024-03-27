@@ -6,18 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abloom.mery.categorytest.Question
 
 class CategoryAdapter(
-    private val  onCategoryItemClick:(quest:Question) -> Unit
-//    private val categoryRecyclerListener: CategoryRecyclerListener
+    private val onCategoryItemClick: (quest: Question) -> Unit
+    //    private val categoryRecyclerListener: CategoryRecyclerListener
 ) : RecyclerView.Adapter<CategoryViewHolder>() {
 
     private var questionList = arrayListOf<Question>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        return CategoryViewHolder.from(parent,onCategoryItemClick)
+        return CategoryViewHolder.from(parent, onCategoryItemClick)
     }
 
     override fun getItemCount(): Int = questionList.size
-
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bind(questionList[position])

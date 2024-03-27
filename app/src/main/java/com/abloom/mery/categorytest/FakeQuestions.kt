@@ -3,32 +3,16 @@ package com.abloom.mery.categorytest
 data class FakeQuestions(
     val questions: ArrayList<Question> = arrayListOf(
         Question("communication", "행복한 결혼 생황을 위해서 가장 중요한 것은 무엇이라고 생각하나요?", 1),
-        Question(
-            "communication",
-            "부부 사이에 때로는 거짓말도 필요하다고 생각하시나용? 아니면 신회를 지키기 위해 어떠한 경우에도 거짓말을 한면 안된다고 생각하시나요?",
-            10
-        ),
+        Question("communication", "부부 사이에 때로는 거짓말도 필요하다고 생각하시나용? 아니면 신회를 지키기 위해 어떠한 경우에도 거짓말을 한면 안된다고 생각하시나요?", 10),
         Question("communication", "결혼 생활에 대한 서로의 생각에 대해 얼마나 대화를 나눠본 것 같나요?", 2),
         Question("communication", "앞으로 함께 답하게 될 질문들에 얼마나 솔직하게 대답할 수 있나요?", 3),
-        Question(
-            "communication",
-            "이야기를 나누다보면 서로 생각이 다른 부분이 분명히 있을 거예요. 그럴 때 어떻게 생각을 맞춰나갔으면 좋겠나요?",
-            4
-        ),
+        Question("communication", "이야기를 나누다보면 서로 생각이 다른 부분이 분명히 있을 거예요. 그럴 때 어떻게 생각을 맞춰나갔으면 좋겠나요?", 4),
 
         Question("finance", "결혼하기 전에 서로의 재정 상태에 대해 투명하게 알고 있어야 한다고 생각해요?", 31),
-        Question(
-            "finance",
-            "지금까지 모아둔 순자산은 어느 정도인가요? 예금, 적금, 투자금, 자동차, 부동산 등으로 나눠서 최대한 구체적으로 말해주세요.",
-            32
-        ),
+        Question("finance", "지금까지 모아둔 순자산은 어느 정도인가요? 예금, 적금, 투자금, 자동차, 부동산 등으로 나눠서 최대한 구체적으로 말해주세요.", 32),
         Question("finance", "최근 1년간의 한 달 평균 수입은 어떻게 되나요? 결혼 후에 수입에 변화가 있을 것 같아요?", 33),
         Question("finance", "최근 1년간의 한 달 평균 지출은 어떻게 되나요? 결혼 후에 지출에 변화가 있을 것 같아요?", 34),
-        Question(
-            "finance",
-            "가지고 있는 빚이 있으세요? 있다면 얼마 정도인지, 왜 빚을 갖게 됐는지, 어떻게 갚아나갈 생각인지, 솔직하게 알려주세요.",
-            35
-        ),
+        Question("finance", "가지고 있는 빚이 있으세요? 있다면 얼마 정도인지, 왜 빚을 갖게 됐는지, 어떻게 갚아나갈 생각인지, 솔직하게 알려주세요.", 35),
 
         Question("lifestyle", "주말은 주로 어떻게 보내고 싶으세요?", 56),
         Question("lifestyle", "결혼 후에 새로 해보고 싶은 취미 활동이 있어요?", 61),
