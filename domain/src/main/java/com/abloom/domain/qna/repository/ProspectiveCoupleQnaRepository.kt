@@ -5,6 +5,9 @@ import com.abloom.domain.qna.model.Qna
 import com.abloom.domain.qna.model.Response
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * 로그인 유저의 예비 부부의 문답에 대해서만 조회하고 변경할 수 있습니다.
+ */
 interface ProspectiveCoupleQnaRepository {
 
     fun getQnas(): Flow<List<Qna>>
