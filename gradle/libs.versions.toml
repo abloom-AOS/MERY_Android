@@ -25,6 +25,7 @@ navigation = "2.7.7"
 
 # Hilt
 hilt = "2.50"
+hiltNavigation = "1.2.0"
 
 # 테스트
 junit = "4.13.2"
@@ -58,6 +59,7 @@ androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:na
 # Hilt
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-fragment = { module = "androidx.hilt:hilt-navigation-fragment", version.ref = "hiltNavigation" }
 
 # 테스트
 junit = { group = "junit", name = "junit", version.ref = "junit" }
