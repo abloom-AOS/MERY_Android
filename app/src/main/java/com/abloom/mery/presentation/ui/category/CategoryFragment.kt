@@ -3,6 +3,7 @@ package com.abloom.mery.presentation.ui.category
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,27 +20,26 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category),
-    CategoryRecyclerListener {
+class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category),CategoryRecyclerListener {
 
     private lateinit var categoryAdapter: CategoryAdapter
-    private val viewModel: CategoryViewModel by viewModels()
+    private val categoryViewModel: CategoryViewModel by viewModels()
     private val args: CategoryFragmentArgs by navArgs()
     private var isLogin = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.isCheckLogin()
+        categoryViewModel.isCheckLogin()
         setupIsLogin()
-        setCategoryAdapter(isLogin)
+        setCategoryAdapter()
         observeCategory()
         setupSelectedTabItem(args.category.categoryName)
         initListener()
     }
 
     private fun setupIsLogin() {
-        viewModel.isLogin.observe(viewLifecycleOwner) {
+        categoryViewModel.isLogin.observe(viewLifecycleOwner) {
             when (it) {
                 true -> {
                     binding.clNologin.visibility = View.INVISIBLE
@@ -114,76 +114,75 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             findNavController().popBackStack()
         }
 
+
         binding.tvLoginTag.setOnClickListener {
             //TODO("Home화면으로 이동 로직 구현")
+            Toast.makeText(requireActivity(), "로그인 화면 이동", Toast.LENGTH_SHORT).show()
         }
 
         binding.tb.onTabSelected {
             when (it.position) {
                 FINANCE_TABITEM_POSION -> {
-                    viewModel.requestQuestion("finance")
+                    categoryViewModel.requestQuestion("finance")
                 }
 
                 COMMUNICATION_TABITEM_POSION -> {
-                    viewModel.requestQuestion("communication")
+                    categoryViewModel.requestQuestion("communication")
                 }
 
                 VALUES_TABITEM_POSION -> {
-                    viewModel.requestQuestion("values")
+                    categoryViewModel.requestQuestion("values")
                 }
 
                 LIFESTYLE_TABITEM_POSION -> {
-                    viewModel.requestQuestion("lifestyle")
+                    categoryViewModel.requestQuestion("lifestyle")
                 }
 
                 CHILD_TABITEM_POSION -> {
-                    viewModel.requestQuestion("child")
+                    categoryViewModel.requestQuestion("child")
                 }
 
                 FAMILY_TABITEM_POSION -> {
-                    viewModel.requestQuestion("family")
+                    categoryViewModel.requestQuestion("family")
                 }
 
                 SEX_TABITEM_POSION -> {
-                    viewModel.requestQuestion("sex")
+                    categoryViewModel.requestQuestion("sex")
                 }
 
                 HEALTH_TABITEM_POSION -> {
-                    viewModel.requestQuestion("health")
+                    categoryViewModel.requestQuestion("health")
                 }
 
                 WEDDING_TABITEM_POSION -> {
-                    viewModel.requestQuestion("wedding")
+                    categoryViewModel.requestQuestion("wedding")
                 }
 
                 FUTURE_TABITEM_POSION -> {
-                    viewModel.requestQuestion("future")
+                    categoryViewModel.requestQuestion("future")
                 }
 
                 PRESENT_TABITEM_POSION -> {
-                    viewModel.requestQuestion("present")
+                    categoryViewModel.requestQuestion("present")
                 }
 
                 PAST_TABITEM_POSION -> {
-                    viewModel.requestQuestion("past")
+                    categoryViewModel.requestQuestion("past")
                 }
             }
         }
     }
 
     private fun observeCategory() {
-        viewModel.questions.observe(viewLifecycleOwner) {
+        categoryViewModel.questions.observe(viewLifecycleOwner) {
             categoryAdapter.setData(it)
         }
     }
 
-    private fun setCategoryAdapter(isLogin: Boolean) {
+    private fun setCategoryAdapter() {
         categoryAdapter = CategoryAdapter(this)
-        val categoryManager = object : LinearLayoutManager(requireActivity(), VERTICAL, false) {
-            override fun canScrollVertically(): Boolean {
-                return isLogin
-            }
-        }
+        val categoryManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.rv.apply {
             layoutManager = categoryManager
             adapter = categoryAdapter
@@ -197,15 +196,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             delay(100)
             binding.tb.setScrollPosition(index, 0f, false)
         }
-        viewModel.requestQuestion(category)
+        categoryViewModel.requestQuestion(category)
     }
 
     override fun onCategoryItemClick(question: Question) {
-        if (isLogin) {
-            val action =
-                CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
-            findNavController().navigate(action)
-        }
+        val action =
+            CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
+        findNavController().navigate(action)
     }
 
     companion object {
