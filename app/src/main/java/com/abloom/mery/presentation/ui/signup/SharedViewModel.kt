@@ -10,12 +10,15 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
 ) : ViewModel() {
 
-    private val liveText = MutableLiveData<String>()
-
-    fun getText(): LiveData<String> = liveText
-
-    fun setText(text: String) {
-        liveText.value = text
+    private val name = MutableLiveData<String>()
+    private val sex = MutableLiveData<Boolean>()
+    fun getName(): LiveData<String> = name
+    fun setName(userName: String) {
+        this.name.value = userName
     }
 
+    fun getSex(): LiveData<Boolean> = sex
+    fun setSex(sex: Boolean) {
+        this.sex.value = sex
+    }
 }
