@@ -17,7 +17,6 @@ import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -38,7 +37,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         setupSelectedTabItem(args.category)
         setupListener()
     }
-
 
     private fun setupIsLogin() {
         categoryViewModel.isLogin.observe(viewLifecycleOwner) {
@@ -83,8 +81,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
 
 
         binding.tvLoginTag.setOnClickListener {
-            //TODO("Home화면으로 이동 로직 구현")
-            Toast.makeText(requireActivity(), "로그인 화면 이동", Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack(R.id.homeFragment, false)
         }
 
         binding.tb.onTabSelected {
