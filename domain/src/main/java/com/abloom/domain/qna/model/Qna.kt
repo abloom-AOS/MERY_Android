@@ -9,10 +9,10 @@ data class Qna(
     val createdAt: LocalDateTime,
     val loginUser: User,
     val fiance: User?,
-    private val _loginUserAnswer: Answer?,
-    private val _fianceAnswer: Answer?,
-    private val _loginUserResponse: Response?,
-    private val _fianceResponse: Response?
+    private val _loginUserAnswer: Answer? = null,
+    private val _fianceAnswer: Answer? = null,
+    private val _loginUserResponse: Response? = null,
+    private val _fianceResponse: Response? = null
 ) {
 
     val questionId: Long = question.id
