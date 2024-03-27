@@ -28,6 +28,9 @@ espressoCore = "3.5.1"
 # Kakao SDK 의존성 버전
 kakaoSdk = "2.20.0"
 
+# WheelPicker DataPicker Spinner 의존성 버전
+wheelpicker = "0.4.0"
+
 [libraries]
 # 안드로이드
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,6 +55,9 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 
 # Kakao SDK 의존성
 kakao-sdk-all = { module = "com.kakao.sdk:v2-all", version.ref = "kakaoSdk" }
+
+# WheelPicker DataPicker Spinner
+wheelpicker = { module = "sh.tyy:wheelpicker", version.ref = "wheelpicker" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

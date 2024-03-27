@@ -74,5 +74,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.kakao.sdk.all)
+    implementation(libs.wheelpicker)
 
 }
