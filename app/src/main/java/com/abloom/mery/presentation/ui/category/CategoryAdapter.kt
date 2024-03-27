@@ -16,9 +16,8 @@ class CategoryAdapter(
         return CategoryViewHolder.from(parent)
     }
 
-    override fun getItemCount(): Int {
-        return questionList.size
-    }
+    override fun getItemCount(): Int = questionList.size
+
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bind(categoryRecyclerListener, questionList[position])
