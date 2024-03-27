@@ -10,6 +10,9 @@ class JoinUseCase @Inject constructor(
     private val userRepository: UserRepository,
 ) {
 
+    /**
+     * 회원가입 시 자동으로 로그인도 됩니다.
+     */
     suspend operator fun invoke(
         authentication: Authentication,
         sex: Sex,

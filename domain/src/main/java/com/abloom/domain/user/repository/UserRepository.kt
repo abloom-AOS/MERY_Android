@@ -13,6 +13,9 @@ interface UserRepository {
      */
     suspend fun login(authentication: Authentication): Boolean
 
+    /**
+     * 회원가입 시 자동으로 로그인도 됩니다.
+     */
     suspend fun join(
         authentication: Authentication,
         sex: Sex,
