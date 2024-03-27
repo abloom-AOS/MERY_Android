@@ -20,7 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category),CategoryRecyclerListener {
+class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
 
     private lateinit var categoryAdapter: CategoryAdapter
     private val categoryViewModel: CategoryViewModel by viewModels()
@@ -180,7 +180,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     }
 
     private fun setCategoryAdapter() {
-        categoryAdapter = CategoryAdapter(this)
+        categoryAdapter = CategoryAdapter(::onCategoryItemClick)
         val categoryManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.rv.apply {
@@ -199,7 +199,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         categoryViewModel.requestQuestion(category)
     }
 
-    override fun onCategoryItemClick(question: Question) {
+    private fun onCategoryItemClick(question: Question) {
         val action =
             CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
         findNavController().navigate(action)

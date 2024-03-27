@@ -7,22 +7,29 @@ import com.abloom.mery.categorytest.Question
 import com.abloom.mery.databinding.ItemCategoryBinding
 
 class CategoryViewHolder(
-    private val binding: ItemCategoryBinding
+    private val binding: ItemCategoryBinding,
+    private val onCategoryItemClick: (question: Question) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(categoryRecyclerListener: CategoryRecyclerListener, question: Question) {
-        binding.tv.text = question.content
-        binding.questionItem.setOnClickListener {
-            categoryRecyclerListener.onCategoryItemClick(question)
+    init {
+        binding.root.setOnClickListener {
+            onCategoryItemClick(binding.question ?: return@setOnClickListener)
         }
     }
 
-    companion object{
-        fun from(parent: ViewGroup): CategoryViewHolder {
+    fun bind(question: Question) {
+        binding.question = question
+    }
+
+    companion object {
+
+        fun from(
+            parent: ViewGroup,
+            onCategoryItemClick:(question: Question) -> Unit
+        ): CategoryViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemCategoryBinding.inflate(layoutInflater, parent, false)
-            return CategoryViewHolder(binding)
+            return CategoryViewHolder(binding, onCategoryItemClick)
         }
     }
-
 }
