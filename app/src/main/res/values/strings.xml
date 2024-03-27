@@ -47,5 +47,7 @@
 
     <string name="marry_date_guide_text">결혼예정일을 알려주세요.</string>
     <string name="marry_date_guide_detail_text">결혼까지 남은 기간에 따라 문답을 추천해드릴게요.\n정확한 예정일이 없다면 대략적으로 선택해주세요.</string>
-
+    <string name="input_name_guide_text">이름을 알려주세요.</string>
+    <string name="input_name_guide_detail_text">메리가 상대방을 어떻게 불러드릴까요?\n작성한 이름은 연결된 상대방에게 공개돼요.</string>
+    <string name="input_name_edit_text_hint_text">이름을 입력해주세요.</string>
 </resources>
