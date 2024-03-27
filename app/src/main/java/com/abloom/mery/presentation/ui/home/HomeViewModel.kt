@@ -17,9 +17,10 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     getLoginUserUseCase: GetLoginUserUseCase,
     getQnasUseCase: GetQnasUseCase,
     private val loginUseCase: LoginUseCase,

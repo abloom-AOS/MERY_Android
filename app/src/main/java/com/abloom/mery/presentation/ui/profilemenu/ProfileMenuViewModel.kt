@@ -13,9 +13,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import javax.inject.Inject
 
 @HiltViewModel
-class ProfileMenuViewModel(
+class ProfileMenuViewModel @Inject constructor(
     getLoginUserUseCase: GetLoginUserUseCase,
     private val changeLoginUserNameUseCase: ChangeLoginUserNameUseCase,
     private val changeLoginUserMarriageDateUseCase: ChangeLoginUserMarriageDateUseCase,

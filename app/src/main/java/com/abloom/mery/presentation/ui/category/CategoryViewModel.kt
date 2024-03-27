@@ -11,9 +11,10 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel(
+class CategoryViewModel @Inject constructor(
     getLoginUserUseCase: GetLoginUserUseCase,
     getAvailableQuestionsUseCase: GetAvailableQuestionsUseCase
 ) : ViewModel() {

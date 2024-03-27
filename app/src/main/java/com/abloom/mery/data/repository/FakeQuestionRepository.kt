@@ -32,6 +32,7 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
     override fun getQuestion(id: Long): Flow<Question> = QUESTIONS.map { it.first { it.id == id } }
 
     companion object {
+
         val QUESTIONS = MutableStateFlow(
             listOf(
                 Question(
@@ -185,10 +186,26 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     id = 110L
                 ),
 
-                Question(category = Category.VALUES, content = "결혼을 한다는 것은 당신에게 어떤 의미인가요?", id = 11L),
-                Question(category = Category.VALUES, content = "상대방과의 결혼을 결심한 순간은 언제였어요?", id = 12L),
-                Question(category = Category.VALUES, content = "결혼을 하게 되면 뭐가 가장 좋을 것 같나요?", id = 13L),
-                Question(category = Category.VALUES, content = "결혼 생활에서 가장 걱정되는 것은 무엇인가요?", id = 14L),
+                Question(
+                    category = Category.VALUES,
+                    content = "결혼을 한다는 것은 당신에게 어떤 의미인가요?",
+                    id = 11L
+                ),
+                Question(
+                    category = Category.VALUES,
+                    content = "상대방과의 결혼을 결심한 순간은 언제였어요?",
+                    id = 12L
+                ),
+                Question(
+                    category = Category.VALUES,
+                    content = "결혼을 하게 되면 뭐가 가장 좋을 것 같나요?",
+                    id = 13L
+                ),
+                Question(
+                    category = Category.VALUES,
+                    content = "결혼 생활에서 가장 걱정되는 것은 무엇인가요?",
+                    id = 14L
+                ),
                 Question(
                     category = Category.VALUES,
                     content = "결혼으로 인해 삶에서 변할 것 같은 세가지를 무엇인가요?",
@@ -227,7 +244,11 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     id = 164L
                 ),
                 Question(category = Category.FUTURE, content = "드림타가 있나요? 있다면 어떤 차인가요?", id = 165L),
-                Question(category = Category.FUTURE, content = "드림하우스가 있나요? 있다면 어떤 집인가요?", id = 166L),
+                Question(
+                    category = Category.FUTURE,
+                    content = "드림하우스가 있나요? 있다면 어떤 집인가요?",
+                    id = 166L
+                ),
                 Question(
                     category = Category.FUTURE,
                     content = "우리나라 말고 살아보고 싶은 나라가 있나요? 있다면 어디인가요?",
@@ -270,7 +291,11 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     content = "아직까지 말한 적이 없는 비밀을 하나만 상대방에게 알려주세요.",
                     id = 180L
                 ),
-                Question(category = Category.PRESENT, content = "지금 가지고 계신 가장 큰 고민이 무엇인가요?", id = 181L),
+                Question(
+                    category = Category.PRESENT,
+                    content = "지금 가지고 계신 가장 큰 고민이 무엇인가요?",
+                    id = 181L
+                ),
                 Question(
                     category = Category.PRESENT,
                     content = "제일 좋아하는 영화가 무엇인가요? 왜 그 영화를 제일 좋아하세요?",
@@ -359,7 +384,11 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     content = "예전에 격었던 신체적인 또는 정신적인 건강 문제는 어떤 것들이 있어용?",
                     id = 136L
                 ),
-                Question(category = Category.HEALTH, content = "건강을 위해 특별히 하고 있는 운동이 있나요?", id = 140L),
+                Question(
+                    category = Category.HEALTH,
+                    content = "건강을 위해 특별히 하고 있는 운동이 있나요?",
+                    id = 140L
+                ),
                 Question(
                     category = Category.HEALTH,
                     content = "건강을 위해 특별히 챙겨먹는 음식이나 영양제 같은 것들이 있나요?",
@@ -370,7 +399,11 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     content = "건강을 위해 특별히 지키고 있는 생화습관이 있나요?",
                     id = 142L
                 ),
-                Question(category = Category.HEALTH, content = "가장 최근에 받은 건강검진 결과는 어땠나요?", id = 143L),
+                Question(
+                    category = Category.HEALTH,
+                    content = "가장 최근에 받은 건강검진 결과는 어땠나요?",
+                    id = 143L
+                ),
                 Question(
                     category = Category.HEALTH,
                     content = "성병에 걸린 적이 있으신가용? 있다면 어쩌다가 걸리셨나요? 치료는 잘 하셨나요?",
@@ -417,7 +450,11 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     content = "주례, 사회, 축가를 부탁한다면 각각 어느 분께 부탁하는 게 좋을까요? 생각해둔 분이 계신가요?",
                     id = 153L
                 ),
-                Question(category = Category.WEDDING, content = "신혼여행은 어디로 몇 박 며칠 가고 싶어요?", id = 154L),
+                Question(
+                    category = Category.WEDDING,
+                    content = "신혼여행은 어디로 몇 박 며칠 가고 싶어요?",
+                    id = 154L
+                ),
 
                 Question(
                     category = Category.PAST,
@@ -429,8 +466,16 @@ class FakeQuestionRepository @Inject constructor() : QuestionRepository {
                     content = "두 분이 함께한 순간 중 가장 기억에 남는 순간은 언제예요?",
                     id = 187L
                 ),
-                Question(category = Category.PAST, content = "두 분이 만난 날 중 가장 좋았던 날은 언제예요?", id = 188L),
-                Question(category = Category.PAST, content = "두 분이 만난 날 중 가장 싫었던 날은 언제예요?", id = 189L),
+                Question(
+                    category = Category.PAST,
+                    content = "두 분이 만난 날 중 가장 좋았던 날은 언제예요?",
+                    id = 188L
+                ),
+                Question(
+                    category = Category.PAST,
+                    content = "두 분이 만난 날 중 가장 싫었던 날은 언제예요?",
+                    id = 189L
+                ),
                 Question(
                     category = Category.PAST,
                     content = "자신의 어린 시절과 가장 잘 어울리는 단어를 한 가지만 말해주세요. 왜 그 단어인가요?",

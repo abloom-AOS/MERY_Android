@@ -10,9 +10,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel(
+class SignUpViewModel @Inject constructor(
     private val joinUseCase: JoinUseCase
 ) : ViewModel() {
 

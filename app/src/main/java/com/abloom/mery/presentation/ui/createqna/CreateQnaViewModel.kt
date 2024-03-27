@@ -8,9 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
 @HiltViewModel
-class CreateQnaViewModel(
+class CreateQnaViewModel @Inject constructor(
     getTodayRecommendationQuestionUseCase: GetTodayRecommendationQuestionUseCase
 ) : ViewModel() {
 

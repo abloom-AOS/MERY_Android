@@ -15,9 +15,10 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class QnaViewModel(
+class QnaViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     getQnaUseCase: GetQnaUseCase,
     private val respondToQnaUseCase: RespondToQnaUseCase
