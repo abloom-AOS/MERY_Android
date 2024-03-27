@@ -8,13 +8,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abloom.mery.LoginDialogFragment
 import com.abloom.mery.R
 import com.abloom.mery.categorytest.CategoryViewModel
 import com.abloom.mery.categorytest.Question
 import com.abloom.mery.databinding.FragmentCategoryBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
-import com.abloom.mery.presentation.common.util.onTabSelected
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -34,7 +32,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         binding.appbarCategory.setOnNavigationClick {
             findNavController().popBackStack()
         }
-        viewModel.isLoginCheck()
+        viewModel.isCheckLogin()
         setupIsLogin()
         setCategoryAdapter(isLogin)
         observeCategory()
@@ -115,7 +113,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private fun initListener() {
 
         binding.tvLoginTag.setOnClickListener {
-            showLoginDialog()
+            //TODO("Home화면으로 이동 로직 구현")
         }
 
         binding.tb.onTabSelected {
@@ -206,14 +204,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
                 CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
             findNavController().navigate(action)
         }
-    }
-
-    private fun showLoginDialog() {
-        val bottomSheetFragment = LoginDialogFragment()
-        bottomSheetFragment.show(
-            requireActivity().supportFragmentManager,
-            LoginDialogFragment().tag
-        )
     }
 
     companion object {

@@ -13,5 +13,5 @@ class CategoryRepository {
         return filteredQuestions
     }
 
-    fun isLoginCheck() = true
+    fun isCheckLogin() = true
 }
