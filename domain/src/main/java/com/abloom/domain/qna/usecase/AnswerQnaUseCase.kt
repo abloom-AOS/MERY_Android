@@ -9,8 +9,11 @@ class AnswerQnaUseCase @Inject constructor(
     private val prospectiveCoupleQnaRepository: ProspectiveCoupleQnaRepository
 ) {
 
-    suspend operator fun invoke(qna: Qna, answer: Answer) {
-        require(!qna.isLoginUserAnswered) { "로그인 유저가 답변하지 않았을 때만 답변할 수 있습니다." }
-        prospectiveCoupleQnaRepository.answerQna(qna.questionId, answer)
+    /**
+     * 만약 해당 질문에 대한 문답이 없으면 문답을 생성합니다.
+     * 만약 이미 질문에 대한 대답이 있으면 대답을 갱신하지 않고 새 대답을 무시합니다.
+     */
+    suspend operator fun invoke(questionId: Long, answer: Answer) {
+        prospectiveCoupleQnaRepository.answerQna(questionId, answer)
     }
 }
