@@ -13,7 +13,7 @@
         tools:context=".presentation.ui.signup.InputNameFragment">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/input_name_guide_text"
             style="@style/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/input_name_guide_detail_text"
             style="@style/caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,56 +35,28 @@
             android:text="@string/input_name_guide_detail_text"
             android:textColor="@color/neutral_70"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/input_name_guide_text" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/signup_input_name_edit_text"
+            app:endIconDrawable="@drawable/edit_text_clear_img"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintTop_toBottomOf="@+id/input_name_guide_detail_text">
 
-            <ImageView
-                android:id="@+id/editText_clear_but"
-                android:layout_width="48dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:contentDescription="clear_editText"
-                android:padding="10dp"
-                android:src="@drawable/edit_text_clear_img"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/editText"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:background="@null"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_name_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:hint="@string/input_name_edit_text_hint_text"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColorHint="#49454F"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editText_clear_but"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:maxLength="10" />
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

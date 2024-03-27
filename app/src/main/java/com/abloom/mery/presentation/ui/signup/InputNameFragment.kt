@@ -23,15 +23,11 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
 
     private fun initSaveEditTextName() {
         if (sharedViewModel.staticName != NULL_STRING)
-            binding.editText.setText(sharedViewModel.staticName)
+            binding.inputNameEditText.setText(sharedViewModel.staticName)
     }
 
     private fun initListener() {
-        binding.editTextClearBut.setOnClickListener {
-            clearInputName()
-        }
-
-        binding.editText.addTextChangedListener(object : TextWatcher {
+        binding.inputNameEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -40,10 +36,6 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
                 sharedViewModel.setName(s.toString())
             }
         })
-    }
-
-    private fun clearInputName() {
-        binding.editText.editableText.clear()
     }
 
     companion object {
