@@ -1,7 +1,6 @@
 package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.abloom.mery.R
@@ -17,11 +16,23 @@ class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListener()
+        initSavedDate()
+    }
 
+    private fun initListener() {
         binding.datePicker.setWheelListener(object : DatePickerView.Listener {
             override fun didSelectData(year: Int, month: Int, day: Int) {
-                Log.e("TAG", "$year $month $day")
+                sharedViewModel.setMarryDate(MarryDate(year, month, day))
             }
         })
     }
+
+    private fun initSavedDate() {
+        sharedViewModel.staticMarryDate?.let { savedDate ->
+            binding.datePicker.setDate(savedDate.year, savedDate.month, savedDate.day)
+        }
+    }
+
+
 }

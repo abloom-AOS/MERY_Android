@@ -29,7 +29,6 @@ class SharedViewModel @Inject constructor(
         this.dynamicName.value = userName
     }
 
-    fun getMarryDate() = dynamicMarryDate
     fun setMarryDate(marryDate: MarryDate) {
         this.dynamicMarryDate.value = marryDate
     }
