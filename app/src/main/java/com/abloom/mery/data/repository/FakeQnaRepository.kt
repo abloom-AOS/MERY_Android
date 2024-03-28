@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Singleton
 class FakeQnaRepository @Inject constructor() : ProspectiveCoupleQnaRepository {
 
-    private val qnas = MutableStateFlow<List<Qna>>(
+    private val qnas = MutableStateFlow(
         listOf(
             Qna.create(
                 question = Question(
@@ -267,6 +267,7 @@ class FakeQnaRepository @Inject constructor() : ProspectiveCoupleQnaRepository {
                 loginUserResponse = response
             )
         }
+        this.qnas.value = this.qnas.value.filter { it.question.id != qna.question.id }
         this.qnas.value += qna
     }
 }
