@@ -5,33 +5,270 @@
 
     <data>
 
+        <import type="com.abloom.domain.qna.model.UnconnectedQna" />
+
+        <import type="com.abloom.domain.qna.model.UnfinishedAnswerQna" />
+
+        <variable
+            name="qna"
+            type="com.abloom.domain.qna.model.Qna" />
+
+        <variable
+            name="onWriteAnswerButtonClick"
+            type="kotlin.jvm.functions.Function0" />
+
+        <variable
+            name="onConnectButtonClick"
+            type="kotlin.jvm.functions.Function0" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_page"
+        android:orientation="vertical"
         tools:context=".presentation.ui.qna.QnaFragment">
 
         <com.abloom.mery.presentation.common.view.MeryAppBar
             android:id="@+id/appbar_qna"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_close_button"
             app:title="@string/qna_title" />
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="연결하기"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp">
+
+                <TextView
+                    android:id="@+id/tv_qna_question"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingVertical="3dp"
+                    android:text="@{qna.question.content}"
+                    android:textAppearance="@style/body"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="돈을 어떤식으로 관리하고 있어? 저축, 투자, 소비 등의 비율이 어떻게 돼?" />
+
+                <TextView
+                    android:id="@+id/tv_qna_created_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:paddingVertical="3dp"
+                    android:textAppearance="@style/caption2"
+                    android:textColor="@color/neutral_50"
+                    app:date_text="@{qna.createdAt.toLocalDate()}"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_question"
+                    tools:text="2024년 11월 22일" />
+
+                <TextView
+                    android:id="@+id/tv_qna_login_user_answer_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:paddingVertical="3dp"
+                    android:text="@{@string/qna_answer_label_format(qna.loginUser.name)}"
+                    android:textAppearance="@style/body"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_created_at"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_created_at"
+                    tools:text="이지훈님의 대답" />
+
+                <TextView
+                    android:id="@+id/tv_qna_login_user_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:paddingVertical="2dp"
+                    android:textAppearance="@style/footnote"
+                    android:textColor="@color/neutral_50"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_login_user_answer_label"
+                    tools:text="나는 매달 모든 수익을 급여통장에 옮겨두고 있어. 이 중 50은 소비통장으로, 30은 저축통장으로, 20은 투자통장으로 옮겨서 각각 관리하고 있어. 주로 ISA를 이용해 저축을 하고 있고, 주식에 투자를 많이 하고 있는 편이야." />
+
+                <TextView
+                    android:id="@+id/tv_qna_write_answer_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:onClick="@{() -> onWriteAnswerButtonClick.invoke()}"
+                    android:paddingVertical="3dp"
+                    android:text="@string/qna_write_answer_button"
+                    android:textAppearance="@style/footnote"
+                    android:textColor="@color/neutral_50"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_login_user_answer" />
+
+                <TextView
+                    android:id="@+id/tv_qna_fiance_answer_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingVertical="3dp"
+                    android:textAppearance="@style/body"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_write_answer_button"
+                    tools:text="최지은님의 대답" />
+
+                <TextView
+                    android:id="@+id/tv_qna_fiance_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:paddingVertical="2dp"
+                    android:textAppearance="@style/footnote"
+                    android:textColor="@color/neutral_50"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_fiance_answer_label"
+                    tools:text="나는 소비가 우선이어서 막 체계적인 관리는 못하고 있는 것 같아 ㅎㅎ..... 대신 아껴서 소비하려고 하는 편이고 소비를 한 다음에 남는 돈을 저축도 하고 투자도 하고 있어!" />
+
+                <TextView
+                    android:id="@+id/tv_qna_connect_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:onClick="@{() -> onConnectButtonClick.invoke()}"
+                    android:paddingVertical="3dp"
+                    android:text="@string/qna_connect_button"
+                    android:textAppearance="@style/footnote"
+                    android:textColor="@color/neutral_50"
+                    android:textStyle="bold"
+                    app:is_visible="@{qna instanceof UnconnectedQna}"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_fiance_answer" />
+
+                <TextView
+                    android:id="@+id/tv_qna_responses_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingVertical="3dp"
+                    android:text="@string/qna_responses_label"
+                    android:textAppearance="@style/body"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_connect_button" />
+
+                <TextView
+                    android:id="@+id/tv_qna_response_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/qna_response_description"
+                    android:textAppearance="@style/footnote"
+                    android:textColor="@color/neutral_50"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_responses_label" />
+
+                <ImageView
+                    android:id="@+id/iv_qna_fiance_response"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_qna_response_result"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_qna_response_result"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@id/tv_qna_question"
+                    tools:src="@drawable/img_qna_lock_response"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_qna_fiance_response_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nps_regular"
+                    android:textColor="#5B5B5B"
+                    app:layout_constraintEnd_toEndOf="@id/iv_qna_fiance_response"
+                    app:layout_constraintStart_toStartOf="@id/iv_qna_fiance_response"
+                    app:layout_constraintTop_toBottomOf="@id/iv_qna_fiance_response"
+                    tools:text="잠겨있어요" />
+
+                <ImageView
+                    android:id="@+id/iv_qna_response_result"
+                    android:layout_width="124dp"
+                    android:layout_height="124dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_qna_login_user_response"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/iv_qna_fiance_response"
+                    app:layout_constraintTop_toBottomOf="@id/tv_qna_response_description"
+                    tools:src="@drawable/img_qna_lock_response"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_qna_response_result_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/nps_regular"
+                    android:textColor="#5B5B5B"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/iv_qna_response_result"
+                    app:layout_constraintStart_toStartOf="@id/iv_qna_response_result"
+                    app:layout_constraintTop_toBottomOf="@id/iv_qna_response_result"
+                    tools:text="잘하고 있어요" />
+
+                <ImageView
+                    android:id="@+id/iv_qna_login_user_response"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_qna_response_result"
+                    app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/iv_qna_response_result"
+                    tools:src="@drawable/img_qna_lock_response"
+                    android:importantForAccessibility="no" />
+                
+                <ImageView
+                    android:id="@+id/iv_qna_login_user_response_indicator"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_qna_login_user_response_indicator"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_qna_login_user_response"
+                    app:layout_constraintEnd_toEndOf="@id/iv_qna_login_user_response"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_qna_login_user_response_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nps_regular"
+                    android:textColor="#5B5B5B"
+                    app:layout_constraintEnd_toEndOf="@id/iv_qna_login_user_response"
+                    app:layout_constraintStart_toStartOf="@id/iv_qna_login_user_response"
+                    app:layout_constraintTop_toBottomOf="@id/iv_qna_login_user_response"
+                    tools:text="잠겨있어요" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>
