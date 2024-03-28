@@ -19,13 +19,13 @@ class GetAvailableQuestionsUseCase @Inject constructor(
      * Qna로 만들지 않은 질문만 사용가능합니다.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
-    operator fun invoke(): Flow<Map<Category, Question>> =
+    operator fun invoke(): Flow<Map<Category, List<Question>>> =
         qnaRepository.getQnas().flatMapLatest { qnas ->
             val unavailableQuestionIds = qnas.map { it.question.id }.toSet()
 
             questionRepository.getQuestions().map { questions ->
                 questions.filter { question -> question.id !in unavailableQuestionIds }
-                    .associateBy { question -> question.category }
+                    .groupBy { question -> question.category }
             }
         }
 }

@@ -26,7 +26,7 @@ class CategoryViewModel @Inject constructor(
             scope = viewModelScope
         )
 
-    val questions: StateFlow<Map<Category, Question>> = getAvailableQuestionsUseCase()
+    val questions: StateFlow<Map<Category, List<Question>>> = getAvailableQuestionsUseCase()
         .stateIn(
             initialValue = mapOf(),
             started = SharingStarted.WhileSubscribed(5_000),
