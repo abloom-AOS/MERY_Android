@@ -48,7 +48,9 @@ class ProfileMenuFragment :
 
     private fun navigateToWebView(url: WebViewUrl) {
         findNavController().navigate(
-            ProfileMenuFragmentDirections.actionProfileMenuFragmentToWebViewFragment(url)
+            ProfileMenuFragmentDirections.actionProfileMenuFragmentToWebViewFromProfileMenuFragment(
+                url
+            )
         )
     }
 
