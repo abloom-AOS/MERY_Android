@@ -24,6 +24,32 @@
     <string name="signup_title">가입하기</string>
 
     <string name="qna_title">우리의 문답</string>
+    <string name="qna_answer_label_format">%s님의 대답</string>
+    <string name="qna_request_answer_message_format">%s님의 답변을 확인해보려면 나의 답변도 작성해주세요.</string>
+    <string name="qna_write_answer_button">작성하기 ></string>
+    <string name="qna_unconnected_answer_label">상대방의 대답</string>
+    <string name="qna_unconnected_answer_description">상대방과 연결되어 있지 않아요. 연결되면 우리만의 문답을 함께 작성해갈 수 있어요.</string>
+    <string name="qna_fiance_answer_waiting_description">상대방의 답변을 기다리고 있어요. 답변이 작성되면 푸쉬 알림으로 알려드릴게요.</string>
+    <string name="qna_fiance_answer_locked_description">잠겨있어요!</string>
+    <string name="qna_connect_button">연결하기 ></string>
+    <string name="qna_responses_label">우리의 반응</string>
+    <string name="qna_response_description">둘 다 답변을 작성하면 우리만의 반응을 추가할 수 있어요.</string>
+    <string name="qna_good_response_label">좋아요</string>
+    <string name="qna_better_know_response_label">더 잘 알게 됐어요</string>
+    <string name="qna_lets_talk_response_label">대화해봐요</string>
+    <string name="qna_lets_find_response_label">더 찾아봐요</string>
+    <string name="qna_waiting_response_label">기다리고 있어요</string>
+    <string name="qna_locked_response_label">잠겨있어요</string>
+    <string name="qna_doing_well_response_result_label">잘하고 있어요</string>
+    <string name="qna_more_talk_response_result_label">이야기를 나눠보세요</string>
+    <string name="qna_more_find_response_result_label">더 자세히 알아보세요</string>
+    <string name="qna_response_select_dialog_close_button_description">반응 선택 다이얼로그 닫기 버튼</string>
+    <string name="qna_response_select_dialog_title">반응 선택하기</string>
+    <string name="qna_response_select_dialog_description">서로의 답변을 확인했나요?\n우리의 문답에 나의 반응을 추가해보세요.</string>
+    <string name="qna_response_select_dialog_good_button_description">좋아요 선택 버튼</string>
+    <string name="qna_response_select_dialog_better_know_button_description">더 잘 알게 됐어요 선택 버튼</string>
+    <string name="qna_response_select_dialog_lets_talk_button_description">대화해봐요 선택 버튼</string>
+    <string name="qna_response_select_dialog_lets_find_button_description">더 찾아봐요 선택 버튼</string>
 
     <string name="connect_title">상대방과 연결 관리</string>
 

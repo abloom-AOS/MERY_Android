@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.abloom.domain.qna.model.Response" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="viewModel"
+            type="com.abloom.mery.presentation.ui.qna.QnaViewModel" />
+
+        <variable
+            name="onCloseButtonClick"
+            type="kotlin.jvm.functions.Function0" />
+
+        <variable
+            name="onCompleteButtonClick"
+            type="kotlin.jvm.functions.Function1&lt;Response, Unit>" />
+    </data>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="348dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_qna_response_select_dialog_close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/qna_response_select_dialog_close_button_description"
+                android:onClick="@{() -> onCloseButtonClick.invoke()}"
+                android:padding="16dp"
+                android:src="@drawable/ic_response_select_dialog_close_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:paddingVertical="5dp"
+                android:text="@string/qna_response_select_dialog_title"
+                android:textAppearance="@style/title3"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingVertical="4dp"
+                android:text="@string/qna_response_select_dialog_description"
+                android:textAppearance="@style/subheadline"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_qna_response_select_dialog_title" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+            <ImageView
+                android:id="@+id/iv_qna_response_select_dialog_good_response"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/qna_response_select_dialog_good_button_description"
+                android:maxWidth="124dp"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.GOOD)}"
+                android:src="@drawable/img_qna_good_response"
+                app:alpha="@{viewModel.selectedResponse == Response.GOOD ? 1.0f : 0.4f}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical_center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_qna_response_select_dialog_description" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_good_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nps_regular"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.GOOD)}"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:text="@string/qna_good_response_label"
+                android:textColor="#5B5B5B"
+                app:alpha="@{viewModel.selectedResponse == Response.GOOD ? 1.0f : 0.4f}"
+                app:layout_constraintEnd_toEndOf="@id/iv_qna_response_select_dialog_good_response"
+                app:layout_constraintStart_toStartOf="@id/iv_qna_response_select_dialog_good_response"
+                app:layout_constraintTop_toBottomOf="@id/iv_qna_response_select_dialog_good_response" />
+
+            <ImageView
+                android:id="@+id/iv_qna_response_select_dialog_better_know_response"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="35dp"
+                android:contentDescription="@string/qna_response_select_dialog_better_know_button_description"
+                android:maxWidth="124dp"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.BETTER_KNOW)}"
+                android:src="@drawable/img_qna_better_know_response"
+                app:alpha="@{viewModel.selectedResponse == Response.BETTER_KNOW ? 1.0f : 0.4f}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_vertical_center"
+                app:layout_constraintTop_toTopOf="@id/iv_qna_response_select_dialog_good_response" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_better_know"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nps_regular"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.BETTER_KNOW)}"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:text="@string/qna_better_know_response_label"
+                android:textColor="#5B5B5B"
+                app:alpha="@{viewModel.selectedResponse == Response.BETTER_KNOW ? 1.0f : 0.4f}"
+                app:layout_constraintEnd_toEndOf="@id/iv_qna_response_select_dialog_better_know_response"
+                app:layout_constraintStart_toStartOf="@id/iv_qna_response_select_dialog_better_know_response"
+                app:layout_constraintTop_toBottomOf="@id/iv_qna_response_select_dialog_better_know_response" />
+
+            <ImageView
+                android:id="@+id/iv_qna_response_select_dialog_lets_talk_response"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/qna_response_select_dialog_lets_talk_button_description"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.LETS_TALK)}"
+                android:src="@drawable/img_qna_lets_talk_response"
+                app:alpha="@{viewModel.selectedResponse == Response.LETS_TALK ? 1.0f : 0.4f}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/guideline_vertical_center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_qna_response_select_dialog_good_response" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_lets_talk_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nps_regular"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.LETS_TALK)}"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:text="@string/qna_lets_talk_response_label"
+                android:textColor="#5B5B5B"
+                app:alpha="@{viewModel.selectedResponse == Response.LETS_TALK ? 1.0f : 0.4f}"
+                app:layout_constraintEnd_toEndOf="@id/iv_qna_response_select_dialog_lets_talk_response"
+                app:layout_constraintStart_toStartOf="@id/iv_qna_response_select_dialog_lets_talk_response"
+                app:layout_constraintTop_toBottomOf="@id/iv_qna_response_select_dialog_lets_talk_response" />
+
+            <ImageView
+                android:id="@+id/iv_qna_response_select_dialog_lets_find_resopnse"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="35dp"
+                android:contentDescription="@string/qna_response_select_dialog_lets_find_button_description"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.LETS_FIND)}"
+                android:src="@drawable/img_qna_lets_find_response"
+                app:alpha="@{viewModel.selectedResponse == Response.LETS_FIND ? 1.0f : 0.4f}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline_vertical_center"
+                app:layout_constraintTop_toTopOf="@id/iv_qna_response_select_dialog_lets_talk_response" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_lets_find_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nps_regular"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.toggleResponse(Response.LETS_FIND)}"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:text="@string/qna_lets_find_response_label"
+                android:textColor="#5B5B5B"
+                app:alpha="@{viewModel.selectedResponse == Response.LETS_FIND ? 1.0f : 0.4f}"
+                app:layout_constraintEnd_toEndOf="@id/iv_qna_response_select_dialog_lets_find_resopnse"
+                app:layout_constraintStart_toStartOf="@id/iv_qna_response_select_dialog_lets_find_resopnse"
+                app:layout_constraintTop_toBottomOf="@id/iv_qna_response_select_dialog_lets_find_resopnse" />
+
+            <TextView
+                android:id="@+id/tv_qna_response_select_dialog_change_response_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/bg_all_primary_button_big"
+                android:enabled="@{viewModel.selectedResponse != null}"
+                android:gravity="center"
+                android:onClick="@{() -> onCompleteButtonClick.invoke(viewModel.selectedResponse)}"
+                android:paddingVertical="15dp"
+                android:text="@string/all_complete"
+                android:textAppearance="@style/callout"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_qna_response_select_dialog_lets_find_response" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
