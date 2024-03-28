@@ -27,6 +27,7 @@ sealed interface Qna {
                 createdAt = createdAt,
                 loginUser = loginUser,
                 loginUserAnswer = loginUserAnswer
+                    ?: throw IllegalArgumentException("연결되어 있지 않은 상태에서 답변 없이 문답을 생성할 수 없습니다.")
             )
 
             loginUserAnswer == null || fianceAnswer == null -> UnfinishedAnswerQna(

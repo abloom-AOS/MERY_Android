@@ -8,5 +8,5 @@ data class UnconnectedQna(
     override val question: Question,
     override val createdAt: LocalDateTime,
     override val loginUser: User,
-    val loginUserAnswer: Answer? = null
+    val loginUserAnswer: Answer
 ) : Qna
