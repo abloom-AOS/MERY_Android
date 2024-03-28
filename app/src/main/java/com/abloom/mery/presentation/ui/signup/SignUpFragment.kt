@@ -74,46 +74,49 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     private fun initListener() {
-        binding.appbarSignUp.setOnNavigationClick {
-            when (curStep) {
-                STEP_BRIDE_GROOM_SELECTION -> {
-                    childFragmentManager.beginTransaction()
-                        .remove(brideGroomSelectionFragment)
-                        .commit()
-                }
+        binding.appbarSignUp.setOnNavigationClick { navigateToPriorFragment() }
+        binding.appbarSignUp.setOnActionClick { navigateToNextFragment() }
+    }
 
-                STEP_MARRY_DATE_SELECTION -> {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, brideGroomSelectionFragment)
-                        .commit()
-                }
+    private fun navigateToNextFragment() {
+        when (curStep) {
+            STEP_BRIDE_GROOM_SELECTION -> {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView, marryDateFragment)
+                    .commit()
+            }
 
-                STEP_INPUT_NAME_SELECTION -> {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, marryDateFragment)
-                        .commit()
-                }
+            STEP_MARRY_DATE_SELECTION -> {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView, inputNameFragment)
+                    .commit()
+            }
+
+            STEP_INPUT_NAME_SELECTION -> {
+                //TODO("STEP 04 약간 동의 화면으로 이동)
             }
         }
-        binding.appbarSignUp.setOnActionClick {
-            when (curStep) {
-                STEP_BRIDE_GROOM_SELECTION -> {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, marryDateFragment)
-                        .commit()
-                }
+    }
 
-                STEP_MARRY_DATE_SELECTION -> {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, inputNameFragment)
-                        .commit()
-                }
-
-                STEP_INPUT_NAME_SELECTION -> {
-                    //TODO("STEP 04 약간 동의 화면으로 이동)
-                }
+    private fun navigateToPriorFragment() {
+        when (curStep) {
+            STEP_BRIDE_GROOM_SELECTION -> {
+                childFragmentManager.beginTransaction()
+                    .remove(brideGroomSelectionFragment)
+                    .commit()
             }
 
+            STEP_MARRY_DATE_SELECTION -> {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView, brideGroomSelectionFragment)
+                    .commit()
+            }
+
+            STEP_INPUT_NAME_SELECTION -> {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView, marryDateFragment)
+                    .commit()
+            }
         }
     }
 
