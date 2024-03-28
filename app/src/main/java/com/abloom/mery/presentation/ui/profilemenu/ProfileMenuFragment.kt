@@ -40,18 +40,10 @@ class ProfileMenuFragment :
     private fun setupDataBinding() {
         binding.viewModel = viewModel
         binding.onProfileUpdateButtonClick = {
-            if (viewModel.loginUser.value == null) {
-                showLoginDialog()
-            } else {
-                showProfileUpdateDialog()
-            }
+            if (viewModel.loginUser.value == null) showLoginDialog() else showProfileUpdateDialog()
         }
         binding.onConnectSettingButtonClick = {
-            if (viewModel.loginUser.value == null) {
-                showLoginDialog()
-            } else {
-                navigateToConnect()
-            }
+            if (viewModel.loginUser.value == null) showLoginDialog() else navigateToConnect()
         }
         binding.onNavigateToWebViewButtonClick = ::navigateToWebView
     }
@@ -76,9 +68,8 @@ class ProfileMenuFragment :
 
     private fun navigateToWebView(url: WebViewUrl) {
         findNavController().navigate(
-            ProfileMenuFragmentDirections.actionProfileMenuFragmentToWebViewFromProfileMenuFragment(
-                url
-            )
+            ProfileMenuFragmentDirections
+                .actionProfileMenuFragmentToWebViewFromProfileMenuFragment(url)
         )
     }
 
@@ -87,6 +78,11 @@ class ProfileMenuFragment :
     }
 
     private fun handleLoginUser(user: User?) {
+        updateUserImage(user)
+        updateMarriageDate(user)
+    }
+
+    private fun updateUserImage(user: User?) {
         binding.ivProfilemenuUserImage.setImageDrawable(
             when {
                 user == null -> ContextCompat.getDrawable(
@@ -107,7 +103,9 @@ class ProfileMenuFragment :
                 else -> throw AssertionError("여기까지 올리가 없음.")
             }
         )
+    }
 
+    private fun updateMarriageDate(user: User?) {
         binding.tvProfilemenuMarriageDate.text = if (user == null) {
             getString(R.string.profilemenu_request_login_for_marriage_date)
         } else {
@@ -127,10 +125,10 @@ class ProfileMenuFragment :
     }
 
     private fun observeLoginUserDescriptionUi() {
-        repeatOnStarted { viewModel.loginUserDescriptionUiState.collect(::handleLoginUserDescriptionUi) }
+        repeatOnStarted { viewModel.loginUserDescriptionUiState.collect(::updateLoginUserDescriptionUi) }
     }
 
-    private fun handleLoginUserDescriptionUi(description: LoginUserDescriptionUiState) {
+    private fun updateLoginUserDescriptionUi(description: LoginUserDescriptionUiState) {
         binding.tvProfilemenuLoginUserDescription.text = when (description) {
             LoginUserDescriptionUiState.NotLogin -> getString(R.string.profilemenu_press_and_login_button)
             LoginUserDescriptionUiState.NotConnected -> getString(R.string.profilemenu_press_and_connect)
