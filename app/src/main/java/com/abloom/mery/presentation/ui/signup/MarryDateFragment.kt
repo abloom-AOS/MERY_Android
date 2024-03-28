@@ -2,6 +2,7 @@ package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentMarryDateBinding
@@ -13,7 +14,7 @@ import java.time.LocalDate
 @AndroidEntryPoint
 class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragment_marry_date) {
 
-    private val signUpViewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signup_nav_graph)
+    private val signUpViewModel: SignUpViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

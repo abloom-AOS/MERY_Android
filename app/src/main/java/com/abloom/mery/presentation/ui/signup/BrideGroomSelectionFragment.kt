@@ -1,7 +1,9 @@
 package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import com.abloom.domain.user.model.Sex
@@ -14,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class BrideGroomSelectionFragment :
     BaseFragment<FragmentBrideGroomSelectionBinding>(R.layout.fragment_bride_groom_selection) {
 
-    private val signUpViewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signup_nav_graph)
+    private val signUpViewModel: SignUpViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +46,6 @@ class BrideGroomSelectionFragment :
     }
 
     private fun moveToMarryDateFragment() {
-        findNavController().navigate(
-            R.id.action_brideGroomSelectionFragment_to_marryDateFragment
-        )
+
     }
 }
