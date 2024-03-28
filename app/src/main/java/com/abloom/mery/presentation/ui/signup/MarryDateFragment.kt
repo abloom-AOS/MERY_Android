@@ -24,7 +24,7 @@ class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragme
     private fun initListener() {
         binding.datePicker.setWheelListener(object : DatePickerView.Listener {
             override fun didSelectData(year: Int, month: Int, day: Int) {
-                if (checkDateRange(month + 1, day)) {
+                if (isValidDate(year, month + 1, day)) {
                     val marriageDate = LocalDate.of(year, month + 1, day)
                     signUpViewModel.selectMarriageDate(marriageDate)
                 }
@@ -32,19 +32,19 @@ class MarryDateFragment : BaseFragment<FragmentMarryDateBinding>(R.layout.fragme
         })
     }
 
-    private fun checkDateRange(month: Int, day: Int) =
-        ((month in MONTH_RANGE_MIN..MONTH_RANGE_MAX) && (day in DAY_RANGE_MIN..DAY_RANGE_MAX))
+    fun isValidDate(year: Int, month: Int, day: Int): Boolean {
+        if (month !in 1..12) return false
+        val maxDaysInMonth = when (month) {
+            2 -> if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) 29 else 28
+            4, 6, 9, 11 -> 30
+            else -> 31
+        }
+        return day in 1..maxDaysInMonth
+    }
 
     private fun initSavedDate() {
         val dayValue = signUpViewModel.selectedMarriage.value
         binding.datePicker.setDate(dayValue.year, dayValue.monthValue - 1, dayValue.dayOfMonth)
-    }
-
-    companion object {
-        private const val MONTH_RANGE_MIN = 1
-        private const val MONTH_RANGE_MAX = 12
-        private const val DAY_RANGE_MIN = 1
-        private const val DAY_RANGE_MAX = 31
     }
 
 }
