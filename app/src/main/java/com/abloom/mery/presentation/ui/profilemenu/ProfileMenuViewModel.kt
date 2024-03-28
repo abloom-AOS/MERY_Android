@@ -8,6 +8,7 @@ import com.abloom.domain.user.usecase.ChangeLoginUserNameUseCase
 import com.abloom.domain.user.usecase.GetFianceUseCase
 import com.abloom.domain.user.usecase.GetLoginUserUseCase
 import com.abloom.domain.user.usecase.LogoutUseCase
+import com.abloom.mery.BuildConfig
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -44,6 +45,8 @@ class ProfileMenuViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             scope = viewModelScope
         )
+
+    val appVersion: String = BuildConfig.VERSION_NAME
 
     fun changeName(name: String) = viewModelScope.launch {
         changeLoginUserNameUseCase(name)

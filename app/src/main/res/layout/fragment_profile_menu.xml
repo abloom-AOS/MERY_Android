@@ -313,6 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
+                    android:text="@{viewModel.appVersion}"
                     android:textAppearance="@style/footnote"
                     android:textColor="@color/neutral_40"
                     app:layout_constraintBottom_toBottomOf="@id/tv_profilemenu_service_version_label"
