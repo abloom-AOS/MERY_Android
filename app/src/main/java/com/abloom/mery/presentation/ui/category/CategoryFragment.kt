@@ -8,11 +8,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abloom.domain.question.model.Category
+import com.abloom.domain.question.model.Question
 import com.abloom.mery.R
-import com.abloom.mery.categorytest.CategoryViewModel
-import com.abloom.mery.categorytest.Question
 import com.abloom.mery.databinding.FragmentCategoryBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
+import com.abloom.mery.presentation.common.util.repeatOnStarted
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -24,32 +25,31 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private lateinit var categoryAdapter: CategoryAdapter
     private val categoryViewModel: CategoryViewModel by viewModels()
     private val args: CategoryFragmentArgs by navArgs()
-    private var isLogin = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        categoryViewModel.isCheckLogin()
         setupIsLogin()
         setCategoryAdapter()
-        observeCategory()
         setupSelectedTabItem(args.category)
         setupListener()
     }
 
     private fun setupIsLogin() {
-        categoryViewModel.isLogin.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.clNologin.visibility = View.INVISIBLE
-                    isLogin = it
+
+        repeatOnStarted {
+            categoryViewModel.isLogin.collect { isLogin ->
+                when (isLogin) {
+                    true -> {
+                        binding.clNologin.visibility = View.INVISIBLE
+                    }
+
+                    false -> {
+                        binding.clNologin.visibility = View.VISIBLE
+                        binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    }
                 }
 
-                false -> {
-                    binding.clNologin.visibility = View.VISIBLE
-                    binding.tvLoginTag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    isLogin = it
-                }
             }
         }
     }
@@ -57,18 +57,64 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
     private fun setupSelectedTabItem(categoryArgs: CategoryArgs) {
 
         when (categoryArgs) {
-            CategoryArgs.FINANCE ->  selectTabItem(CategoryArgs.FINANCE.categoryName, FINANCE_TABITEM_POSION)
-            CategoryArgs.COMMUNICATION -> selectTabItem(CategoryArgs.COMMUNICATION.categoryName, COMMUNICATION_TABITEM_POSION)
-            CategoryArgs.VALUES -> selectTabItem(CategoryArgs.VALUES.categoryName, VALUES_TABITEM_POSION)
-            CategoryArgs.LIFESTYLE -> selectTabItem(CategoryArgs.LIFESTYLE.categoryName, LIFESTYLE_TABITEM_POSION)
-            CategoryArgs.CHILDREN -> selectTabItem(CategoryArgs.CHILDREN.categoryName, CHILD_TABITEM_POSION)
-            CategoryArgs.FAMILY -> selectTabItem(CategoryArgs.FAMILY.categoryName, FAMILY_TABITEM_POSION)
-            CategoryArgs.SEX -> selectTabItem(CategoryArgs.SEX.categoryName, SEX_TABITEM_POSION)
-            CategoryArgs.HEALTH -> selectTabItem(CategoryArgs.HEALTH.categoryName, HEALTH_TABITEM_POSION)
-            CategoryArgs.WEDDING -> selectTabItem(CategoryArgs.WEDDING.categoryName, WEDDING_TABITEM_POSION)
-            CategoryArgs.FUTURE -> selectTabItem(CategoryArgs.FUTURE.categoryName, FUTURE_TABITEM_POSION)
-            CategoryArgs.PRESENT -> selectTabItem(CategoryArgs.PRESENT.categoryName, PRESENT_TABITEM_POSION)
-            CategoryArgs.PAST -> selectTabItem(CategoryArgs.PAST.categoryName, PAST_TABITEM_POSION)
+            CategoryArgs.FINANCE ->
+                selectTabItem(
+                    Category.FINANCE,
+                    FINANCE_TABITEM_POSION
+                )
+
+            CategoryArgs.COMMUNICATION -> selectTabItem(
+                Category.COMMUNICATION,
+                COMMUNICATION_TABITEM_POSION
+            )
+
+            CategoryArgs.VALUES -> selectTabItem(
+                Category.VALUES,
+                VALUES_TABITEM_POSION
+            )
+
+            CategoryArgs.LIFESTYLE -> selectTabItem(
+                Category.LIFESTYLE,
+                LIFESTYLE_TABITEM_POSION
+            )
+
+            CategoryArgs.CHILDREN -> selectTabItem(
+                Category.CHILD,
+                CHILD_TABITEM_POSION
+            )
+
+            CategoryArgs.FAMILY -> selectTabItem(
+                Category.FAMILY,
+                FAMILY_TABITEM_POSION
+            )
+
+            CategoryArgs.SEX -> selectTabItem(
+                Category.SEX, SEX_TABITEM_POSION
+            )
+
+            CategoryArgs.HEALTH -> selectTabItem(
+                Category.HEALTH,
+                HEALTH_TABITEM_POSION
+            )
+
+            CategoryArgs.WEDDING -> selectTabItem(
+                Category.WEDDING,
+                WEDDING_TABITEM_POSION
+            )
+
+            CategoryArgs.FUTURE -> selectTabItem(
+                Category.FUTURE,
+                FUTURE_TABITEM_POSION
+            )
+
+            CategoryArgs.PRESENT -> selectTabItem(
+                Category.PRESENT,
+                PRESENT_TABITEM_POSION
+            )
+
+            CategoryArgs.PAST -> selectTabItem(
+                Category.PAST, PAST_TABITEM_POSION
+            )
         }
     }
 
@@ -83,62 +129,60 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
             findNavController().popBackStack(R.id.homeFragment, false)
         }
 
-        binding.tb.onTabSelected {
-            when (it.position) {
-                FINANCE_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("finance")
-                }
+        binding.tb.onTabSelected { tab ->
+            repeatOnStarted {
+                categoryViewModel.questions.collect { map ->
+                    when (tab.position) {
+                        FINANCE_TABITEM_POSION -> {
+                            map[Category.FINANCE]?.let { categoryAdapter.setData(it) }
+                        }
 
-                COMMUNICATION_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("communication")
-                }
+                        COMMUNICATION_TABITEM_POSION -> {
+                            map[Category.COMMUNICATION]?.let { categoryAdapter.setData(it) }
+                        }
 
-                VALUES_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("values")
-                }
+                        VALUES_TABITEM_POSION -> {
+                            map[Category.VALUES]?.let { categoryAdapter.setData(it) }
+                        }
 
-                LIFESTYLE_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("lifestyle")
-                }
+                        LIFESTYLE_TABITEM_POSION -> {
+                            map[Category.LIFESTYLE]?.let { categoryAdapter.setData(it) }
+                        }
 
-                CHILD_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("child")
-                }
+                        CHILD_TABITEM_POSION -> {
+                            map[Category.CHILD]?.let { categoryAdapter.setData(it) }
+                        }
 
-                FAMILY_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("family")
-                }
+                        FAMILY_TABITEM_POSION -> {
+                            map[Category.FAMILY]?.let { categoryAdapter.setData(it) }
+                        }
 
-                SEX_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("sex")
-                }
+                        SEX_TABITEM_POSION -> {
+                            map[Category.SEX]?.let { categoryAdapter.setData(it) }
+                        }
 
-                HEALTH_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("health")
-                }
+                        HEALTH_TABITEM_POSION -> {
+                            map[Category.HEALTH]?.let { categoryAdapter.setData(it) }
+                        }
 
-                WEDDING_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("wedding")
-                }
+                        WEDDING_TABITEM_POSION -> {
+                            map[Category.WEDDING]?.let { categoryAdapter.setData(it) }
+                        }
 
-                FUTURE_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("future")
-                }
+                        FUTURE_TABITEM_POSION -> {
+                            map[Category.FUTURE]?.let { categoryAdapter.setData(it) }
+                        }
 
-                PRESENT_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("present")
-                }
+                        PRESENT_TABITEM_POSION -> {
+                            map[Category.PRESENT]?.let { categoryAdapter.setData(it) }
+                        }
 
-                PAST_TABITEM_POSION -> {
-                    categoryViewModel.requestQuestion("past")
+                        PAST_TABITEM_POSION -> {
+                            map[Category.PAST]?.let { categoryAdapter.setData(it) }
+                        }
+                    }
                 }
             }
-        }
-    }
-
-    private fun observeCategory() {
-        categoryViewModel.questions.observe(viewLifecycleOwner) {
-            categoryAdapter.setData(it)
         }
     }
 
@@ -153,17 +197,23 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment
         }
     }
 
-    private fun selectTabItem(category: String, index: Int) {
+    private fun selectTabItem(category: Category, index: Int) {
         binding.tb.selectTab(binding.tb.getTabAt(index))
         lifecycleScope.launch(Dispatchers.Main) {
             binding.tb.setScrollPosition(index, 0f, false)
         }
-        categoryViewModel.requestQuestion(category)
+        repeatOnStarted {
+            categoryViewModel.questions.collect { map ->
+                map[category]?.let { questions ->
+                    categoryAdapter.setData(questions) }
+
+            }
+        }
     }
 
     private fun onCategoryItemClick(question: Question) {
         val action =
-            CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.questionId)
+            CategoryFragmentDirections.actionGlobalWriteAnswerFragment(question.id)
         findNavController().navigate(action)
     }
 

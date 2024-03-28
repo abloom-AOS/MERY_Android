@@ -1,16 +1,14 @@
 package com.abloom.mery.presentation.ui.category
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abloom.mery.categorytest.Question
+import com.abloom.domain.question.model.Question
 
 class CategoryAdapter(
     private val onCategoryItemClick: (quest: Question) -> Unit
-    //    private val categoryRecyclerListener: CategoryRecyclerListener
 ) : RecyclerView.Adapter<CategoryViewHolder>() {
 
-    private var questionList = arrayListOf<Question>()
+    private var questionList = listOf<Question>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder.from(parent, onCategoryItemClick)
@@ -22,7 +20,7 @@ class CategoryAdapter(
         holder.bind(questionList[position])
     }
 
-    fun setData(movies: ArrayList<Question>) {
+    fun setData(movies: List<Question>) {
         this.questionList = movies
         notifyDataSetChanged()
     }

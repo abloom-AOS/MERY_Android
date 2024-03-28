@@ -3,7 +3,7 @@ package com.abloom.mery.presentation.ui.category
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abloom.mery.categorytest.Question
+import com.abloom.domain.question.model.Question
 import com.abloom.mery.databinding.ItemCategoryBinding
 
 class CategoryViewHolder(
