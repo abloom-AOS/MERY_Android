@@ -32,7 +32,6 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
 
         setupAppBar()
         setupDataBinding()
-        setupAppBar()
 
         observeQna()
     }
@@ -46,6 +45,7 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
     private fun setupDataBinding() {
         binding.onWriteAnswerButtonClick = ::navigateToWriteAnswer
         binding.onConnectButtonClick = ::navigateToConnect
+        binding.onResponseAddButtonClick = ::showResponseSelectDialog
     }
 
     private fun navigateToWriteAnswer() {
@@ -57,6 +57,10 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
 
     private fun navigateToConnect() {
         findNavController().navigate(QnaFragmentDirections.actionQnaFragmentToConnectFragment())
+    }
+
+    private fun showResponseSelectDialog() {
+        ResponseSelectDialog().show(childFragmentManager, ResponseSelectDialog.TAG)
     }
 
     private fun observeQna() {
