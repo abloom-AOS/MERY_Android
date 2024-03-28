@@ -8,3 +8,8 @@ import androidx.databinding.BindingAdapter
 fun View.setVisible(isVisible: Boolean) {
     this.isVisible = isVisible
 }
+
+@BindingAdapter("app:alpha")
+fun View.changeAlpha(alpha: Float) {
+    this.alpha = alpha
+}
