@@ -30,6 +30,7 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupAppBar()
         setupDataBinding()
         setupAppBar()
 
@@ -69,6 +70,15 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
     private fun handleQna(qna: Qna) {
         binding.qna = qna
 
+        updateLoginUserAnswer(qna)
+        updateWriteAnswerButton(qna)
+        updateFianceAnswer(qna)
+        updateFianceResponse(qna)
+        updateResponseResult(qna)
+        updateLoginUserResponse(qna)
+    }
+
+    private fun updateLoginUserAnswer(qna: Qna) {
         binding.tvQnaLoginUserAnswer.text = when (qna) {
             is UnconnectedQna -> qna.loginUserAnswer.value
             is UnfinishedAnswerQna -> if (qna.loginUserAnswer == null) {
@@ -80,10 +90,14 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
             is UnfinishedResponseQna -> qna.loginUserAnswer.value
             is FinishedQna -> qna.loginUserAnswer.value
         }
+    }
 
+    private fun updateWriteAnswerButton(qna: Qna) {
         binding.tvQnaWriteAnswerButton.isVisible =
             qna is UnfinishedAnswerQna && qna.loginUserAnswer == null
+    }
 
+    private fun updateFianceAnswer(qna: Qna) {
         binding.tvQnaFianceAnswerLabel.text = when (qna) {
             is UnconnectedQna -> getString(R.string.qna_unconnected_answer_label)
             is UnfinishedAnswerQna -> getString(R.string.qna_answer_label_format, qna.fiance.name)
@@ -102,7 +116,9 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
             is UnfinishedResponseQna -> qna.fianceAnswer.value
             is FinishedQna -> qna.fianceAnswer.value
         }
+    }
 
+    private fun updateFianceResponse(qna: Qna) {
         binding.ivQnaFianceResponse.setImageDrawable(
             when (qna) {
                 is UnconnectedQna -> ContextCompat.getDrawable(
@@ -144,7 +160,9 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
 
             is FinishedQna -> qna.fianceResponse.asText()
         }
+    }
 
+    private fun updateResponseResult(qna: Qna) {
         binding.ivQnaResponseResult.setImageDrawable(
             when (qna) {
                 is UnconnectedQna -> ContextCompat.getDrawable(
@@ -172,7 +190,9 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
             is UnfinishedResponseQna -> getString(R.string.qna_locked_response_label)
             is FinishedQna -> qna.responseResult.asText()
         }
+    }
 
+    private fun updateLoginUserResponse(qna: Qna) {
         binding.ivQnaLoginUserResponse.setImageDrawable(
             when (qna) {
                 is UnconnectedQna -> ContextCompat.getDrawable(
@@ -197,6 +217,9 @@ class QnaFragment : BaseFragment<FragmentQnaBinding>(R.layout.fragment_qna) {
                 is FinishedQna -> qna.loginUserResponse.asDrawable()
             }
         )
+
+        binding.ivQnaLoginUserResponse.isEnabled =
+            qna is UnfinishedResponseQna && qna.loginUserResponse == null
 
         binding.ivQnaLoginUserResponseIndicator.isVisible = when (qna) {
             is UnconnectedQna -> false
