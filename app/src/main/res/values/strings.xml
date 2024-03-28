@@ -43,6 +43,13 @@
     <string name="qna_doing_well_response_result_label">잘하고 있어요</string>
     <string name="qna_more_talk_response_result_label">이야기를 나눠보세요</string>
     <string name="qna_more_find_response_result_label">더 자세히 알아보세요</string>
+    <string name="qna_response_select_dialog_close_button_description">반응 선택 다이얼로그 닫기 버튼</string>
+    <string name="qna_response_select_dialog_title">반응 선택하기</string>
+    <string name="qna_response_select_dialog_description">서로의 답변을 확인했나요?\n우리의 문답에 나의 반응을 추가해보세요.</string>
+    <string name="qna_response_select_dialog_good_button_description">좋아요 선택 버튼</string>
+    <string name="qna_response_select_dialog_better_know_button_description">더 잘 알게 됐어요 선택 버튼</string>
+    <string name="qna_response_select_dialog_lets_talk_button_description">대화해봐요 선택 버튼</string>
+    <string name="qna_response_select_dialog_lets_find_button_description">더 찾아봐요 선택 버튼</string>
 
     <string name="connect_title">상대방과 연결 관리</string>
 
