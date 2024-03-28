@@ -193,12 +193,12 @@
                     android:id="@+id/iv_qna_fiance_response"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
+                    android:importantForAccessibility="no"
                     app:layout_constraintBottom_toBottomOf="@id/iv_qna_response_result"
                     app:layout_constraintEnd_toStartOf="@+id/iv_qna_response_result"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/tv_qna_question"
-                    tools:src="@drawable/img_qna_lock_response"
-                    android:importantForAccessibility="no" />
+                    tools:src="@drawable/img_qna_lock_response" />
 
                 <TextView
                     android:id="@+id/tv_qna_fiance_response_label"
@@ -217,11 +217,11 @@
                     android:layout_width="124dp"
                     android:layout_height="124dp"
                     android:layout_marginTop="30dp"
+                    android:importantForAccessibility="no"
                     app:layout_constraintEnd_toStartOf="@+id/iv_qna_login_user_response"
                     app:layout_constraintStart_toEndOf="@+id/iv_qna_fiance_response"
                     app:layout_constraintTop_toBottomOf="@id/tv_qna_response_description"
-                    tools:src="@drawable/img_qna_lock_response"
-                    android:importantForAccessibility="no" />
+                    tools:src="@drawable/img_qna_lock_response" />
 
                 <TextView
                     android:id="@+id/tv_qna_response_result_label"
@@ -240,21 +240,21 @@
                     android:id="@+id/iv_qna_login_user_response"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{() -> onResponseAddButtonClick.invoke()}"
                     app:layout_constraintBottom_toBottomOf="@id/iv_qna_response_result"
                     app:layout_constraintEnd_toEndOf="@id/tv_qna_question"
-                    android:onClick="@{() -> onResponseAddButtonClick.invoke()}"
                     app:layout_constraintStart_toEndOf="@+id/iv_qna_response_result"
-                    tools:src="@drawable/img_qna_lock_response"
-                    android:importantForAccessibility="no" />
-                
+                    tools:src="@drawable/img_qna_lock_response" />
+
                 <ImageView
                     android:id="@+id/iv_qna_login_user_response_indicator"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:importantForAccessibility="no"
                     android:src="@drawable/img_qna_login_user_response_indicator"
                     app:layout_constraintBottom_toBottomOf="@id/iv_qna_login_user_response"
-                    app:layout_constraintEnd_toEndOf="@id/iv_qna_login_user_response"
-                    android:importantForAccessibility="no" />
+                    app:layout_constraintEnd_toEndOf="@id/iv_qna_login_user_response" />
 
                 <TextView
                     android:id="@+id/tv_qna_login_user_response_label"
