@@ -5,7 +5,7 @@
     <data>
         <variable
             name="question"
-            type="com.abloom.mery.categorytest.Question" />
+            type="com.abloom.domain.question.model.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
