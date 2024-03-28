@@ -2,8 +2,7 @@ package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
 import android.view.View
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import com.abloom.domain.user.model.Sex
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentBrideGroomSelectionBinding
@@ -14,31 +13,39 @@ import dagger.hilt.android.AndroidEntryPoint
 class BrideGroomSelectionFragment :
     BaseFragment<FragmentBrideGroomSelectionBinding>(R.layout.fragment_bride_groom_selection) {
 
-    private val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signup_nav_graph)
+    private val signUpViewModel: SignUpViewModel by viewModels({ requireParentFragment() })
+    private val step2 by lazy { MarryDateFragment() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
+        initBrideAndGroomSelection()
+    }
+
+    private fun initBrideAndGroomSelection() {
+        val selectedSex = signUpViewModel.selectedSex.value ?: return
+
+        when (selectedSex) {
+            Sex.MALE -> binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
+            Sex.FEMALE -> binding.brideBut.setBackgroundResource(R.drawable.signup_gender_selected)
+        }
     }
 
     private fun initListener() {
-
         binding.groomBut.setOnClickListener {
-            viewModel.selectSex(Sex.MALE)
+            signUpViewModel.selectSex(Sex.MALE)
             moveToMarryDateFragment()
-            binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
         }
 
         binding.brideBut.setOnClickListener {
-            viewModel.selectSex(Sex.FEMALE)
+            signUpViewModel.selectSex(Sex.FEMALE)
             moveToMarryDateFragment()
-            binding.brideBut.setBackgroundResource(R.drawable.signup_gender_selected)
         }
     }
 
     private fun moveToMarryDateFragment() {
-        findNavController().navigate(
-            R.id.action_brideGroomSelectionFragment_to_marryDateFragment
-        )
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, step2)
+            .commit()
     }
 }
