@@ -2,7 +2,6 @@ package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import com.abloom.domain.user.model.Sex
@@ -15,36 +14,32 @@ import dagger.hilt.android.AndroidEntryPoint
 class BrideGroomSelectionFragment :
     BaseFragment<FragmentBrideGroomSelectionBinding>(R.layout.fragment_bride_groom_selection) {
 
-    private val sharedViewModel: SharedViewModel by activityViewModels()
-    private val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signup_nav_graph)
+    private val signUpViewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.signup_nav_graph)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-        observeBrideAndGroomSelection()
+        initBrideAndGroomSelection()
     }
 
-    private fun observeBrideAndGroomSelection() {
-        sharedViewModel.getSex().observe(viewLifecycleOwner) { sex ->
-            if (sex)
-                binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
-            else
-                binding.brideBut.setBackgroundResource(R.drawable.signup_gender_selected)
+    private fun initBrideAndGroomSelection() {
+        val selectedSex = signUpViewModel.selectedSex.value ?: return
+
+        when (selectedSex) {
+            Sex.MALE -> binding.groomBut.setBackgroundResource(R.drawable.signup_gender_selected)
+            Sex.FEMALE -> binding.brideBut.setBackgroundResource(R.drawable.signup_gender_selected)
         }
     }
 
     private fun initListener() {
-
         binding.groomBut.setOnClickListener {
-            viewModel.selectSex(Sex.MALE)
+            signUpViewModel.selectSex(Sex.MALE)
             moveToMarryDateFragment()
-            sharedViewModel.setSex(true)
         }
 
         binding.brideBut.setOnClickListener {
-            viewModel.selectSex(Sex.FEMALE)
+            signUpViewModel.selectSex(Sex.FEMALE)
             moveToMarryDateFragment()
-            sharedViewModel.setSex(false)
         }
     }
 
