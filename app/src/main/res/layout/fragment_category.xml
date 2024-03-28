@@ -22,14 +22,168 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_up_button" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="답변 작성"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tb"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_category"
+            app:tabIndicator="@drawable/category_tabindicator"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabTextAppearance="@style/caption2">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_finance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_finance"
+                android:text="@string/category_finance" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_communication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_communication"
+                android:text="@string/category_communication" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_values"
+                android:text="@string/category_values" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_lifestyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_lifestyle"
+                android:text="@string/category_lifestyle" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_children"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_children"
+                android:text="@string/category_children" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_family"
+                android:text="@string/category_family" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_sex"
+                android:text="@string/category_sex" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_health"
+                android:text="@string/category_health" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_wedding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_wedding"
+                android:text="@string/category_wedding" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_future"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_future"
+                android:text="@string/category_future" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_present"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_present"
+                android:text="@string/category_present" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_past"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/category_past"
+                android:text="@string/category_past" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#F6F6F6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_nologin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:background="@drawable/category_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v">
+
+            <TextView
+                android:id="@+id/tv_ment"
+                style="@style/footnote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="@string/category_ment"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/tv_login_tag"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_login_tag"
+                style="@style/callout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="67dp"
+                android:text="@string/category_login_tag"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+
+
+
+
+
