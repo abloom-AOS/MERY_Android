@@ -12,6 +12,7 @@ import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentProfileMenuBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
 import com.abloom.mery.presentation.common.util.repeatOnStarted
+import com.abloom.mery.presentation.common.view.ConfirmDialog
 import com.abloom.mery.presentation.common.view.setOnNavigationClick
 import com.abloom.mery.presentation.ui.webview.WebViewUrl
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,8 +39,35 @@ class ProfileMenuFragment :
 
     private fun setupDataBinding() {
         binding.viewModel = viewModel
-        binding.onConnectSettingButtonClick = ::navigateToConnect
+        binding.onProfileUpdateButtonClick = {
+            if (viewModel.loginUser.value == null) {
+                showLoginDialog()
+            } else {
+                showProfileUpdateDialog()
+            }
+        }
+        binding.onConnectSettingButtonClick = {
+            if (viewModel.loginUser.value == null) {
+                showLoginDialog()
+            } else {
+                navigateToConnect()
+            }
+        }
         binding.onNavigateToWebViewButtonClick = ::navigateToWebView
+    }
+
+    private fun showLoginDialog() {
+        ConfirmDialog(
+            context = requireContext(),
+            title = getString(R.string.profilemenu_login_confirm_dialog_title),
+            positiveButtonLabel = getString(R.string.login_text),
+            onPositiveButtonClick = { findNavController().popBackStack(R.id.homeFragment, false) },
+            negativeButtonLabel = getString(R.string.all_cancel),
+        ).show()
+    }
+
+    private fun showProfileUpdateDialog() {
+        // TODO("이름과 결혼 예정일을 변경할 수 있는 하단 다이얼로그 띄우기")
     }
 
     private fun navigateToConnect() {
