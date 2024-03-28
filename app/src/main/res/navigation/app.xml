@@ -150,7 +150,7 @@
         <fragment
             android:id="@+id/webViewFromProfileMenuFragment"
             android:name="com.abloom.mery.presentation.ui.profilemenu.WebViewFromProfileMenuFragment"
-            android:label="WebViewFromProfileMenuFragment" >
+            android:label="WebViewFromProfileMenuFragment">
             <argument
                 android:name="url"
                 app:argType="com.abloom.mery.presentation.ui.webview.WebViewUrl" />

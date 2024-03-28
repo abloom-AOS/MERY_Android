@@ -187,11 +187,11 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
                         android:importantForAccessibility="no"
-                        app:is_visible="@{viewModel.loginUser != null &amp;&amp; viewModel.loginUser.fianceId == null}"
                         android:src="@drawable/ic_profilemenu_unconnected_notifier"
+                        app:is_visible="@{viewModel.loginUser != null &amp;&amp; viewModel.loginUser.fianceId == null}"
                         app:layout_constraintStart_toEndOf="@id/tv_profilemenu_connect_setting"
                         app:layout_constraintTop_toTopOf="@id/tv_profilemenu_connect_setting" />
 
@@ -368,9 +368,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_profilemenu_logout_button" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
     </LinearLayout>
 </layout>
