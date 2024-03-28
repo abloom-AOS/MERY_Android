@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
@@ -101,9 +102,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     private fun navigateToPriorFragment() {
         when (curStep) {
             STEP_BRIDE_GROOM_SELECTION -> {
-                childFragmentManager.beginTransaction()
-                    .remove(brideGroomSelectionFragment)
-                    .commit()
+                findNavController().popBackStack()
             }
 
             STEP_MARRY_DATE_SELECTION -> {
