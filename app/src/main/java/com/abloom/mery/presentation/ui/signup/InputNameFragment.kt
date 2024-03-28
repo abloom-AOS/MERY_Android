@@ -1,9 +1,8 @@
 package com.abloom.mery.presentation.ui.signup
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentInputNameBinding
@@ -27,14 +26,8 @@ class InputNameFragment : BaseFragment<FragmentInputNameBinding>(R.layout.fragme
     }
 
     private fun initListener() {
-        binding.inputNameEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                sharedViewModel.setName(s.toString())
-            }
+        binding.inputNameEditText.addTextChangedListener(afterTextChanged = { s ->
+            sharedViewModel.setName(s.toString())
         })
     }
 
