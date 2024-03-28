@@ -16,7 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class BrideGroomSelectionFragment :
     BaseFragment<FragmentBrideGroomSelectionBinding>(R.layout.fragment_bride_groom_selection) {
 
-    private val signUpViewModel: SignUpViewModel by viewModels()
+    private val signUpViewModel: SignUpViewModel by viewModels({requireParentFragment()})
+    private val step2 by lazy { MarryDateFragment() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,6 +47,8 @@ class BrideGroomSelectionFragment :
     }
 
     private fun moveToMarryDateFragment() {
-
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, step2)
+            .commit()
     }
 }

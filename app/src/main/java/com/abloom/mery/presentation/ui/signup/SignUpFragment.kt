@@ -3,13 +3,9 @@ package com.abloom.mery.presentation.ui.signup
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import com.abloom.mery.R
 import com.abloom.mery.databinding.FragmentSignUpBinding
 import com.abloom.mery.presentation.common.base.BaseFragment
@@ -22,33 +18,103 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
 
     private val signUpViewModel: SignUpViewModel by viewModels()
 
+    private val brideGroomSelectionFragment by lazy { BrideGroomSelectionFragment() }
+    private val marryDateFragment by lazy { MarryDateFragment() }
+    private val inputNameFragment by lazy { InputNameFragment() }
+
+    private var curStep = STEP_BRIDE_GROOM_SELECTION
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         initBindingViewModel()
-        observeSignUpStepChanges()
+        initTransaction()
+        observeChildFragmentManager()
+    }
+
+    private fun initTransaction() {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, brideGroomSelectionFragment)
+            .commit()
+    }
+
+    private fun observeChildFragmentManager() {
+        childFragmentManager.registerFragmentLifecycleCallbacks(
+            object : FragmentManager.FragmentLifecycleCallbacks() {
+                override fun onFragmentCreated(
+                    manager: FragmentManager,
+                    curFragment: Fragment,
+                    savedInstanceState: Bundle?
+                ) {
+                    when (curFragment.javaClass.simpleName) {
+                        brideGroomSelectionFragment.javaClass.simpleName -> {
+                            curStep = STEP_BRIDE_GROOM_SELECTION
+                            setupForBrideGroomSelection()
+                        }
+
+                        marryDateFragment.javaClass.simpleName -> {
+                            curStep = STEP_MARRY_DATE_SELECTION
+                            setupForMarryDate()
+                        }
+
+                        inputNameFragment.javaClass.simpleName -> {
+                            curStep = STEP_INPUT_NAME_SELECTION
+                            setupForInputName()
+                        }
+                    }
+
+                }
+            }, true
+        )
+
     }
 
     private fun initBindingViewModel() {
         binding.viewModel = signUpViewModel
     }
 
-
     private fun initListener() {
-        binding.appbarSignUp.setOnNavigationClick { handleNavigationBack() }
+        binding.appbarSignUp.setOnNavigationClick {
+            when (curStep) {
+                STEP_BRIDE_GROOM_SELECTION -> {
+                    childFragmentManager.beginTransaction()
+                        .remove(brideGroomSelectionFragment)
+                        .commit()
+                }
 
+                STEP_MARRY_DATE_SELECTION -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, brideGroomSelectionFragment)
+                        .commit()
+                }
+
+                STEP_INPUT_NAME_SELECTION -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, marryDateFragment)
+                        .commit()
+                }
+            }
+        }
         binding.appbarSignUp.setOnActionClick {
+            when (curStep) {
+                STEP_BRIDE_GROOM_SELECTION -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, marryDateFragment)
+                        .commit()
+                }
+
+                STEP_MARRY_DATE_SELECTION -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, inputNameFragment)
+                        .commit()
+                }
+
+                STEP_INPUT_NAME_SELECTION -> {
+                    //TODO("STEP 04 약간 동의 화면으로 이동)
+                }
+            }
 
         }
-    }
-
-    private fun handleNavigationBack() {
-
-    }
-
-    private fun observeSignUpStepChanges() {
-
-
     }
 
     private fun setupForBrideGroomSelection() {
@@ -58,6 +124,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
             actionText = ""
             isActionEnabled = false
         }
+        updateProgressBarState(STEP_BRIDE_GROOM_SELECTION)
     }
 
     private fun setupForMarryDate() {
@@ -67,6 +134,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
             actionText = getString(R.string.all_next)
             isActionEnabled = true
         }
+        updateProgressBarState(STEP_MARRY_DATE_SELECTION)
     }
 
     private fun setupForInputName() {
@@ -76,6 +144,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
             actionText = getString(R.string.all_next)
             isActionEnabled = false
         }
+        updateProgressBarState(STEP_INPUT_NAME_SELECTION)
     }
 
     private fun updateProgressBarState(state: Int) {
