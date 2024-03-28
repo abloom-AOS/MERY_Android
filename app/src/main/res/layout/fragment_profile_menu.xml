@@ -161,21 +161,52 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_profilemenu_user_setting_label" />
 
-                <TextView
-                    android:id="@+id/tv_profilemenu_connect_setting_button"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_profilemenu_connect_setting_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:onClick="@{() -> onConnectSettingButtonClick.invoke()}"
-                    android:paddingVertical="4dp"
-                    android:text="@string/profilemenu_connect_setting_button"
-                    android:textAppearance="@style/callout"
-                    android:textColor="@color/neutral_80"
-                    app:drawableEndCompat="@drawable/ic_profilemenu_go_to_detail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_profilemenu_profile_update_button" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_profilemenu_profile_update_button">
+
+                    <TextView
+                        android:id="@+id/tv_profilemenu_connect_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="@string/profilemenu_connect_setting_button"
+                        android:textAppearance="@style/callout"
+                        android:textColor="@color/neutral_80"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="2dp"
+                        android:importantForAccessibility="no"
+                        app:is_visible="@{viewModel.loginUser != null &amp;&amp; viewModel.loginUser.fianceId == null}"
+                        android:src="@drawable/ic_profilemenu_unconnected_notifier"
+                        app:layout_constraintStart_toEndOf="@id/tv_profilemenu_connect_setting"
+                        app:layout_constraintTop_toTopOf="@id/tv_profilemenu_connect_setting" />
+
+                    <ImageView
+                        android:id="@+id/iv_profilemenu_connect_setting_decoration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_profilemenu_go_to_detail"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider_user_setting_to_service_info"
@@ -185,7 +216,7 @@
                     app:dividerColor="@color/neutral_5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_profilemenu_connect_setting_button" />
+                    app:layout_constraintTop_toBottomOf="@id/cl_profilemenu_connect_setting_button" />
 
                 <TextView
                     android:id="@+id/tv_profilemenu_service_info_label"
