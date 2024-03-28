@@ -24,21 +24,19 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(R.layout.fragment_sig
     }
 
     private val signUpStepNavController: NavController by lazy { signUpStepNavHostFragment.navController }
-
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val signUpViewModel: SignUpViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
+        initBindingViewModel()
         observeSignUpStepChanges()
-        observeEditTextInputName()
     }
 
-    private fun observeEditTextInputName() {
-        sharedViewModel.getName().observe(viewLifecycleOwner) { inputName ->
-            binding.appbarSignUp.isActionEnabled = inputName.isNotEmpty()
-        }
+    private fun initBindingViewModel() {
+        binding.viewModel = signUpViewModel
     }
+
 
     private fun initListener() {
         binding.appbarSignUp.setOnNavigationClick { handleNavigationBack() }
